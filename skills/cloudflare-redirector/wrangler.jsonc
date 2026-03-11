@@ -1,7 +1,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "cf-bulk-redirector",
-	"account_id": "YOUR_ACCOUNT_ID",
+	// 推荐通过环境变量 CLOUDFLARE_ACCOUNT_ID 提供 account_id，避免写入仓库。
 	"main": "src/index.ts",
 	"compatibility_date": "2026-03-11",
 	"routes": [

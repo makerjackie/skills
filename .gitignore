@@ -26,6 +26,9 @@ coverage/
 .env.*
 !.env.example
 
+# Generated artifacts
+skills/*/data/*.compiled.json
+
 # Python
 __pycache__/
 *.py[cod]
