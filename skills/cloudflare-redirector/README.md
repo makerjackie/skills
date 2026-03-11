@@ -69,6 +69,11 @@ docs.hackathonweekly.com
 - 全球 CDN 加速，访问速度快
 - 配置简单，AI 自动完成所有设置
 
+### 前提条件
+
+- 注册 Cloudflare 账号（免费）
+- 在 Cloudflare 购买或托管一个域名（如 `hackathonweekly.com`）
+
 ### 如何使用？
 
 **第 1 步：准备工作**
@@ -80,15 +85,23 @@ docs.hackathonweekly.com
 npx skills add 01mvp/skills --skill cloudflare-redirector
 ```
 
-**第 3 步：配置 API Token**
+**第 3 步：跟 AI 说明你的“短域名” / “重定向需求”**
+
+```bash
+/cloudflare-redirector 帮我设置 docs.hackathonweekly.com 重定向到 https://hackathonweekly.feishu.cn/wiki/WQ7EwFC7BijePAkMkAHcajkNnae
+```
+以 claude code 调用我们的 skill 为例（当然你也可以不用直接斜杠 skill ，直接说帮我配置短域名就好）
+![](https://res.cloudinary.com/de9jqdltf/image/upload/v1773245643/aiw787owmkveaog8qcpm.png)
+
 在 Skill 的指引下，到 [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens) 创建 Token：
 - 选择 "Edit Cloudflare Workers" 模板
 - 添加 "Zone.DNS Edit" 权限
 
-**第 4 步：一句话完成配置**
-```bash
-/cloudflare-redirector 帮我设置 docs.hackathonweekly.com 重定向到 https://hackathonweekly.feishu.cn/wiki/WQ7EwFC7BijePAkMkAHcajkNnae
-```
+**第 4 步：完成配置!**
+
+成功截图：
+![](https://res.cloudinary.com/de9jqdltf/image/upload/v1773245658/crf4ninykr3m3kxidiwp.png)
+
 
 AI 会自动帮你：
 - 创建 DNS 记录

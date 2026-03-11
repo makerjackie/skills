@@ -1,6 +1,6 @@
 ---
 name: cloudflare-redirector
-description: 使用 Cloudflare Workers 配置和部署批量域名重定向（含 DNS 同步与规则编译）。当用户要创建/修改多域名重定向、从 JSON 规则生成 Worker、同步 Cloudflare DNS、或执行 wrangler 部署时使用。
+description: 使用 Cloudflare Workers 配置和部署批量域名重定向（含 DNS 同步与规则编译）。当用户要创建/修改多域名重定向、从 JSON 规则生成 Worker、同步 Cloudflare DNS、或执行 wrangler 部署时使用、相当于短域名功能。
 ---
 
 # Cloudflare Redirector

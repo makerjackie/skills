@@ -1,6 +1,7 @@
 temp/
 tmp/
 .vscode/
+cache/
 
 # Node.js
 node_modules/
