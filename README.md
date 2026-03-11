@@ -1,17 +1,51 @@
 # 01MVP Skills
 
-这个仓库用于存放可复用的 AI skills。
+这是 01MVP 推荐的好用 Skills 仓库合集。
 
-## Skills
+## 安装
 
-- `skills/cloudflare-redirector`: Cloudflare Workers 批量重定向技能（包含完整实现：Worker 源码、规则数据、部署配置、脚本与参考文档）
+安装后按提示选择你想使用的 Skills：
 
-## 目录约定
+```bash
+npx skills add 01mvp/skills
+```
 
-每个技能使用以下结构：
+安装本仓库全部 Skills：
 
-- `skills/<skill-name>/SKILL.md`
-- `skills/<skill-name>/scripts/*`
-- `skills/<skill-name>/references/*`（可选）
-- `skills/<skill-name>/assets/*`（可选）
-- 其他该技能需要的实现文件（如 `src/`, `data/`, `wrangler.jsonc`, `package.json`）
+```bash
+npx skills add 01mvp/skills --all
+```
+
+如果只安装某个 Skill：
+
+```bash
+npx skills add 01mvp/skills --skill [skill-name]
+```
+
+国内用户如果无法通过前面的方式安装，可使用 CNB 仓库地址：
+
+```bash
+npx skills add https://cnb.cool/01mvp/skills
+```
+
+## 推送同步说明
+
+每次更新代码并 push 时，需要同时同步到 `https://cnb.cool/01mvp/skills`。
+
+```bash
+git push origin <branch>
+git push cnb <branch>
+```
+
+## Skills 列表
+
+| Skills 名称 | 一句话介绍 |
+| --- | --- |
+| [cloudflare-redirector](./skills/cloudflare-redirector/README.md) | 使用 Cloudflare Workers 配置和部署批量域名重定向（含 DNS 同步与规则编译）。 |
+
+## 仓库结构
+
+- `skills/<skill-name>/SKILL.md`: Skill 指令入口
+- `skills/<skill-name>/README.md`: Skill 快速说明
+- `skills/<skill-name>/scripts/*`: 自动化脚本
+- `skills/<skill-name>/references/*`: 参考资料（可选）
