@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01MVP Skills</title>
+  <meta
+    name="description"
+    content="01MVP Skills：把团队可复用的方法、设计规范和基础设施能力，沉淀成可以直接交给 AI 调用的技能。"
+  />
+  <meta property="og:title" content="01MVP Skills" />
+  <meta
+    property="og:description"
+    content="Build faster with reusable 01MVP skills for design, Cloudflare infrastructure, redirects, and branded assets."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://skills.01mvp.com/" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="./assets/01mvp-icon-black.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray: #f5f5f5;
+      --frame: #e8e8e8;
+      --border: 2px solid #000000;
+      --border-heavy: 3px solid #000000;
+      --shadow-hard: 14px 14px 0 rgba(0, 0, 0, 0.12);
+      --font-sans: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+      --track-tight: -0.05em;
+      --track-display: -0.03em;
+      --track-label: 0.12em;
+      --content-max: 1320px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--frame);
+      color: var(--black);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .page {
+      width: min(calc(100% - 40px), var(--content-max));
+      margin: 20px auto 48px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .surface,
+    .surface-dark,
+    .surface-shadow {
+      border: var(--border-heavy);
+      background: var(--white);
+    }
+
+    .surface-shadow {
+      box-shadow: var(--shadow-hard);
+    }
+
+    .surface-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: var(--border);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      background: var(--white);
+    }
+
+    .eyebrow-dark {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .hero-side {
+      padding: 32px;
+      min-height: 100%;
+    }
+
+    .hero-main {
+      display: grid;
+      gap: 24px;
+      align-content: space-between;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .brand-lockup {
+      width: 220px;
+    }
+
+    .title {
+      font-size: clamp(3rem, 8vw, 6.4rem);
+      font-weight: 900;
+      letter-spacing: var(--track-tight);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .title .subtle {
+      color: #8d8d8d;
+    }
+
+    .lead {
+      max-width: 17em;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.6;
+      color: #232323;
+    }
+
+    .lead strong {
+      background: var(--black);
+      color: var(--white);
+      padding: 0 10px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    .hero-actions,
+    .install-actions,
+    .skill-links,
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button,
+    .button-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 16px;
+      border: var(--border);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: none;
+    }
+
+    .button {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .button:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .button-dark {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    .button-dark:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      border: var(--border);
+      padding: 16px;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      min-height: 126px;
+    }
+
+    .stat-value {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: var(--track-tight);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: #777777;
+    }
+
+    .install-card {
+      display: grid;
+      gap: 14px;
+    }
+
+    .section {
+      padding: 28px 32px 32px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: var(--track-display);
+      line-height: 1.04;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      max-width: 54ch;
+      color: #353535;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .code {
+      border: var(--border);
+      background: var(--gray);
+      padding: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .skill-card {
+      grid-column: span 6;
+      display: grid;
+      gap: 18px;
+      padding: 24px;
+      align-content: start;
+      min-height: 100%;
+    }
+
+    .skill-card.featured {
+      grid-column: span 12;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      align-items: stretch;
+      gap: 24px;
+    }
+
+    .skill-block,
+    .skill-aside {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .skill-kind {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+    }
+
+    .skill-name {
+      font-size: clamp(1.6rem, 3vw, 2.7rem);
+      font-weight: 900;
+      letter-spacing: var(--track-display);
+      line-height: 1.05;
+    }
+
+    .skill-desc {
+      color: #2f2f2f;
+      line-height: 1.65;
+    }
+
+    .mini-code {
+      border: var(--border);
+      background: var(--gray);
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .step-card {
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .step-no {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border: var(--border);
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .step-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .reason {
+      padding: 18px;
+      border: var(--border);
+      display: grid;
+      gap: 10px;
+      min-height: 160px;
+    }
+
+    .reason-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+    }
+
+    .reason-copy {
+      color: #323232;
+      line-height: 1.65;
+      font-size: 0.96rem;
+    }
+
+    .footer {
+      padding: 24px 32px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-note {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: #8a8a8a;
+    }
+
+    #toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: var(--white);
+      color: var(--black);
+      border: var(--border);
+      box-shadow: var(--shadow-hard);
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 120ms linear, transform 120ms linear;
+      pointer-events: none;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .skill-card.featured {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-card,
+      .skill-card.featured {
+        grid-column: span 12;
+      }
+
+      .reason-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        width: min(calc(100% - 20px), var(--content-max));
+        margin-top: 10px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .section,
+      .footer {
+        padding: 22px;
+      }
+
+      .step-grid,
+      .stat-row,
+      .reason-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .title {
+        font-size: clamp(2.5rem, 15vw, 4.5rem);
+      }
+
+      .brand-row {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="surface-shadow hero-main">
+        <div class="brand-row">
+          <span class="eyebrow">01MVP / Skills / Repo</span>
+          <img class="brand-lockup" src="./assets/01mvp-lockup-horizontal.svg" alt="01MVP" />
+        </div>
+
+        <div class="grid" style="gap: 20px;">
+          <h1 class="title">BUILD<br /><span class="subtle">WITH</span><br />SKILLS.</h1>
+          <p class="lead">
+            把团队里重复出现的方法、规范和基础设施经验，封装成
+            <strong>可以直接交给 AI 调用</strong>
+            的技能。
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <button class="button" data-copy="npx skills add 01mvp/skills">Copy Install</button>
+          <button class="button" data-copy="npx skills add 01mvp/skills --all">Copy Install All</button>
+          <a class="button" href="https://github.com/01MVP/skills" target="_blank" rel="noreferrer">Open GitHub</a>
+          <a class="button" href="#skills">Browse Skills</a>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Current Skills</div>
+            <div>设计、Cloudflare、一键重定向、极简海报。</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">1</div>
+            <div class="stat-label">Brand System</div>
+            <div>统一用 01MVP 的黑白硬核极简视觉语言。</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">0→1</div>
+            <div class="stat-label">Execution Mode</div>
+            <div>减少重复提示词，把经验沉淀成可复用能力。</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="surface-dark hero-side">
+        <span class="eyebrow eyebrow-dark">Quick Start</span>
+        <div class="section-title" style="color: #ffffff;">INSTALL IN ONE COMMAND.</div>
+        <p class="section-copy" style="color: #d0d0d0;">
+          支持按仓库安装、一次装全，也支持单独装某个 skill。国内网络不稳定时，可以直接切到 CNB 地址。
+        </p>
+
+        <div class="install-card">
+          <div class="code">npx skills add 01mvp/skills</div>
+          <div class="install-actions">
+            <button class="button-dark" data-copy="npx skills add 01mvp/skills">Copy Repo</button>
+            <button class="button-dark" data-copy="npx skills add 01mvp/skills --all">Copy --all</button>
+          </div>
+        </div>
+
+        <div class="install-card">
+          <div class="code">npx skills add 01mvp/skills --skill 01mvp-design</div>
+          <div class="install-actions">
+            <button class="button-dark" data-copy="npx skills add 01mvp/skills --skill 01mvp-design">Copy Single Skill</button>
+          </div>
+        </div>
+
+        <div class="install-card">
+          <div class="code">npx skills add https://cnb.cool/01mvp/skills</div>
+          <div class="install-actions">
+            <button class="button-dark" data-copy="npx skills add https://cnb.cool/01mvp/skills">Copy CNB</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="surface section">
+      <div class="section-head">
+        <div class="grid" style="gap: 10px;">
+          <span class="eyebrow">What It Is</span>
+          <h2 class="section-title">NOT JUST PROMPTS. REUSABLE OPERATING KNOWLEDGE.</h2>
+        </div>
+        <p class="section-copy">
+          01MVP Skills 不只是一个提示词集合，而是把团队真正会反复用到的流程、设计资产、部署方式、基础设施套路，整理成 AI 可以稳定执行的模块。
+        </p>
+      </div>
+
+      <div class="reason-grid">
+        <div class="reason">
+          <div class="reason-title">Structured Workflow</div>
+          <div class="reason-copy">把“先做什么、后做什么、遇到什么坑”固化下来，减少来回试错。</div>
+        </div>
+        <div class="reason">
+          <div class="reason-title">Shared Design</div>
+          <div class="reason-copy">统一 01MVP 对外视觉材料，海报、名片、网站和 UI 都能保持同一风格。</div>
+        </div>
+        <div class="reason">
+          <div class="reason-title">Infra Ready</div>
+          <div class="reason-copy">Cloudflare 相关能力直接打包，域名、Workers、Pages、R2、重定向可以一起调度。</div>
+        </div>
+        <div class="reason">
+          <div class="reason-title">Less Repetition</div>
+          <div class="reason-copy">把反复解释的背景信息收敛到 skill 里，后续让 AI 直接进入执行状态。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="surface section" id="skills">
+      <div class="section-head">
+        <div class="grid" style="gap: 10px;">
+          <span class="eyebrow">Skill Catalog</span>
+          <h2 class="section-title">CURRENT 01MVP SKILLS</h2>
+        </div>
+        <p class="section-copy">
+          下面这些是目前仓库里最核心的能力块。风格上保持 01MVP 的工程编辑感，使用上则优先追求“直接可调用、直接可交付”。
+        </p>
+      </div>
+
+      <div class="skill-grid">
+        <article class="surface-shadow skill-card featured">
+          <div class="skill-block">
+            <div class="skill-kind">Design System / Brand</div>
+            <h3 class="skill-name">01mvp-design</h3>
+            <p class="skill-desc">
+              把 01MVP 的 logo、黑白高对比排版、组件规则和媒介模板打包成统一品牌 skill。适合海报、名片、社交图、UI、网站、教程页等所有对外视觉物料。
+            </p>
+            <div class="skill-links">
+              <button class="button" data-copy="/01mvp-design 帮我做一张 01MVP 风格的活动海报，黑白高对比，保留二维码区域">Copy Prompt</button>
+              <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/01mvp-design" target="_blank" rel="noreferrer">Open Skill</a>
+            </div>
+          </div>
+          <div class="skill-aside">
+            <div class="mini-code">/01mvp-design 帮我设计一套 01MVP 官网首页
+
+- 黑白高对比
+- 硬边界、零圆角
+- 保留品牌 logo 使用规则
+- Hero / 功能卡片 / CTA 一起给出</div>
+            <div class="mini-code">Assets included:
+- official logo SVG
+- design tokens
+- poster / business card / short-card templates
+- website / UI art direction</div>
+          </div>
+        </article>
+
+        <article class="surface skill-card">
+          <div class="skill-kind">Cloudflare / Infra</div>
+          <h3 class="skill-name">cloudflare-one</h3>
+          <p class="skill-desc">
+            用一个适合 AI 调用的 Token，把 Cloudflare 的 Pages、Workers、R2、D1、Queues、Browser Rendering、Workers AI 等串起来。
+          </p>
+          <div class="mini-code">/cloudflare-one 帮我做一个 launch.example.com 的活动站，并把报名表存到 D1</div>
+          <div class="skill-links">
+            <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/cloudflare-one" target="_blank" rel="noreferrer">Open Skill</a>
+          </div>
+        </article>
+
+        <article class="surface skill-card">
+          <div class="skill-kind">Cloudflare / Redirect</div>
+          <h3 class="skill-name">cloudflare-redirector</h3>
+          <p class="skill-desc">
+            用 Cloudflare Workers 做短域名和批量重定向，适合文档短链、活动链接、飞书文档、域名迁移等场景。
+          </p>
+          <div class="mini-code">/cloudflare-redirector 帮我把 docs.example.com 指向某个飞书文档</div>
+          <div class="skill-links">
+            <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/cloudflare-redirector" target="_blank" rel="noreferrer">Open Skill</a>
+          </div>
+        </article>
+
+        <article class="surface skill-card">
+          <div class="skill-kind">Visual Output / Poster</div>
+          <h3 class="skill-name">poster-minimal</h3>
+          <p class="skill-desc">
+            生成极简海报与公众号头图，适合产品发布、活动宣传、演讲封面和视觉公告。强调大字号、留白和黑白冲击力。
+          </p>
+          <div class="mini-code">Create a minimalist poster with title "LESS IS MORE" and subtitle "Design Philosophy"</div>
+          <div class="skill-links">
+            <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/poster-minimal" target="_blank" rel="noreferrer">Open Skill</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="surface section">
+      <div class="section-head">
+        <div class="grid" style="gap: 10px;">
+          <span class="eyebrow">Workflow</span>
+          <h2 class="section-title">HOW TO USE IT</h2>
+        </div>
+        <p class="section-copy">
+          最典型的方式不是“先讲背景再慢慢协作”，而是直接把目标交给 AI，再让 skill 自动加载相关上下文、资产和执行步骤。
+        </p>
+      </div>
+
+      <div class="step-grid">
+        <article class="surface-shadow step-card">
+          <div class="step-no">01</div>
+          <h3 class="step-title">安装仓库或单个 skill</h3>
+          <p>先把 `01mvp/skills` 装进你的 agent 环境，或者只安装你这次真的会用到的一个。</p>
+        </article>
+
+        <article class="surface-shadow step-card">
+          <div class="step-no">02</div>
+          <h3 class="step-title">直接给出目标</h3>
+          <p>例如“做一张活动海报”“配置一个短域名”“部署一个 Pages 站点”。不用每次从零解释。</p>
+        </article>
+
+        <article class="surface-shadow step-card">
+          <div class="step-no">03</div>
+          <h3 class="step-title">复用资产与规则</h3>
+          <p>skill 会自动使用里面的模板、logo、tokens、参考资料和流程，把输出拉回统一质量线。</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="surface footer">
+      <div class="footer-top">
+        <img class="brand-lockup" src="./assets/01mvp-lockup-horizontal.svg" alt="01MVP" />
+        <div class="footer-actions">
+          <a class="button" href="https://github.com/01MVP/skills" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="https://cnb.cool/01mvp/skills" target="_blank" rel="noreferrer">CNB Mirror</a>
+          <button class="button" data-copy="npx skills add 01mvp/skills --all">Copy Install All</button>
+        </div>
+      </div>
+      <div class="footer-note">01MVP Skills / Monochrome / Hardcore Minimal / Cloudflare Pages</div>
+    </footer>
+  </main>
+
+  <div id="toast" aria-live="polite">Copied</div>
+
+  <script>
+    const toast = document.getElementById('toast');
+    let toastTimer = null;
+
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        toast.classList.remove('show');
+      }, 1400);
+    };
+
+    const fallbackCopy = (value) => {
+      const textarea = document.createElement('textarea');
+      textarea.value = value;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(textarea);
+      return ok;
+    };
+
+    document.querySelectorAll('[data-copy]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const value = button.getAttribute('data-copy');
+        if (!value) return;
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(value);
+          } else if (!fallbackCopy(value)) {
+            throw new Error('fallback-copy-failed');
+          }
+          showToast('Copied');
+        } catch (error) {
+          showToast('Copy Failed');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

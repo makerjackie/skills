@@ -1,0 +1,7 @@
+<svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0, 40)">
+    <rect width="120" height="120" fill="#000000" />
+    <text x="60" y="85" font-family="Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-weight="900" font-size="80" fill="#ffffff" text-anchor="middle">01</text>
+  </g>
+  <text x="160" y="148" font-family="Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="140" font-weight="900" letter-spacing="-0.05em" fill="#000000">01MVP</text>
+</svg>

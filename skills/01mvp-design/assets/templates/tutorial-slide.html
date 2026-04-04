@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01MVP Tutorial Slide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../tokens/01mvp-tokens.css" />
+  <style>
+    body {
+      background: var(--color-frame);
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    .slide {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 3 / 4;
+      padding: 40px;
+      padding-top: 76px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      gap: 24px;
+    }
+    .page-num {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #c4c4c4;
+    }
+    .title {
+      margin-top: 32px;
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .step-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      background: #000000;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .body {
+      font-size: 1.35rem;
+      line-height: 1.6;
+      color: #222222;
+    }
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      color: #9c9c9c;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="surface-01mvp-shadow slide">
+    <div class="path-01mvp" style="position: absolute; top: 40px; left: 40px;">01MVP / TUTORIAL / STEP 01</div>
+    <div class="page-num">01</div>
+
+    <div class="title">先把问题讲清楚，<br />再开始写代码。</div>
+
+    <div class="step-tag">STEP 1</div>
+
+    <div class="body">
+      01MVP 的教程页不追求复杂视觉，而追求结构明确。顶部是路径，主体是一个清晰结论，中段可以加代码块、步骤块或命令块，底部用日期和品牌收尾。
+    </div>
+
+    <div class="code-01mvp">$ pnpm create next-app
+$ cd my-app
+$ pnpm dev</div>
+
+    <div class="meta">
+      <div>2026.04.04</div>
+      <div>01MVP / FROM ZERO TO ONE</div>
+    </div>
+  </div>
+</body>
+</html>

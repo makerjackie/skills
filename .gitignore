@@ -2,6 +2,7 @@ temp/
 tmp/
 .vscode/
 cache/
+output/
 
 # Node.js
 node_modules/

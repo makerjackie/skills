@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01MVP Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;800&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../tokens/01mvp-tokens.css" />
+  <style>
+    body { padding: 40px; }
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 40px;
+    }
+    .section {
+      display: grid;
+      gap: 20px;
+      border-top: var(--border-ui);
+      padding-top: 24px;
+    }
+    .hero {
+      display: grid;
+      gap: 12px;
+    }
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .swatch {
+      width: 180px;
+      border: var(--border-ui);
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+    .chip {
+      height: 60px;
+      border: var(--border-ui);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <div class="label-01mvp">01MVP / STYLE GUIDE</div>
+      <div class="title-hero-01mvp">HARDCORE MINIMALISM.</div>
+      <div class="body-01mvp">Use this page as a quick visual sanity check for color, typography, borders, buttons, cards, and logo usage.</div>
+    </div>
+
+    <div class="section">
+      <div class="label-01mvp">PALETTE</div>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#000000;"></div><div>#000000</div></div>
+        <div class="swatch"><div class="chip" style="background:#ffffff;"></div><div>#FFFFFF</div></div>
+        <div class="swatch"><div class="chip" style="background:#f5f5f5;"></div><div>#F5F5F5</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label-01mvp">TYPOGRAPHY</div>
+      <div class="title-main-01mvp">Build fast. Ship clearly.</div>
+      <div class="title-sub-01mvp">Use strong hierarchy and keep decoration low.</div>
+      <div class="body-01mvp">01MVP combines a bold sans-serif voice with monospace labels and technical metadata.</div>
+      <div class="label-01mvp">MONO LABEL / META / CODE</div>
+    </div>
+
+    <div class="section">
+      <div class="label-01mvp">COMPONENTS</div>
+      <div class="grid-3-01mvp">
+        <div class="panel-01mvp stack-01mvp" style="padding:24px;">
+          <div class="label-01mvp">BUTTONS</div>
+          <a class="btn-01mvp" href="#">Standard</a>
+          <a class="btn-01mvp btn-01mvp-primary" href="#">Primary</a>
+        </div>
+        <div class="panel-01mvp stack-01mvp" style="padding:24px;">
+          <div class="label-01mvp">TAGS</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <div class="tag-01mvp tag-01mvp-dark">01MVP</div>
+            <div class="tag-01mvp">UI</div>
+            <div class="tag-01mvp">#001</div>
+          </div>
+        </div>
+        <div class="panel-01mvp stack-01mvp" style="padding:24px;">
+          <div class="label-01mvp">CODE</div>
+          <div class="code-01mvp">$ npm run dev
+> ready on localhost</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label-01mvp">LOGO</div>
+      <div class="grid-3-01mvp">
+        <div class="panel-01mvp" style="padding:24px; display:grid; place-items:center;">
+          <img src="../logo/01mvp-wordmark-primary.svg" alt="01MVP" style="width: 220px; height: auto;" />
+        </div>
+        <div class="panel-01mvp-dark" style="padding:24px; display:grid; place-items:center;">
+          <img src="../logo/01mvp-wordmark-inverse.svg" alt="01MVP" style="width: 220px; height: auto;" />
+        </div>
+        <div class="panel-01mvp" style="padding:24px; display:grid; place-items:center;">
+          <img src="../logo/01mvp-icon-black.svg" alt="01MVP" style="width: 72px; height: 72px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

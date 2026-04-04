@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01MVP Short Action</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../tokens/01mvp-tokens.css" />
+  <style>
+    body {
+      background: var(--color-frame);
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    .card {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 3 / 4;
+      padding: 40px;
+      padding-top: 76px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+      flex: 1;
+    }
+    .topic {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: #888888;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+    .statement {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    .action-card {
+      background: #000000;
+      color: #ffffff;
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+    }
+    .action-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .box {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #ffffff;
+      flex: 0 0 22px;
+      margin-top: 4px;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid #cccccc;
+      padding-top: 20px;
+    }
+    .footer img {
+      width: 44px;
+      height: 44px;
+    }
+  </style>
+</head>
+<body>
+  <div class="surface-01mvp-shadow card">
+    <div class="path-01mvp" style="position: absolute; top: 40px; left: 40px;">SHORT ACTION / #001</div>
+
+    <div class="content">
+      <div class="topic">TODAY'S MISSION</div>
+      <div class="statement">要活在当下，<br />先学会“物理断网”。</div>
+
+      <div class="action-card">
+        <div class="label-01mvp" style="color: #8f8f8f;">ACTION CHECKLIST</div>
+        <div class="action-item"><div class="box"></div><div>手机调至飞行模式</div></div>
+        <div class="action-item"><div class="box"></div><div>设置 25 分钟倒计时</div></div>
+        <div class="action-item"><div class="box"></div><div>只专注做眼前这一件事</div></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="label-01mvp">01MVP / EXECUTE CLEARLY</div>
+      <img src="../logo/01mvp-icon-black.svg" alt="01MVP" />
+    </div>
+  </div>
+</body>
+</html>

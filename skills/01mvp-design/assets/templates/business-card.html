@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01MVP Business Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../tokens/01mvp-tokens.css" />
+  <style>
+    body {
+      background: var(--color-frame);
+      padding: 40px;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+    }
+    .card {
+      aspect-ratio: 1.75 / 1;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .front {
+      background: var(--color-white);
+    }
+    .front .mark {
+      width: 74px;
+      height: 74px;
+    }
+    .back {
+      background: var(--color-black);
+      color: var(--color-white);
+      border-color: var(--color-black);
+    }
+    .back .meta {
+      display: grid;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+    }
+    .name {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: var(--tracking-display);
+    }
+    .back .label-01mvp,
+    .back .muted {
+      color: #bdbdbd;
+    }
+    @media (max-width: 900px) {
+      .wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="surface-01mvp card front">
+      <div class="stack-01mvp">
+        <img class="mark" src="../logo/01mvp-icon-black.svg" alt="01MVP" />
+        <img src="../logo/01mvp-wordmark-primary.svg" alt="01MVP" style="width: 220px; height: auto;" />
+      </div>
+      <div class="label-01mvp">FROM ZERO TO ONE</div>
+    </div>
+
+    <div class="surface-01mvp card back">
+      <div class="stack-01mvp">
+        <div class="label-01mvp muted">01MVP CARD</div>
+        <div class="name">Jackie Xiao</div>
+        <div class="title-sub-01mvp" style="font-size: 1rem; color: #d0d0d0;">Builder / Creator / Operator</div>
+      </div>
+      <div class="meta">
+        <div>WECHAT / jackie</div>
+        <div>EMAIL / hi@01mvp.com</div>
+        <div>WEB / 01mvp.com</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

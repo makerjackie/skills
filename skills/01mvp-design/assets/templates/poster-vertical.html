@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01MVP Poster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../tokens/01mvp-tokens.css" />
+  <style>
+    body { background: var(--color-frame); }
+    .poster {
+      width: 1080px;
+      min-height: 1440px;
+      margin: 40px auto;
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .poster-top,
+    .poster-bottom,
+    .meta-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-top: 40px;
+    }
+    .hero p {
+      max-width: 18em;
+      font-size: 1.5rem;
+      line-height: 1.55;
+    }
+    .meta-grid {
+      align-items: stretch;
+    }
+    .info,
+    .qr {
+      flex: 1;
+      padding: 24px;
+    }
+    .qr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      background: var(--color-gray);
+    }
+    .info ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+    }
+    .brand-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand-row img {
+      width: 240px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="surface-01mvp poster">
+    <div class="poster-top">
+      <div class="path-01mvp">EVENT / 01MVP / #001</div>
+      <div class="label-01mvp">SHANGHAI / 19:30</div>
+    </div>
+
+    <div class="hero">
+      <div class="tag-01mvp tag-01mvp-dark">AI BUILDER NIGHT</div>
+      <div class="title-hero-01mvp">FROM ZERO TO ONE.</div>
+      <p class="body-01mvp">
+        一场面向创造者与独立开发者的 01MVP 线下活动。保持黑白高对比、强边界、清晰信息层级。
+      </p>
+    </div>
+
+    <div class="meta-grid">
+      <div class="panel-01mvp info">
+        <div class="label-01mvp">DETAILS</div>
+        <ul>
+          <li>DATE / 2026.05.10</li>
+          <li>PLACE / SHANGHAI</li>
+          <li>HOST / 01MVP</li>
+          <li>TOPIC / BUILD FAST, SHIP FAST</li>
+        </ul>
+      </div>
+      <div class="panel-01mvp qr">
+        <div class="label-01mvp">QR / REGISTRATION</div>
+      </div>
+    </div>
+
+    <div class="poster-bottom">
+      <div class="brand-row" style="width: 100%;">
+        <img src="../logo/01mvp-lockup-horizontal.svg" alt="01MVP" />
+        <div class="label-01mvp">MONOCHROME / HARDCORE MINIMAL / NO GRADIENTS</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

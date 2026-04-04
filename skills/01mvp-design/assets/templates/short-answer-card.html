@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01MVP Short Answer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../tokens/01mvp-tokens.css" />
+  <style>
+    body {
+      background: var(--color-frame);
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    .card {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 3 / 4;
+      padding: 40px;
+      padding-top: 76px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+      flex: 1;
+    }
+    .question {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+    }
+    .answer {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .explain {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: #808080;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid #cccccc;
+      padding-top: 20px;
+    }
+    .footer img {
+      width: 44px;
+      height: 44px;
+    }
+  </style>
+</head>
+<body>
+  <div class="surface-01mvp-shadow card">
+    <div class="path-01mvp" style="position: absolute; top: 40px; left: 40px;">SHORT ANSWER / #001</div>
+
+    <div class="content">
+      <div class="question">怎样才算<br />活在当下？</div>
+      <div class="answer">
+        不要为了“省时间”而去生活。<br />
+        因为省下来的时间，<br />
+        并没有地方可以存。
+      </div>
+      <div class="explain">
+        时间不是银行账户。01MVP 风格的短内容卡，重点是一个强观点、一个强回答，以及一个干净的品牌落点。
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="label-01mvp">01MVP / HARDCORE MINIMAL</div>
+      <img src="../logo/01mvp-icon-black.svg" alt="01MVP" />
+    </div>
+  </div>
+</body>
+</html>
