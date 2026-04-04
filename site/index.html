@@ -348,21 +348,28 @@
 
     .skill-card {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.7fr);
       align-items: stretch;
       gap: 32px;
       padding: 32px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hard);
+      border-color: var(--black);
     }
 
     .skill-card:not(.surface-shadow) {
       border: var(--border);
     }
 
-    .skill-block,
     .skill-aside {
-      display: grid;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       gap: 16px;
-      align-content: start;
     }
 
     .skill-kind {
@@ -386,14 +393,41 @@
     }
 
     .mini-code {
+      position: relative;
       border: var(--border);
       background: var(--gray);
       color: var(--black);
-      padding: 14px;
+      padding: 16px 40px 16px 16px;
       font-family: var(--font-mono);
-      font-size: 0.82rem;
-      line-height: 1.55;
+      font-size: 0.85rem;
+      line-height: 1.6;
       white-space: pre-wrap;
+    }
+
+    .copy-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.2s;
+      background: transparent;
+      border: none;
+    }
+
+    .copy-icon:hover {
+      opacity: 1;
+    }
+
+    .copy-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
     }
 
     .step-grid {
@@ -478,31 +512,6 @@
       color: #8a8a8a;
     }
 
-    #toast {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: var(--white);
-      color: var(--black);
-      border: var(--border);
-      box-shadow: var(--shadow-hard);
-      padding: 12px 14px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: var(--track-label);
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 120ms linear, transform 120ms linear;
-      pointer-events: none;
-    }
-
-    #toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     @media (max-width: 1120px) {
       .hero,
       .skill-card.featured {
@@ -568,7 +577,7 @@
         <div style="display: grid; gap: 12px; justify-items: center;">
           <div class="hero-install">
             <div class="code">npx skills add 01mvp/skills</div>
-            <button class="button-dark" data-copy="npx skills add 01mvp/skills">复制指令</button>
+            <button class="button-dark" data-copy="npx skills add 01mvp/skills">复制给你的 AI Agent</button>
           </div>
           <div style="font-family: var(--font-mono); font-size: 13px; color: #666;">
             # 单独安装某个技能: npx skills add 01mvp/skills --skill [name]
@@ -594,59 +603,57 @@
       </div>
 
       <div class="skill-grid">
-        <article class="surface-shadow skill-card">
+        <article class="surface-shadow skill-card" style="cursor: pointer;" onclick="window.open('https://github.com/01MVP/skills/tree/main/skills/01mvp-design', '_blank')">
           <div class="skill-block">
             <div class="skill-kind">Design System / Brand</div>
             <h3 class="skill-name">01mvp-design</h3>
             <p class="skill-desc">
-              统一 01MVP 品牌视觉。内置黑白极简组件规则与媒介模板，适用于海报、UI、网站等全场景物料。
+              当你需要让 AI 生成对外展示的内容（如产品落地页、活动海报、社交媒体图、组件库等）时使用。<br><br>
+              它内置了 01MVP 标志性的“黑白高对比、硬核极简、零圆角、工程感排版”设计规范，并携带了官方 Logo SVG。这确保了 AI 产出的设计稿具有高度统一的视觉冲击力，彻底告别那些缺乏辨识度的默认 AI 生成风格。
             </p>
-            <div class="skill-links">
-              <button class="button" data-copy="/01mvp-design 帮我做一张 01MVP 风格的活动海报，黑白高对比，保留二维码区域">复制提示词</button>
-              <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/01mvp-design" target="_blank" rel="noreferrer">查看详情</a>
-            </div>
           </div>
-          <div class="skill-aside">
+          <div class="skill-aside" onclick="event.stopPropagation()">
             <div class="mini-code">/01mvp-design 帮我设计一套 01MVP 官网首页
-
-- 黑白高对比
-- 硬边界、零圆角
-- 包含 Hero / 功能卡片 / CTA</div>
+- 包含 Hero 区域
+- 包含 3 个功能卡片
+- 底部包含一个 CTA 区域<button class="copy-icon" aria-label="Copy prompt" data-copy="/01mvp-design 帮我设计一套 01MVP 官网首页
+- 包含 Hero 区域
+- 包含 3 个功能卡片
+- 底部包含一个 CTA 区域"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button></div>
+            <div class="mini-code">/01mvp-design 请基于 01MVP 极简硬核风格，生成一张产品发布海报。
+主标题为“LESS IS MORE”，副标题为“重构工作流”。<button class="copy-icon" aria-label="Copy prompt" data-copy="/01mvp-design 请基于 01MVP 极简硬核风格，生成一张产品发布海报。主标题为“LESS IS MORE”，副标题为“重构工作流”。"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button></div>
           </div>
         </article>
 
-        <article class="skill-card">
+        <article class="skill-card" style="cursor: pointer;" onclick="window.open('https://github.com/01MVP/skills/tree/main/skills/cloudflare-one', '_blank')">
           <div class="skill-block">
             <div class="skill-kind">Cloudflare / Infra</div>
             <h3 class="skill-name">cloudflare-one</h3>
             <p class="skill-desc">
-              全栈开发一键调度。串联 Pages、Workers、D1、R2 等服务。
+              当你需要让 AI 编写后端服务、构建全栈应用或配置基础设施时使用。<br><br>
+              它将 Cloudflare 的核心生态（Workers, Pages, D1 数据库, R2 存储, Queues 等）整合在一个技能中。无需你再去四处寻找文档或手动解释部署流程，AI 就能基于此技能生成符合 Cloudflare 最佳实践的代码，并帮你一次性搞定上线。
             </p>
-            <div class="skill-links">
-              <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/cloudflare-one" target="_blank" rel="noreferrer">查看详情</a>
-            </div>
           </div>
-          <div class="skill-aside">
-            <div class="mini-code">/cloudflare-one 部署活动站，并将报名表存入 D1 数据库</div>
+          <div class="skill-aside" onclick="event.stopPropagation()">
+            <div class="mini-code">/cloudflare-one 部署一个用户预约活动站，前端使用 HTML+Tailwind，将用户提交的报名信息（姓名、邮箱）直接存入 D1 数据库。<button class="copy-icon" aria-label="Copy prompt" data-copy="/cloudflare-one 部署一个用户预约活动站，前端使用 HTML+Tailwind，将用户提交的报名信息（姓名、邮箱）直接存入 D1 数据库。"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button></div>
           </div>
         </article>
 
-        <article class="skill-card">
+        <article class="skill-card" style="cursor: pointer;" onclick="window.open('https://github.com/01MVP/skills/tree/main/skills/cloudflare-redirector', '_blank')">
           <div class="skill-block">
             <div class="skill-kind">Cloudflare / Redirect</div>
             <h3 class="skill-name">cloudflare-redirector</h3>
             <p class="skill-desc">
-              轻量级短链接与批量重定向服务。适用于活动推广与文档分享。
+              当你需要配置短链接、管理域名跳转、或者将长链接（如飞书文档、Notion 页面、问卷星）映射到自定义域名时使用。<br><br>
+              它基于 Cloudflare Workers 构建，为你提供了一个极简的路由重定向能力，支持批量配置。无论是活动推广还是内部文档分享，都能让链接变得干净、专业且易于追踪。
             </p>
-            <div class="skill-links">
-              <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/cloudflare-redirector" target="_blank" rel="noreferrer">查看详情</a>
-            </div>
           </div>
-          <div class="skill-aside">
-            <div class="mini-code">/cloudflare-redirector 将 docs.example.com 指向飞书文档</div>
+          <div class="skill-aside" onclick="event.stopPropagation()">
+            <div class="mini-code">/cloudflare-redirector 请帮我配置一下规则：
+将 docs.example.com 指向我的飞书公开文档，将 join.example.com 指向我的微信群加群二维码链接。<button class="copy-icon" aria-label="Copy prompt" data-copy="/cloudflare-redirector 请帮我配置一下规则：
+将 docs.example.com 指向我的飞书公开文档，将 join.example.com 指向我的微信群加群二维码链接。"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button></div>
           </div>
         </article>
-
       </div>
     </section>
 
@@ -694,21 +701,7 @@
     </footer>
   </main>
 
-  <div id="toast" aria-live="polite">已复制</div>
-
   <script>
-    const toast = document.getElementById('toast');
-    let toastTimer = null;
-
-    const showToast = (message) => {
-      toast.textContent = message;
-      toast.classList.add('show');
-      window.clearTimeout(toastTimer);
-      toastTimer = window.setTimeout(() => {
-        toast.classList.remove('show');
-      }, 1400);
-    };
-
     const fallbackCopy = (value) => {
       const textarea = document.createElement('textarea');
       textarea.value = value;
@@ -723,19 +716,52 @@
     };
 
     document.querySelectorAll('[data-copy]').forEach((button) => {
-      button.addEventListener('click', async () => {
+      let resetTimer = null;
+      // Save original content to restore later
+      const originalHTML = button.innerHTML;
+
+      button.addEventListener('click', async (e) => {
+        // Prevent event from bubbling up to the card's onclick handler
+        e.stopPropagation();
+        
         const value = button.getAttribute('data-copy');
         if (!value) return;
+        
         try {
           if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(value);
           } else if (!fallbackCopy(value)) {
             throw new Error('fallback-copy-failed');
           }
-          showToast('已复制');
+          
+          // Show success state directly on the button
+          if (button.classList.contains('copy-icon')) {
+            button.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+            button.style.opacity = '1';
+            button.style.color = '#000';
+          } else {
+            button.textContent = '已复制';
+          }
+          
         } catch (error) {
-          showToast('复制失败');
+          if (button.classList.contains('copy-icon')) {
+            button.innerHTML = '<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+            button.style.opacity = '1';
+            button.style.color = 'red';
+          } else {
+            button.textContent = '复制失败';
+          }
         }
+        
+        // Reset after 1.5 seconds
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+          button.innerHTML = originalHTML;
+          if (button.classList.contains('copy-icon')) {
+            button.style.opacity = '';
+            button.style.color = '';
+          }
+        }, 1500);
       });
     });
   </script>

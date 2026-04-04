@@ -41,6 +41,9 @@ Before designing, align the output to this baseline:
 - big confident hierarchy
 - generous whitespace
 - engineering clarity over decoration
+- remove before adding
+- one dominant message per screen
+- one primary action per viewport
 
 If the request conflicts with this system, keep the 01MVP language dominant and only relax rules when the user explicitly asks.
 
@@ -54,6 +57,10 @@ If the request conflicts with this system, keep the 01MVP language dominant and 
 - Keep English display text uppercase when it improves the brutal, technical tone
 - Use the official logo assets without recoloring, stretching, skewing, shadows, or decorative effects
 - Avoid gradients, glassmorphism, soft blurs, cute illustration styles, or pastel-heavy palettes
+- Do not add vanity metrics, filler copy, or decorative sections that do not help the user decide or act
+- Prefer a single visual center; avoid layouts that make the eye choose between two competing focal points
+- Use grid only when content blocks are balanced; otherwise switch to stacked list or editorial flow
+- Treat text as the primary visual material; only use the logo when it adds real brand recognition
 
 ## Allowed exception
 
@@ -65,6 +72,17 @@ The bundled short-card templates use a single hard offset shadow to create a pri
 - never soft ambient blur
 
 For websites and UI, prefer no shadow at all.
+
+## Quality bar
+
+When designing branded output, optimize for both usefulness and taste:
+
+- every screen should answer: what is this, why care, what do I do next
+- compress value propositions into one sharp sentence before expanding
+- keep one loud move per section: big title, black action bar, or key data block
+- alternate dense information blocks with open whitespace to create rhythm
+- prefer fewer, stronger modules over many small cards
+- if an element can be deleted without hurting understanding or action, delete it
 
 ## Deliverable rules
 
@@ -104,6 +122,7 @@ When generating branded output:
 - Is the palette still mostly black / white / gray?
 - Are the corners, borders, and spacing crisp enough?
 - Is the hierarchy decisive instead of decorative?
+- Does each screen have one clear focal point and one clear next action?
+- Did you remove filler metrics, redundant logos, and over-explaining copy?
 - Is the logo variant correct for the background?
 - Did you avoid gradients, glows, rounded softness, and random accent colors?
-
