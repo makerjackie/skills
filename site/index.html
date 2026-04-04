@@ -73,9 +73,9 @@
 
     .page {
       width: min(calc(100% - 40px), var(--content-max));
-      margin: 20px auto 48px;
+      margin: 80px auto 100px;
       display: grid;
-      gap: 24px;
+      gap: 64px;
     }
 
     .surface,
@@ -125,35 +125,29 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+      grid-template-columns: 1fr;
       gap: 24px;
-      align-items: stretch;
-    }
-
-    .hero-main,
-    .hero-side {
-      padding: 32px;
-      min-height: 100%;
     }
 
     .hero-main {
+      padding: 100px 32px;
       display: grid;
-      gap: 24px;
-      align-content: space-between;
+      gap: 48px;
+      justify-items: center;
+      text-align: center;
     }
 
     .hero-side {
-      display: grid;
-      gap: 18px;
-      align-content: start;
+      display: none; /* We will integrate the install command directly into hero-main */
     }
 
     .brand-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 24px;
       flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
     .brand-lockup {
@@ -161,22 +155,22 @@
     }
 
     .title {
-      font-size: clamp(3rem, 8vw, 6.4rem);
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
       font-weight: 900;
       letter-spacing: var(--track-tight);
-      line-height: 0.95;
-      text-transform: uppercase;
+      line-height: 1.1;
     }
 
     .title .subtle {
       color: #8d8d8d;
+      font-weight: 700;
     }
 
     .lead {
-      max-width: 17em;
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      max-width: 22em;
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
       line-height: 1.6;
-      color: #232323;
+      color: #333333;
     }
 
     .lead strong {
@@ -187,12 +181,40 @@
       box-decoration-break: clone;
     }
 
+    .hero-install {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: var(--border-heavy);
+      background: var(--gray);
+      margin: 10px 0 20px;
+      max-width: 100%;
+    }
+
+    .hero-install .code {
+      border: none;
+      padding: 14px 20px;
+      background: transparent;
+      margin: 0;
+      white-space: nowrap;
+      overflow-x: auto;
+      color: var(--black);
+    }
+
+    .hero-install .button-dark {
+      border: none;
+      border-left: var(--border-heavy);
+      height: 100%;
+      min-height: 54px;
+    }
+
     .hero-actions,
     .install-actions,
     .skill-links,
     .footer-actions {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
     }
 
@@ -266,15 +288,21 @@
       color: #777777;
     }
 
+    .stat-desc {
+      font-size: 0.85rem;
+      color: #555555;
+      line-height: 1.5;
+    }
+
     .install-card {
       display: grid;
       gap: 14px;
     }
 
     .section {
-      padding: 28px 32px 32px;
+      padding: 60px 48px 64px;
       display: grid;
-      gap: 24px;
+      gap: 40px;
     }
 
     .section-head {
@@ -303,6 +331,7 @@
     .code {
       border: var(--border);
       background: var(--gray);
+      color: var(--black);
       padding: 18px;
       font-family: var(--font-mono);
       font-size: 0.92rem;
@@ -313,24 +342,20 @@
 
     .skill-grid {
       display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 24px;
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
 
     .skill-card {
-      grid-column: span 6;
       display: grid;
-      gap: 18px;
-      padding: 24px;
-      align-content: start;
-      min-height: 100%;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+      align-items: stretch;
+      gap: 32px;
+      padding: 32px;
     }
 
-    .skill-card.featured {
-      grid-column: span 12;
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-      align-items: stretch;
-      gap: 24px;
+    .skill-card:not(.surface-shadow) {
+      border: var(--border);
     }
 
     .skill-block,
@@ -363,6 +388,7 @@
     .mini-code {
       border: var(--border);
       background: var(--gray);
+      color: var(--black);
       padding: 14px;
       font-family: var(--font-mono);
       font-size: 0.82rem;
@@ -513,7 +539,7 @@
       }
 
       .title {
-        font-size: clamp(2.5rem, 15vw, 4.5rem);
+        font-size: clamp(2rem, 10vw, 3rem);
       }
 
       .brand-row {
@@ -527,103 +553,31 @@
     <section class="hero">
       <div class="surface-shadow hero-main">
         <div class="brand-row">
-          <span class="eyebrow">01MVP / Skills / Repo</span>
-          <img class="brand-lockup" src="./assets/01mvp-lockup-horizontal.svg" alt="01MVP" />
+          <span class="eyebrow" style="border: none; padding: 0; font-size: 14px;">01MVP / Skills</span>
         </div>
 
-        <div class="grid" style="gap: 20px;">
-          <h1 class="title">BUILD<br /><span class="subtle">WITH</span><br />SKILLS.</h1>
-          <p class="lead">
-            把团队里重复出现的方法、规范和基础设施经验，封装成
-            <strong>可以直接交给 AI 调用</strong>
-            的技能。
+        <div class="grid" style="gap: 24px; max-width: 800px; margin: 0 auto;">
+          <h1 class="title">为 AI Agent 准备的<br /><span class="subtle">可执行经验库。</span></h1>
+          <p class="lead" style="margin: 0 auto; color: #555;">
+            不再需要每次重新输入冗长的背景。把团队的规范、设计资产与基础设施操作，封装为
+            <strong style="background: transparent; color: var(--black); box-shadow: inset 0 -2px 0 var(--black);">一行指令即可调用</strong>
+            的核心技能。
           </p>
         </div>
 
-        <div class="hero-actions">
-          <button class="button" data-copy="npx skills add 01mvp/skills">Copy Install</button>
-          <button class="button" data-copy="npx skills add 01mvp/skills --all">Copy Install All</button>
-          <a class="button" href="https://github.com/01MVP/skills" target="_blank" rel="noreferrer">Open GitHub</a>
-          <a class="button" href="#skills">Browse Skills</a>
-        </div>
-
-        <div class="stat-row">
-          <div class="stat">
-            <div class="stat-value">4</div>
-            <div class="stat-label">Current Skills</div>
-            <div>设计、Cloudflare、一键重定向、极简海报。</div>
+        <div style="display: grid; gap: 12px; justify-items: center;">
+          <div class="hero-install">
+            <div class="code">npx skills add 01mvp/skills</div>
+            <button class="button-dark" data-copy="npx skills add 01mvp/skills">复制指令</button>
           </div>
-          <div class="stat">
-            <div class="stat-value">1</div>
-            <div class="stat-label">Brand System</div>
-            <div>统一用 01MVP 的黑白硬核极简视觉语言。</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">0→1</div>
-            <div class="stat-label">Execution Mode</div>
-            <div>减少重复提示词，把经验沉淀成可复用能力。</div>
-          </div>
-        </div>
-      </div>
-
-      <aside class="surface-dark hero-side">
-        <span class="eyebrow eyebrow-dark">Quick Start</span>
-        <div class="section-title" style="color: #ffffff;">INSTALL IN ONE COMMAND.</div>
-        <p class="section-copy" style="color: #d0d0d0;">
-          支持按仓库安装、一次装全，也支持单独装某个 skill。国内网络不稳定时，可以直接切到 CNB 地址。
-        </p>
-
-        <div class="install-card">
-          <div class="code">npx skills add 01mvp/skills</div>
-          <div class="install-actions">
-            <button class="button-dark" data-copy="npx skills add 01mvp/skills">Copy Repo</button>
-            <button class="button-dark" data-copy="npx skills add 01mvp/skills --all">Copy --all</button>
+          <div style="font-family: var(--font-mono); font-size: 13px; color: #666;">
+            # 单独安装某个技能: npx skills add 01mvp/skills --skill [name]
           </div>
         </div>
 
-        <div class="install-card">
-          <div class="code">npx skills add 01mvp/skills --skill 01mvp-design</div>
-          <div class="install-actions">
-            <button class="button-dark" data-copy="npx skills add 01mvp/skills --skill 01mvp-design">Copy Single Skill</button>
-          </div>
-        </div>
-
-        <div class="install-card">
-          <div class="code">npx skills add https://cnb.cool/01mvp/skills</div>
-          <div class="install-actions">
-            <button class="button-dark" data-copy="npx skills add https://cnb.cool/01mvp/skills">Copy CNB</button>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="surface section">
-      <div class="section-head">
-        <div class="grid" style="gap: 10px;">
-          <span class="eyebrow">What It Is</span>
-          <h2 class="section-title">NOT JUST PROMPTS. REUSABLE OPERATING KNOWLEDGE.</h2>
-        </div>
-        <p class="section-copy">
-          01MVP Skills 不只是一个提示词集合，而是把团队真正会反复用到的流程、设计资产、部署方式、基础设施套路，整理成 AI 可以稳定执行的模块。
-        </p>
-      </div>
-
-      <div class="reason-grid">
-        <div class="reason">
-          <div class="reason-title">Structured Workflow</div>
-          <div class="reason-copy">把“先做什么、后做什么、遇到什么坑”固化下来，减少来回试错。</div>
-        </div>
-        <div class="reason">
-          <div class="reason-title">Shared Design</div>
-          <div class="reason-copy">统一 01MVP 对外视觉材料，海报、名片、网站和 UI 都能保持同一风格。</div>
-        </div>
-        <div class="reason">
-          <div class="reason-title">Infra Ready</div>
-          <div class="reason-copy">Cloudflare 相关能力直接打包，域名、Workers、Pages、R2、重定向可以一起调度。</div>
-        </div>
-        <div class="reason">
-          <div class="reason-title">Less Repetition</div>
-          <div class="reason-copy">把反复解释的背景信息收敛到 skill 里，后续让 AI 直接进入执行状态。</div>
+        <div class="hero-actions" style="margin-top: 16px;">
+          <a class="button" href="#skills" style="background: var(--black); color: var(--white);">浏览技能目录</a>
+          <a class="button" href="https://github.com/01MVP/skills" target="_blank" rel="noreferrer">访问 GitHub</a>
         </div>
       </div>
     </section>
@@ -631,25 +585,25 @@
     <section class="surface section" id="skills">
       <div class="section-head">
         <div class="grid" style="gap: 10px;">
-          <span class="eyebrow">Skill Catalog</span>
-          <h2 class="section-title">CURRENT 01MVP SKILLS</h2>
+          <span class="eyebrow">技能目录</span>
+          <h2 class="section-title" style="letter-spacing: -0.02em;">当前核心技能</h2>
         </div>
         <p class="section-copy">
-          下面这些是目前仓库里最核心的能力块。风格上保持 01MVP 的工程编辑感，使用上则优先追求“直接可调用、直接可交付”。
+          01MVP 核心能力库。工程化思维，开箱即用。
         </p>
       </div>
 
       <div class="skill-grid">
-        <article class="surface-shadow skill-card featured">
+        <article class="surface-shadow skill-card">
           <div class="skill-block">
             <div class="skill-kind">Design System / Brand</div>
             <h3 class="skill-name">01mvp-design</h3>
             <p class="skill-desc">
-              把 01MVP 的 logo、黑白高对比排版、组件规则和媒介模板打包成统一品牌 skill。适合海报、名片、社交图、UI、网站、教程页等所有对外视觉物料。
+              统一 01MVP 品牌视觉。内置黑白极简组件规则与媒介模板，适用于海报、UI、网站等全场景物料。
             </p>
             <div class="skill-links">
-              <button class="button" data-copy="/01mvp-design 帮我做一张 01MVP 风格的活动海报，黑白高对比，保留二维码区域">Copy Prompt</button>
-              <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/01mvp-design" target="_blank" rel="noreferrer">Open Skill</a>
+              <button class="button" data-copy="/01mvp-design 帮我做一张 01MVP 风格的活动海报，黑白高对比，保留二维码区域">复制提示词</button>
+              <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/01mvp-design" target="_blank" rel="noreferrer">查看详情</a>
             </div>
           </div>
           <div class="skill-aside">
@@ -657,100 +611,90 @@
 
 - 黑白高对比
 - 硬边界、零圆角
-- 保留品牌 logo 使用规则
-- Hero / 功能卡片 / CTA 一起给出</div>
-            <div class="mini-code">Assets included:
-- official logo SVG
-- design tokens
-- poster / business card / short-card templates
-- website / UI art direction</div>
+- 包含 Hero / 功能卡片 / CTA</div>
           </div>
         </article>
 
-        <article class="surface skill-card">
-          <div class="skill-kind">Cloudflare / Infra</div>
-          <h3 class="skill-name">cloudflare-one</h3>
-          <p class="skill-desc">
-            用一个适合 AI 调用的 Token，把 Cloudflare 的 Pages、Workers、R2、D1、Queues、Browser Rendering、Workers AI 等串起来。
-          </p>
-          <div class="mini-code">/cloudflare-one 帮我做一个 launch.example.com 的活动站，并把报名表存到 D1</div>
-          <div class="skill-links">
-            <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/cloudflare-one" target="_blank" rel="noreferrer">Open Skill</a>
+        <article class="skill-card">
+          <div class="skill-block">
+            <div class="skill-kind">Cloudflare / Infra</div>
+            <h3 class="skill-name">cloudflare-one</h3>
+            <p class="skill-desc">
+              全栈开发一键调度。串联 Pages、Workers、D1、R2 等服务。
+            </p>
+            <div class="skill-links">
+              <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/cloudflare-one" target="_blank" rel="noreferrer">查看详情</a>
+            </div>
+          </div>
+          <div class="skill-aside">
+            <div class="mini-code">/cloudflare-one 部署活动站，并将报名表存入 D1 数据库</div>
           </div>
         </article>
 
-        <article class="surface skill-card">
-          <div class="skill-kind">Cloudflare / Redirect</div>
-          <h3 class="skill-name">cloudflare-redirector</h3>
-          <p class="skill-desc">
-            用 Cloudflare Workers 做短域名和批量重定向，适合文档短链、活动链接、飞书文档、域名迁移等场景。
-          </p>
-          <div class="mini-code">/cloudflare-redirector 帮我把 docs.example.com 指向某个飞书文档</div>
-          <div class="skill-links">
-            <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/cloudflare-redirector" target="_blank" rel="noreferrer">Open Skill</a>
+        <article class="skill-card">
+          <div class="skill-block">
+            <div class="skill-kind">Cloudflare / Redirect</div>
+            <h3 class="skill-name">cloudflare-redirector</h3>
+            <p class="skill-desc">
+              轻量级短链接与批量重定向服务。适用于活动推广与文档分享。
+            </p>
+            <div class="skill-links">
+              <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/cloudflare-redirector" target="_blank" rel="noreferrer">查看详情</a>
+            </div>
+          </div>
+          <div class="skill-aside">
+            <div class="mini-code">/cloudflare-redirector 将 docs.example.com 指向飞书文档</div>
           </div>
         </article>
 
-        <article class="surface skill-card">
-          <div class="skill-kind">Visual Output / Poster</div>
-          <h3 class="skill-name">poster-minimal</h3>
-          <p class="skill-desc">
-            生成极简海报与公众号头图，适合产品发布、活动宣传、演讲封面和视觉公告。强调大字号、留白和黑白冲击力。
-          </p>
-          <div class="mini-code">Create a minimalist poster with title "LESS IS MORE" and subtitle "Design Philosophy"</div>
-          <div class="skill-links">
-            <a class="button" href="https://github.com/01MVP/skills/tree/main/skills/poster-minimal" target="_blank" rel="noreferrer">Open Skill</a>
-          </div>
-        </article>
       </div>
     </section>
 
     <section class="surface section">
       <div class="section-head">
         <div class="grid" style="gap: 10px;">
-          <span class="eyebrow">Workflow</span>
-          <h2 class="section-title">HOW TO USE IT</h2>
+          <span class="eyebrow">工作流</span>
+          <h2 class="section-title" style="letter-spacing: -0.02em;">如何使用</h2>
         </div>
         <p class="section-copy">
-          最典型的方式不是“先讲背景再慢慢协作”，而是直接把目标交给 AI，再让 skill 自动加载相关上下文、资产和执行步骤。
+          无需从零解释背景。直接将目标交给 AI，由 Skill 自动加载上下文、资产与执行流程。
         </p>
       </div>
 
       <div class="step-grid">
         <article class="surface-shadow step-card">
           <div class="step-no">01</div>
-          <h3 class="step-title">安装仓库或单个 skill</h3>
-          <p>先把 `01mvp/skills` 装进你的 agent 环境，或者只安装你这次真的会用到的一个。</p>
+          <h3 class="step-title">安装所需技能</h3>
+          <p>将 `01mvp/skills` 整体安装至 Agent 环境，或仅选取特定功能模块。</p>
         </article>
 
         <article class="surface-shadow step-card">
           <div class="step-no">02</div>
-          <h3 class="step-title">直接给出目标</h3>
-          <p>例如“做一张活动海报”“配置一个短域名”“部署一个 Pages 站点”。不用每次从零解释。</p>
+          <h3 class="step-title">输入目标指令</h3>
+          <p>例如“部署 Pages 站点”或“生成产品海报”，无需重复提供基础信息。</p>
         </article>
 
         <article class="surface-shadow step-card">
           <div class="step-no">03</div>
-          <h3 class="step-title">复用资产与规则</h3>
-          <p>skill 会自动使用里面的模板、logo、tokens、参考资料和流程，把输出拉回统一质量线。</p>
+          <h3 class="step-title">自动执行标准流</h3>
+          <p>Skill 将自动调用内置的模板、资产与参考资料，确保产出符合团队规范。</p>
         </article>
       </div>
     </section>
 
     <footer class="surface footer">
       <div class="footer-top">
-        <img class="brand-lockup" src="./assets/01mvp-lockup-horizontal.svg" alt="01MVP" />
+        <span class="eyebrow" style="border: none; padding: 0; font-size: 14px;">01MVP / Skills</span>
         <div class="footer-actions">
-          <a class="button" href="https://github.com/01MVP/skills" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="button" href="https://cnb.cool/01mvp/skills" target="_blank" rel="noreferrer">CNB Mirror</a>
-          <button class="button" data-copy="npx skills add 01mvp/skills --all">Copy Install All</button>
+          <a class="button" href="https://github.com/01MVP/skills" target="_blank" rel="noreferrer">访问 GitHub</a>
+          <button class="button" data-copy="npx skills add 01mvp/skills">复制安装指令</button>
         </div>
       </div>
       <div class="footer-note">01MVP Skills / Monochrome / Hardcore Minimal / Cloudflare Pages</div>
     </footer>
   </main>
 
-  <div id="toast" aria-live="polite">Copied</div>
+  <div id="toast" aria-live="polite">已复制</div>
 
   <script>
     const toast = document.getElementById('toast');
@@ -788,9 +732,9 @@
           } else if (!fallbackCopy(value)) {
             throw new Error('fallback-copy-failed');
           }
-          showToast('Copied');
+          showToast('已复制');
         } catch (error) {
-          showToast('Copy Failed');
+          showToast('复制失败');
         }
       });
     });

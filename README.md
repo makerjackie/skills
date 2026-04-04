@@ -22,12 +22,6 @@ npx skills add 01mvp/skills --all
 npx skills add 01mvp/skills --skill [skill-name]
 ```
 
-国内网络不稳定时，可以改用 CNB 地址：
-
-```bash
-npx skills add https://cnb.cool/01mvp/skills
-```
-
 ## Skills 列表
 
 新增 Skill 后，记得同步更新下面这张表。
