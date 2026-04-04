@@ -20,15 +20,24 @@ jobs:
     permissions:
       contents: read
       deployments: write
+    env:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Wrangler
+        run: npm install --global wrangler@4.80.0
+
       - name: Deploy static site
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy site --project-name=skills-01mvp --branch=main
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          wrangler pages deploy site \
+            --project-name=skills-01mvp \
+            --branch=main \
+            --commit-hash="${GITHUB_SHA}" \
+            --commit-message="GitHub Actions deploy ${GITHUB_SHA}"
