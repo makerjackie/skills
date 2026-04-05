@@ -84,6 +84,17 @@ When designing branded output, optimize for both usefulness and taste:
 - prefer fewer, stronger modules over many small cards
 - if an element can be deleted without hurting understanding or action, delete it
 
+## Copywriting & Tone
+
+Good design must be paired with good copy. When generating text content (headlines, descriptions, CTAs) for 01MVP designs, strictly follow these copywriting principles:
+
+- **Speak Human (说人话):** Avoid corporate jargon, internal technical terms, or abstract concepts. Use the exact words the user uses to describe their problems (e.g., replace "infrastructure assets" with "configurations").
+- **Address Pain Points (直击痛点):** Start with the user's struggle. What annoying repetitive task or frustrating problem are they trying to avoid?
+- **Focus on Outcomes (给结果):** Don't just list features. Clearly state what the user will achieve, save, or gain (e.g., instead of "Executes standard workflows", use "One-click to generate standard outputs").
+- **Clear & Direct (极简直接):** Write short, punchy, and confident sentences. Remove filler words. Clarity always beats cleverness.
+- **Action-Oriented CTAs (行动导向):** Buttons should describe the exact value the user gets, not a generic action (e.g., "Copy to your AI Agent" instead of "Submit").
+- **Hardcore Minimalist Tone (硬核极简风):** Match the 01MVP visual identity. The tone should be professional, decisive, no-nonsense, and highly efficient.
+
 ## Deliverable rules
 
 When generating branded output:
@@ -126,3 +137,5 @@ When generating branded output:
 - Did you remove filler metrics, redundant logos, and over-explaining copy?
 - Is the logo variant correct for the background?
 - Did you avoid gradients, glows, rounded softness, and random accent colors?
+- Is the copy direct, outcome-focused, and free of corporate jargon?
+- Do the CTAs clearly describe the value the user will get?
