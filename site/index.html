@@ -158,6 +158,35 @@
       }
     }
 
+    .install-hint {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--white);
+      border: 1px solid #e0e0e0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .install-hint {
+        font-size: 11px;
+        padding: 8px 10px;
+      }
+    }
+
+    .hint-icon {
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .hint-text {
+      flex: 1;
+    }
+
     .install-label {
       font-family: var(--font-mono);
       font-size: 10px;
@@ -471,11 +500,12 @@
         </p>
 
         <p class="intro-text">
-          一键安装复用我的 AI Skills 来给你的工作提效。
+          在 <span class="highlight">Claude Code / Codex / Trae</span> 等 AI Agent 对话中<br />
+          复制下面的命令，即可使用我的所有技能
         </p>
 
         <div class="install-section">
-          <div class="install-label">快速安装</div>
+          <div class="install-label">复制这条命令给 AI</div>
           <div class="install-box">
             <code class="install-code">npx skills add makerjackie/skills</code>
             <button class="copy-btn" data-copy="npx skills add makerjackie/skills">复制</button>
@@ -484,26 +514,21 @@
 
         <div class="skill-list">
           <div class="skill-preview" onclick="scrollToPage(1)">
-            <div class="skill-preview-name">makerjackie-writer</div>
-            <div class="skill-preview-desc">公众号长文写作 · 真诚风格 · MVP 思维</div>
+            <div class="skill-preview-name">MakerJackie 的自媒体写作 Skill</div>
+            <div class="skill-preview-desc">makerjackie-writer · 拒绝 AI 味 · 保持真诚</div>
           </div>
           <div class="skill-preview" onclick="scrollToPage(2)">
-            <div class="skill-preview-name">01mvp-design</div>
-            <div class="skill-preview-desc">01MVP 视觉规范 · 黑白高对比 · 硬核极简</div>
+            <div class="skill-preview-name">一键生成极简硬核黑白风格设计</div>
+            <div class="skill-preview-desc">01mvp-design · 海报/名片/UI · 黑白硬核</div>
           </div>
           <div class="skill-preview" onclick="scrollToPage(3)">
-            <div class="skill-preview-name">cloudflare-one</div>
-            <div class="skill-preview-desc">Cloudflare 全栈基础设施 · Workers · Pages · D1</div>
+            <div class="skill-preview-name">用 CloudFlare 零成本部署你的网站和应用</div>
+            <div class="skill-preview-desc">cloudflare-one · 全栈 · 数据库 · 免费额度</div>
           </div>
           <div class="skill-preview" onclick="scrollToPage(4)">
-            <div class="skill-preview-name">cloudflare-redirector</div>
-            <div class="skill-preview-desc">域名重定向 · 短链接 · DNS 同步</div>
+            <div class="skill-preview-name">批量创建短链接和域名跳转</div>
+            <div class="skill-preview-desc">cloudflare-redirector · 一键部署 · 自动同步</div>
           </div>
-        </div>
-
-
-        <div style="text-align: center;">
-          <a href="https://github.com/makerjackie/skills" target="_blank" class="github-link">GitHub</a>
         </div>
 
         <div class="nav-hint">向下滑动查看技能详情</div>
@@ -514,10 +539,10 @@
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">Content Creation / Writing</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/makerjackie-writer', '_blank')">makerjackie-writer</h2>
+          <div class="skill-kind">makerjackie-writer</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/makerjackie-writer', '_blank')">MakerJackie 的自媒体写作 Skill</h2>
           <p class="skill-desc">
-            Maker Jackie 的公众号长文写作 skill。保持真诚风格，拒绝 AI 味，适合公众号长文、深度内容创作、基于素材的文章生成。
+            丢给 AI 一个想法、一段素材或一个 PDF，它就能帮你写出一篇有"活人感"的公众号长文。拒绝 AI 味，保持真诚，适合深度内容创作。
           </p>
         </div>
 
@@ -546,10 +571,10 @@
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">Design System / Brand</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/01mvp-design', '_blank')">01mvp-design</h2>
+          <div class="skill-kind">01mvp-design</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/01mvp-design', '_blank')">一键生成极简硬核黑白风格设计</h2>
           <p class="skill-desc">
-            把 01MVP 的 logo、黑白高对比排版、组件规则和模板打包成统一视觉规范，用于海报、名片、UI、网站与各种对外物料。
+            生成类似01mvp.com或此页面类似的风格。告诉 AI 你要做海报、名片、UI 还是网站，它就能按 01MVP 的黑白硬核风格帮你设计出来。统一视觉，专业冲击力。
           </p>
         </div>
 
@@ -580,10 +605,10 @@
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">Cloudflare / Infrastructure</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one', '_blank')">cloudflare-one</h2>
+          <div class="skill-kind">cloudflare-one</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one', '_blank')">用 CloudFlare 零成本部署你的网站和应用</h2>
           <p class="skill-desc">
-            用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。
+            让 AI 帮你用 Cloudflare 免费额度搭建全栈应用。前端、后端、数据库、存储一条龙，不用自己配服务器。
           </p>
         </div>
 
@@ -615,10 +640,10 @@ Workers 处理请求
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">Cloudflare / Redirect</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector', '_blank')">cloudflare-redirector</h2>
+          <div class="skill-kind">cloudflare-redirector</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector', '_blank')">批量创建短链接和域名跳转</h2>
           <p class="skill-desc">
-            用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。适合短链接、域名跳转、长链接映射等场景。
+            把一堆长链接变成干净的短域名，自动配置跳转和 DNS。适合活动推广、文档分享、让链接看起来更专业。
           </p>
         </div>
 
