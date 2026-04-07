@@ -1,4 +1,4 @@
-name: Deploy 01MVP Skills Site
+name: Deploy MakerJackie Skills Site
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           wrangler pages deploy site \
-            --project-name=skills-01mvp \
+            --project-name=makerjackie-skills \
             --branch=main \
             --commit-hash="${GITHUB_SHA}" \
             --commit-message="GitHub Actions deploy ${GITHUB_SHA}"

@@ -3,761 +3,306 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>01MVP Skills</title>
-  <meta
-    name="description"
-    content="01MVP Skills：把团队可复用的方法、设计规范和基础设施能力，沉淀成可以直接交给 AI 调用的技能。"
-  />
-  <meta property="og:title" content="01MVP Skills" />
-  <meta
-    property="og:description"
-    content="Build faster with reusable 01MVP skills for design, Cloudflare infrastructure, redirects, and branded assets."
-  />
+  <title>MakerJackie Skills</title>
+  <meta name="description" content="MakerJackie 的可复用技能库，为 AI Agent 准备的可执行经验。" />
+  <meta property="og:title" content="MakerJackie Skills" />
+  <meta property="og:description" content="MakerJackie 的可复用技能库，为 AI Agent 准备的可执行经验。" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://skills.01mvp.com/" />
+  <meta property="og:url" content="https://skills.makerjackie.com/" />
   <meta name="theme-color" content="#000000" />
-  <link rel="icon" href="./assets/01mvp-icon-black.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
       --black: #000000;
       --white: #ffffff;
       --gray: #f5f5f5;
-      --frame: #e8e8e8;
       --border: 2px solid #000000;
-      --border-heavy: 3px solid #000000;
-      --shadow-hard: 14px 14px 0 rgba(0, 0, 0, 0.12);
-      --font-sans: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
-      --track-tight: -0.05em;
-      --track-display: -0.03em;
-      --track-label: 0.12em;
-      --content-max: 1320px;
+      --font-sans: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      border-radius: 0 !important;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
-      background: var(--frame);
+      background: var(--gray);
       color: var(--black);
       font-family: var(--font-sans);
-      line-height: 1.5;
+      line-height: 1.6;
+      padding: 20px;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .page {
-      width: min(calc(100% - 40px), var(--content-max));
-      margin: 80px auto 100px;
-      display: grid;
-      gap: 64px;
-    }
-
-    .surface,
-    .surface-dark,
-    .surface-shadow {
-      border: var(--border-heavy);
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
       background: var(--white);
-    }
-
-    .surface-shadow {
-      box-shadow: var(--shadow-hard);
-    }
-
-    .surface-dark {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .mono {
-      font-family: var(--font-mono);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 12px;
       border: var(--border);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: var(--track-label);
-      text-transform: uppercase;
-      background: var(--white);
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
     }
 
-    .eyebrow-dark {
-      background: var(--black);
-      color: var(--white);
-      border-color: var(--white);
-    }
-
-    .grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    .hero-main {
-      padding: 100px 32px;
-      display: grid;
-      gap: 48px;
-      justify-items: center;
+    .header {
+      padding: 32px 24px;
+      border-bottom: var(--border);
       text-align: center;
     }
 
-    .hero-side {
-      display: none; /* We will integrate the install command directly into hero-main */
-    }
-
-    .brand-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .brand-lockup {
-      width: 220px;
+    .logo {
+      font-size: 14px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      color: #666;
     }
 
     .title {
-      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      font-size: clamp(28px, 6vw, 42px);
       font-weight: 900;
-      letter-spacing: var(--track-tight);
+      letter-spacing: -0.02em;
       line-height: 1.1;
+      margin-bottom: 16px;
     }
 
-    .title .subtle {
-      color: #8d8d8d;
-      font-weight: 700;
-    }
-
-    .lead {
-      max-width: 22em;
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      line-height: 1.6;
-      color: #333333;
-    }
-
-    .lead strong {
-      background: var(--black);
-      color: var(--white);
-      padding: 0 10px;
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone;
-    }
-
-    .hero-install {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      border: var(--border-heavy);
-      background: var(--gray);
-      margin: 10px 0 20px;
-      max-width: 100%;
-    }
-
-    .hero-install .code {
-      border: none;
-      padding: 14px 20px;
-      background: transparent;
-      margin: 0;
-      white-space: nowrap;
-      overflow-x: auto;
-      color: var(--black);
-    }
-
-    .hero-install .button-dark {
-      border: none;
-      border-left: var(--border-heavy);
-      height: 100%;
-      min-height: 54px;
-    }
-
-    .hero-actions,
-    .install-actions,
-    .skill-links,
-    .footer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .button,
-    .button-dark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 46px;
-      padding: 0 16px;
-      border: var(--border);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: var(--track-label);
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: none;
-    }
-
-    .button {
-      background: var(--white);
-      color: var(--black);
-    }
-
-    .button:hover {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .button-dark {
-      background: var(--black);
-      color: var(--white);
-      border-color: var(--white);
-    }
-
-    .button-dark:hover {
-      background: var(--white);
-      color: var(--black);
-    }
-
-    .stat-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .stat {
-      border: var(--border);
-      padding: 16px;
-      display: grid;
-      gap: 8px;
-      align-content: start;
-      min-height: 126px;
-    }
-
-    .stat-value {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      letter-spacing: var(--track-tight);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: var(--track-label);
-      text-transform: uppercase;
-      color: #777777;
-    }
-
-    .stat-desc {
-      font-size: 0.85rem;
-      color: #555555;
+    .subtitle {
+      font-size: clamp(16px, 3vw, 18px);
+      color: #555;
       line-height: 1.5;
     }
 
-    .install-card {
-      display: grid;
-      gap: 14px;
+    .install-section {
+      padding: 24px;
+      border-bottom: var(--border);
+      background: var(--gray);
     }
 
-    .section {
-      padding: 60px 48px 64px;
-      display: grid;
-      gap: 40px;
+    .install-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      color: #666;
     }
 
-    .section-head {
+    .install-box {
       display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
+      align-items: stretch;
+      border: var(--border);
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .install-code {
+      flex: 1;
+      padding: 14px 16px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .copy-btn {
+      padding: 14px 20px;
+      border: none;
+      border-left: var(--border);
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: #333;
+    }
+
+    .copy-btn:active {
+      transform: scale(0.98);
+    }
+
+    .skills-section {
+      padding: 24px;
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 900;
-      letter-spacing: var(--track-display);
-      line-height: 1.04;
-      text-transform: uppercase;
-    }
-
-    .section-copy {
-      max-width: 54ch;
-      color: #353535;
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .code {
-      border: var(--border);
-      background: var(--gray);
-      color: var(--black);
-      padding: 18px;
       font-family: var(--font-mono);
-      font-size: 0.92rem;
-      line-height: 1.65;
-      white-space: pre-wrap;
-      word-break: break-word;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      color: #666;
     }
 
-    .skill-grid {
+    .skill-list {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 16px;
     }
 
     .skill-card {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.7fr);
-      align-items: stretch;
-      gap: 32px;
-      padding: 32px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      border: var(--border);
+      padding: 20px;
+      transition: all 0.2s;
+      cursor: pointer;
     }
 
     .skill-card:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow-hard);
-      border-color: var(--black);
-    }
-
-    .skill-card:not(.surface-shadow) {
-      border: var(--border);
-    }
-
-    .skill-aside {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .skill-kind {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: var(--track-label);
-      text-transform: uppercase;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
     }
 
     .skill-name {
-      font-size: clamp(1.6rem, 3vw, 2.7rem);
-      font-weight: 900;
-      letter-spacing: var(--track-display);
-      line-height: 1.05;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .skill-desc {
-      color: #2f2f2f;
-      line-height: 1.65;
-    }
-
-    .mini-code {
-      position: relative;
-      border: var(--border);
-      background: var(--gray);
-      color: var(--black);
-      padding: 16px 40px 16px 16px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 14px;
+      color: #555;
       line-height: 1.6;
-      white-space: pre-wrap;
-    }
-
-    .copy-icon {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0.4;
-      transition: opacity 0.2s;
-      background: transparent;
-      border: none;
-    }
-
-    .copy-icon:hover {
-      opacity: 1;
-    }
-
-    .copy-icon svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-    }
-
-    .step-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .step-card {
-      padding: 24px;
-      display: grid;
-      gap: 14px;
-      align-content: start;
-    }
-
-    .step-no {
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      border: var(--border);
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font-mono);
-      font-size: 1.1rem;
-      font-weight: 900;
-    }
-
-    .step-title {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-    }
-
-    .reason-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .reason {
-      padding: 18px;
-      border: var(--border);
-      display: grid;
-      gap: 10px;
-      min-height: 160px;
-    }
-
-    .reason-title {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: var(--track-label);
-      text-transform: uppercase;
-    }
-
-    .reason-copy {
-      color: #323232;
-      line-height: 1.65;
-      font-size: 0.96rem;
     }
 
     .footer {
-      padding: 24px 32px;
-      display: grid;
-      gap: 18px;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-note {
+      padding: 20px 24px;
+      border-top: var(--border);
+      text-align: center;
       font-family: var(--font-mono);
       font-size: 11px;
-      letter-spacing: var(--track-label);
+      color: #999;
       text-transform: uppercase;
-      color: #8a8a8a;
+      letter-spacing: 0.1em;
     }
 
-    @media (max-width: 1120px) {
-      .hero,
-      .skill-card.featured {
-        grid-template-columns: 1fr;
-      }
-
-      .skill-card,
-      .skill-card.featured {
-        grid-column: span 12;
-      }
-
-      .reason-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .footer a {
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 700;
     }
 
-    @media (max-width: 820px) {
-      .page {
-        width: min(calc(100% - 20px), var(--content-max));
-        margin-top: 10px;
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 10px;
       }
 
-      .hero-main,
-      .hero-side,
-      .section,
-      .footer {
-        padding: 22px;
+      .container {
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
       }
 
-      .step-grid,
-      .stat-row,
-      .reason-grid {
-        grid-template-columns: 1fr;
+      .header {
+        padding: 24px 20px;
       }
 
       .title {
-        font-size: clamp(2rem, 10vw, 3rem);
+        font-size: 28px;
       }
 
-      .brand-row {
-        align-items: flex-start;
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .install-section,
+      .skills-section {
+        padding: 20px;
+      }
+
+      .install-box {
+        flex-direction: column;
+      }
+
+      .copy-btn {
+        border-left: none;
+        border-top: var(--border);
+        padding: 12px;
+      }
+
+      .skill-card {
+        padding: 16px;
+      }
+
+      .footer {
+        padding: 16px 20px;
+        font-size: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
-      <div class="surface-shadow hero-main">
-        <div class="brand-row">
-          <span class="eyebrow" style="border: none; padding: 0; font-size: 14px;">01MVP / Skills</span>
-        </div>
+  <div class="container">
+    <header class="header">
+      <div class="logo">MakerJackie</div>
+      <h1 class="title">Skills 技能库</h1>
+      <p class="subtitle">为 AI Agent 准备的可复用技能，开箱即用。</p>
+    </header>
 
-        <div class="grid" style="gap: 24px; max-width: 800px; margin: 0 auto;">
-          <h1 class="title">为 AI Agent 准备的<br /><span class="subtle">可执行经验库。</span></h1>
-          <p class="lead" style="margin: 0 auto; color: #555;">
-            基于 01MVP 最佳实践构建的官方技能库。安装后即可在 AI Agent 中直接调用，快速生成符合规范的设计、基础设施与工具流。
-          </p>
-        </div>
-
-        <div style="display: grid; gap: 12px; justify-items: center;">
-          <div class="hero-install">
-            <div class="code">npx skills add 01mvp/skills</div>
-            <button class="button-dark" data-copy="npx skills add 01mvp/skills">复制给你的 AI Agent</button>
-          </div>
-          <div style="font-family: var(--font-mono); font-size: 13px; color: #666;">
-            # 单独安装某个技能: npx skills add 01mvp/skills --skill [name]
-          </div>
-        </div>
-
-        <div class="hero-actions" style="margin-top: 16px;">
-          <a class="button" href="#skills" style="background: var(--black); color: var(--white);">浏览技能目录</a>
-          <a class="button" href="https://github.com/01MVP/skills" target="_blank" rel="noreferrer">访问 GitHub</a>
-        </div>
+    <section class="install-section">
+      <div class="install-label">快速安装</div>
+      <div class="install-box">
+        <code class="install-code">npx skills add makerjackie/skills</code>
+        <button class="copy-btn" data-copy="npx skills add makerjackie/skills">复制</button>
       </div>
     </section>
 
-    <section class="surface section" id="skills">
-      <div class="section-head">
-        <div class="grid" style="gap: 10px;">
-          <h2 class="section-title" style="letter-spacing: -0.02em;">技能目录</h2>
-        </div>
-        <p class="section-copy">
-          01MVP 核心能力库。工程化思维，开箱即用。
-        </p>
-      </div>
-
-      <div class="skill-grid">
-        <article class="surface-shadow skill-card" style="cursor: pointer;" onclick="window.open('https://github.com/01MVP/skills/tree/main/skills/01mvp-design', '_blank')">
-          <div class="skill-block">
-            <div class="skill-kind">Design System / Brand</div>
-            <h3 class="skill-name">01mvp-design</h3>
-            <p class="skill-desc">
-              当你需要让 AI 生成对外展示的内容（如产品落地页、活动海报、社交媒体图、组件库等）时使用。<br><br>
-              它内置了 01MVP 标志性的“黑白高对比、硬核极简、零圆角、工程感排版”设计规范，并携带了官方 Logo SVG。这确保了 AI 产出的设计稿具有高度统一的视觉冲击力，彻底告别那些缺乏辨识度的默认 AI 生成风格。
-            </p>
-          </div>
-          <div class="skill-aside" onclick="event.stopPropagation()">
-            <div class="mini-code">/01mvp-design 帮我设计一套 01MVP 官网首页
-- 包含 Hero 区域
-- 包含 3 个功能卡片
-- 底部包含一个 CTA 区域<button class="copy-icon" aria-label="Copy prompt" data-copy="/01mvp-design 帮我设计一套 01MVP 官网首页
-- 包含 Hero 区域
-- 包含 3 个功能卡片
-- 底部包含一个 CTA 区域"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button></div>
-            <div class="mini-code">/01mvp-design 请基于 01MVP 极简硬核风格，生成一张产品发布海报。
-主标题为“LESS IS MORE”，副标题为“重构工作流”。<button class="copy-icon" aria-label="Copy prompt" data-copy="/01mvp-design 请基于 01MVP 极简硬核风格，生成一张产品发布海报。主标题为“LESS IS MORE”，副标题为“重构工作流”。"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button></div>
-          </div>
+    <section class="skills-section">
+      <h2 class="section-title">可用技能 (3)</h2>
+      <div class="skill-list">
+        <article class="skill-card" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/01mvp-design', '_blank')">
+          <h3 class="skill-name">01mvp-design</h3>
+          <p class="skill-desc">把 01MVP 的 logo、黑白高对比排版、组件规则和模板打包成统一视觉规范，用于海报、名片、UI、网站与各种对外物料。</p>
         </article>
 
-        <article class="skill-card" style="cursor: pointer;" onclick="window.open('https://github.com/01MVP/skills/tree/main/skills/cloudflare-one', '_blank')">
-          <div class="skill-block">
-            <div class="skill-kind">Cloudflare / Infra</div>
-            <h3 class="skill-name">cloudflare-one</h3>
-            <p class="skill-desc">
-              当你需要让 AI 编写后端服务、构建全栈应用或配置基础设施时使用。<br><br>
-              它将 Cloudflare 的核心生态（Workers, Pages, D1 数据库, R2 存储, Queues 等）整合在一个技能中。无需你再去四处寻找文档或手动解释部署流程，AI 就能基于此技能生成符合 Cloudflare 最佳实践的代码，并帮你一次性搞定上线。
-            </p>
-          </div>
-          <div class="skill-aside" onclick="event.stopPropagation()">
-            <div class="mini-code">/cloudflare-one 部署一个用户预约活动站，前端使用 HTML+Tailwind，将用户提交的报名信息（姓名、邮箱）直接存入 D1 数据库。<button class="copy-icon" aria-label="Copy prompt" data-copy="/cloudflare-one 部署一个用户预约活动站，前端使用 HTML+Tailwind，将用户提交的报名信息（姓名、邮箱）直接存入 D1 数据库。"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button></div>
-          </div>
+        <article class="skill-card" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one', '_blank')">
+          <h3 class="skill-name">cloudflare-one</h3>
+          <p class="skill-desc">用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。</p>
         </article>
 
-        <article class="skill-card" style="cursor: pointer;" onclick="window.open('https://github.com/01MVP/skills/tree/main/skills/cloudflare-redirector', '_blank')">
-          <div class="skill-block">
-            <div class="skill-kind">Cloudflare / Redirect</div>
-            <h3 class="skill-name">cloudflare-redirector</h3>
-            <p class="skill-desc">
-              当你需要配置短链接、管理域名跳转、或者将长链接（如飞书文档、Notion 页面、问卷星）映射到自定义域名时使用。<br><br>
-              它基于 Cloudflare Workers 构建，为你提供了一个极简的路由重定向能力，支持批量配置。无论是活动推广还是内部文档分享，都能让链接变得干净、专业且易于追踪。
-            </p>
-          </div>
-          <div class="skill-aside" onclick="event.stopPropagation()">
-            <div class="mini-code">/cloudflare-redirector 请帮我配置一下规则：
-将 docs.example.com 指向我的飞书公开文档，将 join.example.com 指向我的微信群加群二维码链接。<button class="copy-icon" aria-label="Copy prompt" data-copy="/cloudflare-redirector 请帮我配置一下规则：
-将 docs.example.com 指向我的飞书公开文档，将 join.example.com 指向我的微信群加群二维码链接。"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button></div>
-          </div>
+        <article class="skill-card" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector', '_blank')">
+          <h3 class="skill-name">cloudflare-redirector</h3>
+          <p class="skill-desc">用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。</p>
         </article>
       </div>
     </section>
 
-    <section class="surface section">
-      <div class="section-head">
-        <div class="grid" style="gap: 10px;">
-          <h2 class="section-title" style="letter-spacing: -0.02em;">如何使用</h2>
-        </div>
-        <p class="section-copy">
-          无需每次向 AI 解释背景，直接调用 01MVP 技能，自动加载上下文与标准执行流程。
-        </p>
-      </div>
-
-      <div class="step-grid">
-        <article class="surface-shadow step-card">
-          <div class="step-no">01</div>
-          <h3 class="step-title">安装官方技能</h3>
-          <p>将 `01mvp/skills` 整体安装至 Agent 环境，或仅选取需要的独立技能模块。</p>
-        </article>
-
-        <article class="surface-shadow step-card">
-          <div class="step-no">02</div>
-          <h3 class="step-title">输入目标指令</h3>
-          <p>例如“部署 Pages 站点”或“生成产品海报”，无需重复提供基础信息。</p>
-        </article>
-
-        <article class="surface-shadow step-card">
-          <div class="step-no">03</div>
-          <h3 class="step-title">一键生成标准产出</h3>
-          <p>AI 会自动读取技能中预设的规范与经验，直接为你生成符合标准的高质量结果。</p>
-        </article>
-      </div>
-    </section>
-
-    <footer class="surface footer">
-      <div class="footer-top">
-        <span class="eyebrow" style="border: none; padding: 0; font-size: 14px;">01MVP / Skills</span>
-        <div class="footer-actions">
-          <a class="button" href="https://github.com/01MVP/skills" target="_blank" rel="noreferrer">访问 GitHub</a>
-          <button class="button" data-copy="npx skills add 01mvp/skills">复制安装指令</button>
-        </div>
-      </div>
-      <div class="footer-note">01MVP Skills / Monochrome / Hardcore Minimal / Cloudflare Pages</div>
+    <footer class="footer">
+      <a href="https://github.com/makerjackie/skills" target="_blank" rel="noreferrer">GitHub</a> · MakerJackie Skills
     </footer>
-  </main>
+  </div>
 
   <script>
-    const fallbackCopy = (value) => {
-      const textarea = document.createElement('textarea');
-      textarea.value = value;
-      textarea.setAttribute('readonly', '');
-      textarea.style.position = 'absolute';
-      textarea.style.left = '-9999px';
-      document.body.appendChild(textarea);
-      textarea.select();
-      const ok = document.execCommand('copy');
-      document.body.removeChild(textarea);
-      return ok;
-    };
-
     document.querySelectorAll('[data-copy]').forEach((button) => {
-      let resetTimer = null;
-      // Save original content to restore later
-      const originalHTML = button.innerHTML;
-
+      const originalText = button.textContent;
       button.addEventListener('click', async (e) => {
-        // Prevent event from bubbling up to the card's onclick handler
         e.stopPropagation();
-        
         const value = button.getAttribute('data-copy');
-        if (!value) return;
-        
         try {
-          if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(value);
-          } else if (!fallbackCopy(value)) {
-            throw new Error('fallback-copy-failed');
-          }
-          
-          // Show success state directly on the button
-          if (button.classList.contains('copy-icon')) {
-            button.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
-            button.style.opacity = '1';
-            button.style.color = '#000';
-          } else {
-            button.textContent = '已复制';
-          }
-          
+          await navigator.clipboard.writeText(value);
+          button.textContent = '已复制';
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 1500);
         } catch (error) {
-          if (button.classList.contains('copy-icon')) {
-            button.innerHTML = '<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
-            button.style.opacity = '1';
-            button.style.color = 'red';
-          } else {
-            button.textContent = '复制失败';
-          }
+          button.textContent = '复制失败';
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 1500);
         }
-        
-        // Reset after 1.5 seconds
-        clearTimeout(resetTimer);
-        resetTimer = setTimeout(() => {
-          button.innerHTML = originalHTML;
-          if (button.classList.contains('copy-icon')) {
-            button.style.opacity = '';
-            button.style.color = '';
-          }
-        }, 1500);
       });
     });
   </script>
