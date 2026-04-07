@@ -5,7 +5,7 @@
 ## 快速安装
 
 ```bash
-npx skills add 01mvp/skills --skill cloudflare-redirector
+npx skills add makerjackie/skills --skill cloudflare-redirector
 ```
 
 ## 前提条件
@@ -82,7 +82,7 @@ docs.hackathonweekly.com
 
 **第 2 步：安装 Skill**
 ```bash
-npx skills add 01mvp/skills --skill cloudflare-redirector
+npx skills add makerjackie/skills --skill cloudflare-redirector
 ```
 
 **第 3 步：跟 AI 说明你的“短域名” / “重定向需求”**

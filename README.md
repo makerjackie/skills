@@ -1,25 +1,25 @@
-# 01MVP Skills
+# MakerJackie Skills
 
-这里放的是 01MVP 团队常用、可复用的 Skills。
+这里放的是 MakerJackie 常用、可复用的 Skills。
 
 ## 怎么安装
 
 先装仓库，再按提示挑你要的 Skill：
 
 ```bash
-npx skills add 01mvp/skills
+npx skills add makerjackie/skills
 ```
 
 如果你想一次装全：
 
 ```bash
-npx skills add 01mvp/skills --all
+npx skills add makerjackie/skills --all
 ```
 
 如果只想装某一个：
 
 ```bash
-npx skills add 01mvp/skills --skill [skill-name]
+npx skills add makerjackie/skills --skill [skill-name]
 ```
 
 ## Skills 列表

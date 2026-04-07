@@ -7,7 +7,7 @@
 ## 快速安装
 
 ```bash
-npx skills add 01mvp/skills --skill cloudflare-one
+npx skills add makerjackie/skills --skill cloudflare-one
 ```
 
 ## 前提条件
@@ -93,7 +93,7 @@ Cloudflare Registrar 的官方定位是按成本价卖域名，没有额外 mark
 #### Step 3：安装 skill
 
 ```bash
-npx skills add 01mvp/skills --skill cloudflare-one
+npx skills add makerjackie/skills --skill cloudflare-one
 ```
 
 #### Step 4：直接把目标交给 AI
