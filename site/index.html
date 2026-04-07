@@ -31,8 +31,9 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html, body {
+      height: 100%;
+      overflow: hidden;
     }
 
     body {
@@ -41,105 +42,85 @@
       font-family: var(--font-sans);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    /* Desktop: vertical scroll */
-    @media (min-width: 769px) {
-      .container {
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
-        height: 100vh;
-      }
-
-      .page {
-        scroll-snap-align: start;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 20px;
-      }
+    .container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* Mobile: horizontal swipe */
-    @media (max-width: 768px) {
-      body {
-        overflow-y: hidden;
-      }
+    /* Hide scrollbar */
+    .container::-webkit-scrollbar {
+      display: none;
+    }
+    .container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
 
-      .container {
-        display: flex;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        height: 100vh;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .page {
-        scroll-snap-align: start;
-        min-width: 100vw;
-        height: 100vh;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-      }
-
-      /* Hide scrollbar but keep functionality */
-      .container::-webkit-scrollbar {
-        display: none;
-      }
-      .container {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
+    .page {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
     .content {
-      max-width: 900px;
       width: 100%;
+      max-width: 900px;
+      max-height: calc(100vh - 40px);
       background: var(--white);
       border: var(--border-heavy);
       box-shadow: var(--shadow);
       padding: 48px;
+      overflow-y: auto;
     }
 
     @media (max-width: 768px) {
+      .page {
+        padding: 12px;
+      }
+
       .content {
-        padding: 32px 24px;
-        max-height: 90vh;
-        overflow-y: auto;
+        padding: 28px 20px;
+        max-height: calc(100vh - 24px);
+        border-width: 2px;
       }
     }
 
     .logo {
-      font-size: 13px;
+      font-size: 12px;
       font-family: var(--font-mono);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       color: #666;
       text-align: center;
     }
 
     .title {
-      font-size: clamp(32px, 5vw, 56px);
+      font-size: clamp(32px, 7vw, 56px);
       font-weight: 900;
       letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 24px;
+      line-height: 1.05;
+      margin-bottom: 20px;
       text-align: center;
     }
 
     .subtitle {
-      font-size: clamp(16px, 3vw, 20px);
+      font-size: clamp(15px, 3vw, 18px);
       color: #555;
       line-height: 1.6;
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .highlight {
@@ -149,20 +130,38 @@
       font-weight: 700;
     }
 
+    .intro-text {
+      font-size: clamp(14px, 2.5vw, 16px);
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 28px;
+      text-align: center;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .install-section {
-      margin: 32px 0;
-      padding: 24px;
+      margin: 28px 0;
+      padding: 20px;
       border: var(--border);
       background: var(--gray);
     }
 
+    @media (max-width: 768px) {
+      .install-section {
+        padding: 16px;
+        margin: 20px 0;
+      }
+    }
+
     .install-label {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: #666;
     }
 
@@ -176,27 +175,41 @@
 
     .install-code {
       flex: 1;
-      padding: 14px 16px;
+      padding: 12px 14px;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12px;
       overflow-x: auto;
       white-space: nowrap;
     }
 
+    @media (max-width: 768px) {
+      .install-code {
+        font-size: 11px;
+        padding: 10px 12px;
+      }
+    }
+
     .copy-btn {
-      padding: 14px 20px;
+      padding: 12px 18px;
       border: none;
       border-left: var(--border);
       background: var(--black);
       color: var(--white);
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .copy-btn {
+        font-size: 9px;
+        padding: 10px 14px;
+      }
     }
 
     .copy-btn:hover {
@@ -207,73 +220,87 @@
       transform: scale(0.98);
     }
 
-    @media (max-width: 640px) {
-      .install-box {
-        flex-direction: column;
-      }
-
-      .copy-btn {
-        border-left: none;
-        border-top: var(--border);
-        padding: 12px;
-      }
+    .skill-header {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: var(--border);
     }
 
-    .skill-header {
-      margin-bottom: 32px;
-      padding-bottom: 24px;
-      border-bottom: var(--border);
+    @media (max-width: 768px) {
+      .skill-header {
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+      }
     }
 
     .skill-kind {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: #666;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .skill-name {
-      font-size: clamp(28px, 5vw, 42px);
+      font-size: clamp(26px, 6vw, 42px);
       font-weight: 900;
       letter-spacing: -0.02em;
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .skill-name:hover {
+      color: #555;
     }
 
     .skill-desc {
-      font-size: 16px;
+      font-size: clamp(13px, 2.5vw, 15px);
       color: #333;
       line-height: 1.7;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .skill-section {
-      margin: 24px 0;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .skill-section {
+        margin: 16px 0;
+      }
     }
 
     .section-title {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       color: #666;
     }
 
     .code-example {
       border: var(--border);
       background: var(--gray);
-      padding: 16px;
+      padding: 14px;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 11px;
       line-height: 1.6;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       white-space: pre-wrap;
       word-break: break-word;
+    }
+
+    @media (max-width: 768px) {
+      .code-example {
+        font-size: 10px;
+        padding: 12px;
+      }
     }
 
     .feature-list {
@@ -282,9 +309,9 @@
     }
 
     .feature-list li {
-      padding: 12px 0;
+      padding: 10px 0;
       border-bottom: 1px solid #e0e0e0;
-      font-size: 15px;
+      font-size: clamp(12px, 2.5vw, 14px);
       line-height: 1.6;
     }
 
@@ -294,45 +321,48 @@
 
     .feature-list li::before {
       content: "▸";
-      margin-right: 12px;
+      margin-right: 10px;
       font-weight: 700;
     }
 
     .nav-hint {
       text-align: center;
-      margin-top: 32px;
+      margin-top: 24px;
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10px;
       color: #999;
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
 
+    @media (max-width: 768px) {
+      .nav-hint {
+        font-size: 9px;
+        margin-top: 16px;
+      }
+    }
+
     .nav-dots {
       position: fixed;
-      right: 24px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       z-index: 100;
     }
 
     @media (max-width: 768px) {
       .nav-dots {
-        flex-direction: row;
-        right: auto;
-        top: auto;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%);
+        right: 12px;
+        gap: 8px;
       }
     }
 
     .nav-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border: 2px solid var(--black);
       background: transparent;
       cursor: pointer;
@@ -345,12 +375,12 @@
 
     .github-link {
       display: inline-block;
-      margin-top: 24px;
-      padding: 12px 24px;
+      margin-top: 20px;
+      padding: 10px 20px;
       border: var(--border);
       background: var(--white);
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -359,44 +389,61 @@
       transition: all 0.2s;
     }
 
+    @media (max-width: 768px) {
+      .github-link {
+        font-size: 10px;
+        padding: 8px 16px;
+        margin-top: 16px;
+      }
+    }
+
     .github-link:hover {
       background: var(--black);
       color: var(--white);
     }
 
-    .stats {
+    .skill-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 32px 0;
+      gap: 12px;
+      margin: 24px 0;
     }
 
-    @media (max-width: 640px) {
-      .stats {
-        grid-template-columns: 1fr;
+    @media (max-width: 768px) {
+      .skill-list {
+        gap: 10px;
+        margin: 20px 0;
       }
     }
 
-    .stat {
+    .skill-preview {
       border: var(--border);
-      padding: 20px;
-      text-align: center;
+      padding: 16px;
+      transition: all 0.2s;
+      cursor: pointer;
     }
 
-    .stat-value {
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 8px;
+    @media (max-width: 768px) {
+      .skill-preview {
+        padding: 14px;
+      }
     }
 
-    .stat-label {
+    .skill-preview:hover {
+      transform: translateY(-2px);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-preview-name {
       font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #666;
+      font-size: clamp(14px, 3vw, 16px);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .skill-preview-desc {
+      font-size: clamp(11px, 2.5vw, 13px);
+      color: #555;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -415,22 +462,26 @@
         <div class="logo">MakerJackie</div>
         <h1 class="title">Skills 技能库</h1>
         <p class="subtitle">
-          这是 <span class="highlight">MakerJackie</span> 的个人技能库，<br />
-          为 AI Agent 准备的可复用、可执行经验。
+          <span class="highlight">MakerJackie</span> 的个人技能库<br />
+          为 AI Agent 准备的可复用经验
         </p>
 
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-value">3</div>
-            <div class="stat-label">Skills</div>
+        <p class="intro-text">
+          把设计规范、基础设施配置、工具流程沉淀成可以直接交给 AI 调用的技能。安装后，AI 就能按照你的标准和最佳实践来工作。
+        </p>
+
+        <div class="skill-list">
+          <div class="skill-preview" onclick="scrollToPage(1)">
+            <div class="skill-preview-name">01mvp-design</div>
+            <div class="skill-preview-desc">01MVP 视觉规范 · 黑白高对比 · 硬核极简</div>
           </div>
-          <div class="stat">
-            <div class="stat-value">100%</div>
-            <div class="stat-label">AI Ready</div>
+          <div class="skill-preview" onclick="scrollToPage(2)">
+            <div class="skill-preview-name">cloudflare-one</div>
+            <div class="skill-preview-desc">Cloudflare 全栈基础设施 · Workers · Pages · D1</div>
           </div>
-          <div class="stat">
-            <div class="stat-value">Open</div>
-            <div class="stat-label">Source</div>
+          <div class="skill-preview" onclick="scrollToPage(3)">
+            <div class="skill-preview-name">cloudflare-redirector</div>
+            <div class="skill-preview-desc">域名重定向 · 短链接 · DNS 同步</div>
           </div>
         </div>
 
@@ -443,13 +494,10 @@
         </div>
 
         <div style="text-align: center;">
-          <a href="https://github.com/makerjackie/skills" target="_blank" class="github-link">访问 GitHub</a>
+          <a href="https://github.com/makerjackie/skills" target="_blank" class="github-link">GitHub</a>
         </div>
 
-        <div class="nav-hint">
-          <span class="desktop-hint">向下滚动查看技能详情</span>
-          <span class="mobile-hint">左右滑动查看技能详情</span>
-        </div>
+        <div class="nav-hint">向下滑动查看技能详情</div>
       </div>
     </section>
 
@@ -458,7 +506,7 @@
       <div class="content">
         <div class="skill-header">
           <div class="skill-kind">Design System / Brand</div>
-          <h2 class="skill-name">01mvp-design</h2>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/01mvp-design', '_blank')">01mvp-design</h2>
           <p class="skill-desc">
             把 01MVP 的 logo、黑白高对比排版、组件规则和模板打包成统一视觉规范，用于海报、名片、UI、网站与各种对外物料。
           </p>
@@ -480,12 +528,9 @@
 - 包含 Hero 区域
 - 包含 3 个功能卡片
 - 底部包含一个 CTA 区域</div>
-          <div class="code-example">/01mvp-design 请基于 01MVP 极简硬核风格，生成一张产品发布海报。
-主标题为"LESS IS MORE"，副标题为"重构工作流"。</div>
-        </div>
-
-        <div style="text-align: center;">
-          <a href="https://github.com/makerjackie/skills/tree/main/skills/01mvp-design" target="_blank" class="github-link">查看详情</a>
+          <div class="code-example">/01mvp-design 生成一张产品发布海报
+主标题"LESS IS MORE"
+副标题"重构工作流"</div>
         </div>
       </div>
     </section>
@@ -495,7 +540,7 @@
       <div class="content">
         <div class="skill-header">
           <div class="skill-kind">Cloudflare / Infrastructure</div>
-          <h2 class="skill-name">cloudflare-one</h2>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one', '_blank')">cloudflare-one</h2>
           <p class="skill-desc">
             用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。
           </p>
@@ -515,12 +560,12 @@
 
         <div class="skill-section">
           <h3 class="section-title">使用案例</h3>
-          <div class="code-example">/cloudflare-one 部署一个用户预约活动站，前端使用 HTML+Tailwind，将用户提交的报名信息（姓名、邮箱）直接存入 D1 数据库。</div>
-          <div class="code-example">/cloudflare-one 创建一个 API 端点，使用 Workers 处理请求，数据存储在 KV 中，并配置 CORS。</div>
-        </div>
-
-        <div style="text-align: center;">
-          <a href="https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one" target="_blank" class="github-link">查看详情</a>
+          <div class="code-example">/cloudflare-one 部署一个用户预约活动站
+前端 HTML+Tailwind
+报名信息存入 D1 数据库</div>
+          <div class="code-example">/cloudflare-one 创建 API 端点
+Workers 处理请求
+数据存储在 KV 中</div>
         </div>
       </div>
     </section>
@@ -530,7 +575,7 @@
       <div class="content">
         <div class="skill-header">
           <div class="skill-kind">Cloudflare / Redirect</div>
-          <h2 class="skill-name">cloudflare-redirector</h2>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector', '_blank')">cloudflare-redirector</h2>
           <p class="skill-desc">
             用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。适合短链接、域名跳转、长链接映射等场景。
           </p>
@@ -549,14 +594,12 @@
 
         <div class="skill-section">
           <h3 class="section-title">使用案例</h3>
-          <div class="code-example">/cloudflare-redirector 请帮我配置一下规则：
-将 docs.example.com 指向我的飞书公开文档，
-将 join.example.com 指向我的微信群加群二维码链接。</div>
-          <div class="code-example">/cloudflare-redirector 创建短链接系统，将 go.example.com/meeting 重定向到腾讯会议链接。</div>
-        </div>
-
-        <div style="text-align: center;">
-          <a href="https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector" target="_blank" class="github-link">查看详情</a>
+          <div class="code-example">/cloudflare-redirector 配置规则
+docs.example.com → 飞书文档
+join.example.com → 微信群二维码</div>
+          <div class="code-example">/cloudflare-redirector 创建短链接
+go.example.com/meeting
+→ 腾讯会议链接</div>
         </div>
       </div>
     </section>
@@ -576,7 +619,7 @@
             button.textContent = originalText;
           }, 1500);
         } catch (error) {
-          button.textContent = '复制失败';
+          button.textContent = '失败';
           setTimeout(() => {
             button.textContent = originalText;
           }, 1500);
@@ -584,20 +627,20 @@
       });
     });
 
-    // Navigation dots
+    // Navigation
     const container = document.querySelector('.container');
     const dots = document.querySelectorAll('.nav-dot');
     const pages = document.querySelectorAll('.page');
 
+    function scrollToPage(index) {
+      pages[index].scrollIntoView({ behavior: 'smooth' });
+    }
+
     // Update active dot based on scroll position
     function updateActiveDot() {
-      const scrollPosition = window.innerWidth > 768
-        ? container.scrollTop
-        : container.scrollLeft;
-      const pageSize = window.innerWidth > 768
-        ? container.clientHeight
-        : container.clientWidth;
-      const currentPage = Math.round(scrollPosition / pageSize);
+      const scrollPosition = container.scrollTop;
+      const pageHeight = container.clientHeight;
+      const currentPage = Math.round(scrollPosition / pageHeight);
 
       dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentPage);
@@ -608,25 +651,13 @@
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
         const pageIndex = parseInt(dot.getAttribute('data-page'));
-        const page = pages[pageIndex];
-        if (page) {
-          page.scrollIntoView({ behavior: 'smooth' });
-        }
+        scrollToPage(pageIndex);
       });
     });
 
     // Listen to scroll events
     container.addEventListener('scroll', updateActiveDot);
     window.addEventListener('resize', updateActiveDot);
-
-    // Show appropriate hint based on device
-    const isMobile = window.innerWidth <= 768;
-    document.querySelectorAll('.desktop-hint').forEach(el => {
-      el.style.display = isMobile ? 'none' : 'inline';
-    });
-    document.querySelectorAll('.mobile-hint').forEach(el => {
-      el.style.display = isMobile ? 'inline' : 'none';
-    });
   </script>
 </body>
 </html>
