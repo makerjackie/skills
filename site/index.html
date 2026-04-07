@@ -19,6 +19,8 @@
       --white: #ffffff;
       --gray: #f5f5f5;
       --border: 2px solid #000000;
+      --border-heavy: 3px solid #000000;
+      --shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
       --font-sans: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: "JetBrains Mono", monospace;
     }
@@ -29,65 +31,137 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: var(--gray);
       color: var(--black);
       font-family: var(--font-sans);
       line-height: 1.6;
-      padding: 20px;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
+    /* Desktop: vertical scroll */
+    @media (min-width: 769px) {
+      .container {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100vh;
+      }
+
+      .page {
+        scroll-snap-align: start;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+    }
+
+    /* Mobile: horizontal swipe */
+    @media (max-width: 768px) {
+      body {
+        overflow-y: hidden;
+      }
+
+      .container {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        height: 100vh;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .page {
+        scroll-snap-align: start;
+        min-width: 100vw;
+        height: 100vh;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      /* Hide scrollbar but keep functionality */
+      .container::-webkit-scrollbar {
+        display: none;
+      }
+      .container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
+
+    .content {
+      max-width: 900px;
+      width: 100%;
       background: var(--white);
-      border: var(--border);
-      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+      border: var(--border-heavy);
+      box-shadow: var(--shadow);
+      padding: 48px;
     }
 
-    .header {
-      padding: 32px 24px;
-      border-bottom: var(--border);
-      text-align: center;
+    @media (max-width: 768px) {
+      .content {
+        padding: 32px 24px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
     }
 
     .logo {
-      font-size: 14px;
+      font-size: 13px;
       font-family: var(--font-mono);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
+      letter-spacing: 0.12em;
+      margin-bottom: 24px;
       color: #666;
+      text-align: center;
     }
 
     .title {
-      font-size: clamp(28px, 6vw, 42px);
+      font-size: clamp(32px, 5vw, 56px);
       font-weight: 900;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
+      text-align: center;
     }
 
     .subtitle {
-      font-size: clamp(16px, 3vw, 18px);
+      font-size: clamp(16px, 3vw, 20px);
       color: #555;
-      line-height: 1.5;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .highlight {
+      background: var(--black);
+      color: var(--white);
+      padding: 2px 8px;
+      font-weight: 700;
     }
 
     .install-section {
+      margin: 32px 0;
       padding: 24px;
-      border-bottom: var(--border);
+      border: var(--border);
       background: var(--gray);
     }
 
     .install-label {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       margin-bottom: 12px;
       color: #666;
     }
@@ -104,7 +178,7 @@
       flex: 1;
       padding: 14px 16px;
       font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 13px;
       overflow-x: auto;
       white-space: nowrap;
     }
@@ -116,12 +190,13 @@
       background: var(--black);
       color: var(--white);
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       cursor: pointer;
       transition: all 0.2s;
+      white-space: nowrap;
     }
 
     .copy-btn:hover {
@@ -132,97 +207,7 @@
       transform: scale(0.98);
     }
 
-    .skills-section {
-      padding: 24px;
-    }
-
-    .section-title {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 20px;
-      color: #666;
-    }
-
-    .skill-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .skill-card {
-      border: var(--border);
-      padding: 20px;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-    }
-
-    .skill-name {
-      font-family: var(--font-mono);
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .skill-desc {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .footer {
-      padding: 20px 24px;
-      border-top: var(--border);
-      text-align: center;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .footer a {
-      color: var(--black);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
     @media (max-width: 640px) {
-      body {
-        padding: 10px;
-      }
-
-      .container {
-        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-      }
-
-      .header {
-        padding: 24px 20px;
-      }
-
-      .title {
-        font-size: 28px;
-      }
-
-      .subtitle {
-        font-size: 15px;
-      }
-
-      .install-section,
-      .skills-section {
-        padding: 20px;
-      }
-
       .install-box {
         flex-direction: column;
       }
@@ -232,60 +217,353 @@
         border-top: var(--border);
         padding: 12px;
       }
+    }
 
-      .skill-card {
-        padding: 16px;
-      }
+    .skill-header {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: var(--border);
+    }
 
-      .footer {
-        padding: 16px 20px;
-        font-size: 10px;
+    .skill-kind {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .skill-name {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .skill-desc {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .skill-section {
+      margin: 24px 0;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+      color: #666;
+    }
+
+    .code-example {
+      border: var(--border);
+      background: var(--gray);
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: "▸";
+      margin-right: 12px;
+      font-weight: 700;
+    }
+
+    .nav-hint {
+      text-align: center;
+      margin-top: 32px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-dots {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    @media (max-width: 768px) {
+      .nav-dots {
+        flex-direction: row;
+        right: auto;
+        top: auto;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
       }
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border: 2px solid var(--black);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .nav-dot.active {
+      background: var(--black);
+    }
+
+    .github-link {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 24px;
+      border: var(--border);
+      background: var(--white);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      color: var(--black);
+      transition: all 0.2s;
+    }
+
+    .github-link:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    @media (max-width: 640px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat {
+      border: var(--border);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #666;
     }
   </style>
 </head>
 <body>
+  <div class="nav-dots">
+    <div class="nav-dot active" data-page="0"></div>
+    <div class="nav-dot" data-page="1"></div>
+    <div class="nav-dot" data-page="2"></div>
+    <div class="nav-dot" data-page="3"></div>
+  </div>
+
   <div class="container">
-    <header class="header">
-      <div class="logo">MakerJackie</div>
-      <h1 class="title">Skills 技能库</h1>
-      <p class="subtitle">为 AI Agent 准备的可复用技能，开箱即用。</p>
-    </header>
+    <!-- Page 1: Introduction -->
+    <section class="page">
+      <div class="content">
+        <div class="logo">MakerJackie</div>
+        <h1 class="title">Skills 技能库</h1>
+        <p class="subtitle">
+          这是 <span class="highlight">MakerJackie</span> 的个人技能库，<br />
+          为 AI Agent 准备的可复用、可执行经验。
+        </p>
 
-    <section class="install-section">
-      <div class="install-label">快速安装</div>
-      <div class="install-box">
-        <code class="install-code">npx skills add makerjackie/skills</code>
-        <button class="copy-btn" data-copy="npx skills add makerjackie/skills">复制</button>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Skills</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">AI Ready</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">Open</div>
+            <div class="stat-label">Source</div>
+          </div>
+        </div>
+
+        <div class="install-section">
+          <div class="install-label">快速安装</div>
+          <div class="install-box">
+            <code class="install-code">npx skills add makerjackie/skills</code>
+            <button class="copy-btn" data-copy="npx skills add makerjackie/skills">复制</button>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="https://github.com/makerjackie/skills" target="_blank" class="github-link">访问 GitHub</a>
+        </div>
+
+        <div class="nav-hint">
+          <span class="desktop-hint">向下滚动查看技能详情</span>
+          <span class="mobile-hint">左右滑动查看技能详情</span>
+        </div>
       </div>
     </section>
 
-    <section class="skills-section">
-      <h2 class="section-title">可用技能 (3)</h2>
-      <div class="skill-list">
-        <article class="skill-card" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/01mvp-design', '_blank')">
-          <h3 class="skill-name">01mvp-design</h3>
-          <p class="skill-desc">把 01MVP 的 logo、黑白高对比排版、组件规则和模板打包成统一视觉规范，用于海报、名片、UI、网站与各种对外物料。</p>
-        </article>
+    <!-- Page 2: 01mvp-design -->
+    <section class="page">
+      <div class="content">
+        <div class="skill-header">
+          <div class="skill-kind">Design System / Brand</div>
+          <h2 class="skill-name">01mvp-design</h2>
+          <p class="skill-desc">
+            把 01MVP 的 logo、黑白高对比排版、组件规则和模板打包成统一视觉规范，用于海报、名片、UI、网站与各种对外物料。
+          </p>
+        </div>
 
-        <article class="skill-card" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one', '_blank')">
-          <h3 class="skill-name">cloudflare-one</h3>
-          <p class="skill-desc">用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。</p>
-        </article>
+        <div class="skill-section">
+          <h3 class="section-title">核心特性</h3>
+          <ul class="feature-list">
+            <li>内置 01MVP 官方 Logo SVG 资源</li>
+            <li>黑白高对比、硬核极简、零圆角设计规范</li>
+            <li>工程感排版系统，统一视觉冲击力</li>
+            <li>适用于海报、名片、UI、网站等多种场景</li>
+          </ul>
+        </div>
 
-        <article class="skill-card" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector', '_blank')">
-          <h3 class="skill-name">cloudflare-redirector</h3>
-          <p class="skill-desc">用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。</p>
-        </article>
+        <div class="skill-section">
+          <h3 class="section-title">使用案例</h3>
+          <div class="code-example">/01mvp-design 帮我设计一套 01MVP 官网首页
+- 包含 Hero 区域
+- 包含 3 个功能卡片
+- 底部包含一个 CTA 区域</div>
+          <div class="code-example">/01mvp-design 请基于 01MVP 极简硬核风格，生成一张产品发布海报。
+主标题为"LESS IS MORE"，副标题为"重构工作流"。</div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="https://github.com/makerjackie/skills/tree/main/skills/01mvp-design" target="_blank" class="github-link">查看详情</a>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <a href="https://github.com/makerjackie/skills" target="_blank" rel="noreferrer">GitHub</a> · MakerJackie Skills
-    </footer>
+    <!-- Page 3: cloudflare-one -->
+    <section class="page">
+      <div class="content">
+        <div class="skill-header">
+          <div class="skill-kind">Cloudflare / Infrastructure</div>
+          <h2 class="skill-name">cloudflare-one</h2>
+          <p class="skill-desc">
+            用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。
+          </p>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">核心特性</h3>
+          <ul class="feature-list">
+            <li>整合 Cloudflare 核心生态服务</li>
+            <li>Workers 无服务器计算平台</li>
+            <li>Pages 静态站点托管</li>
+            <li>D1 数据库、R2 对象存储、KV 键值存储</li>
+            <li>Queues 消息队列、Workers AI 模型推理</li>
+            <li>符合 Cloudflare 最佳实践</li>
+          </ul>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用案例</h3>
+          <div class="code-example">/cloudflare-one 部署一个用户预约活动站，前端使用 HTML+Tailwind，将用户提交的报名信息（姓名、邮箱）直接存入 D1 数据库。</div>
+          <div class="code-example">/cloudflare-one 创建一个 API 端点，使用 Workers 处理请求，数据存储在 KV 中，并配置 CORS。</div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one" target="_blank" class="github-link">查看详情</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 4: cloudflare-redirector -->
+    <section class="page">
+      <div class="content">
+        <div class="skill-header">
+          <div class="skill-kind">Cloudflare / Redirect</div>
+          <h2 class="skill-name">cloudflare-redirector</h2>
+          <p class="skill-desc">
+            用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。适合短链接、域名跳转、长链接映射等场景。
+          </p>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">核心特性</h3>
+          <ul class="feature-list">
+            <li>基于 Cloudflare Workers 的极简路由重定向</li>
+            <li>支持批量配置重定向规则</li>
+            <li>自动同步 DNS 记录</li>
+            <li>适用于短链接、活动推广、文档分享</li>
+            <li>让链接变得干净、专业且易于追踪</li>
+          </ul>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用案例</h3>
+          <div class="code-example">/cloudflare-redirector 请帮我配置一下规则：
+将 docs.example.com 指向我的飞书公开文档，
+将 join.example.com 指向我的微信群加群二维码链接。</div>
+          <div class="code-example">/cloudflare-redirector 创建短链接系统，将 go.example.com/meeting 重定向到腾讯会议链接。</div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector" target="_blank" class="github-link">查看详情</a>
+        </div>
+      </div>
+    </section>
   </div>
 
   <script>
+    // Copy button functionality
     document.querySelectorAll('[data-copy]').forEach((button) => {
       const originalText = button.textContent;
       button.addEventListener('click', async (e) => {
@@ -304,6 +582,50 @@
           }, 1500);
         }
       });
+    });
+
+    // Navigation dots
+    const container = document.querySelector('.container');
+    const dots = document.querySelectorAll('.nav-dot');
+    const pages = document.querySelectorAll('.page');
+
+    // Update active dot based on scroll position
+    function updateActiveDot() {
+      const scrollPosition = window.innerWidth > 768
+        ? container.scrollTop
+        : container.scrollLeft;
+      const pageSize = window.innerWidth > 768
+        ? container.clientHeight
+        : container.clientWidth;
+      const currentPage = Math.round(scrollPosition / pageSize);
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentPage);
+      });
+    }
+
+    // Click dot to navigate
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const pageIndex = parseInt(dot.getAttribute('data-page'));
+        const page = pages[pageIndex];
+        if (page) {
+          page.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Listen to scroll events
+    container.addEventListener('scroll', updateActiveDot);
+    window.addEventListener('resize', updateActiveDot);
+
+    // Show appropriate hint based on device
+    const isMobile = window.innerWidth <= 768;
+    document.querySelectorAll('.desktop-hint').forEach(el => {
+      el.style.display = isMobile ? 'none' : 'inline';
+    });
+    document.querySelectorAll('.mobile-hint').forEach(el => {
+      el.style.display = isMobile ? 'inline' : 'none';
     });
   </script>
 </body>
