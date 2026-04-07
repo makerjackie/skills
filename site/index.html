@@ -67,17 +67,19 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      position: relative;
     }
 
     .content {
       width: 100%;
       max-width: 900px;
-      max-height: calc(100vh - 40px);
+      max-height: calc(100vh - 80px);
       background: var(--white);
       border: var(--border-heavy);
       box-shadow: var(--shadow);
       padding: 48px;
       overflow-y: auto;
+      margin-bottom: 40px;
     }
 
     @media (max-width: 768px) {
@@ -87,8 +89,9 @@
 
       .content {
         padding: 28px 20px;
-        max-height: calc(100vh - 24px);
+        max-height: calc(100vh - 64px);
         border-width: 2px;
+        margin-bottom: 30px;
       }
     }
 
@@ -344,18 +347,18 @@
 
     .nav-dots {
       position: fixed;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 10px;
       z-index: 100;
     }
 
     @media (max-width: 768px) {
       .nav-dots {
-        right: 12px;
+        bottom: 16px;
         gap: 8px;
       }
     }
@@ -453,6 +456,7 @@
     <div class="nav-dot" data-page="1"></div>
     <div class="nav-dot" data-page="2"></div>
     <div class="nav-dot" data-page="3"></div>
+    <div class="nav-dot" data-page="4"></div>
   </div>
 
   <div class="container">
@@ -472,14 +476,18 @@
 
         <div class="skill-list">
           <div class="skill-preview" onclick="scrollToPage(1)">
+            <div class="skill-preview-name">makerjackie-writer</div>
+            <div class="skill-preview-desc">公众号长文写作 · 真诚风格 · MVP 思维</div>
+          </div>
+          <div class="skill-preview" onclick="scrollToPage(2)">
             <div class="skill-preview-name">01mvp-design</div>
             <div class="skill-preview-desc">01MVP 视觉规范 · 黑白高对比 · 硬核极简</div>
           </div>
-          <div class="skill-preview" onclick="scrollToPage(2)">
+          <div class="skill-preview" onclick="scrollToPage(3)">
             <div class="skill-preview-name">cloudflare-one</div>
             <div class="skill-preview-desc">Cloudflare 全栈基础设施 · Workers · Pages · D1</div>
           </div>
-          <div class="skill-preview" onclick="scrollToPage(3)">
+          <div class="skill-preview" onclick="scrollToPage(4)">
             <div class="skill-preview-name">cloudflare-redirector</div>
             <div class="skill-preview-desc">域名重定向 · 短链接 · DNS 同步</div>
           </div>
@@ -501,7 +509,39 @@
       </div>
     </section>
 
-    <!-- Page 2: 01mvp-design -->
+    <!-- Page 2: makerjackie-writer -->
+    <section class="page">
+      <div class="content">
+        <div class="skill-header">
+          <div class="skill-kind">Content Creation / Writing</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/makerjackie-writer', '_blank')">makerjackie-writer</h2>
+          <p class="skill-desc">
+            Maker Jackie 的公众号长文写作 skill。保持真诚风格，拒绝 AI 味，适合公众号长文、深度内容创作、基于素材的文章生成。
+          </p>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">核心特性</h3>
+          <ul class="feature-list">
+            <li>真诚第一，拒绝制造焦虑</li>
+            <li>MVP 思维，强调动手创造</li>
+            <li>四层质检体系，确保"活人感"</li>
+            <li>理解素材，从 PDF、语音、想法到完整文章</li>
+            <li>保持个人风格，温暖鼓励的表达</li>
+          </ul>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用案例</h3>
+          <div class="code-example">/makerjackie-writer 帮我写篇公众号文章
+主题：AI 时代的创作者如何保持真实</div>
+          <div class="code-example">/makerjackie-writer 用我的风格
+把这个 PDF 素材写成长文</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 3: 01mvp-design -->
     <section class="page">
       <div class="content">
         <div class="skill-header">
@@ -535,7 +575,7 @@
       </div>
     </section>
 
-    <!-- Page 3: cloudflare-one -->
+    <!-- Page 4: cloudflare-one -->
     <section class="page">
       <div class="content">
         <div class="skill-header">
@@ -570,7 +610,7 @@ Workers 处理请求
       </div>
     </section>
 
-    <!-- Page 4: cloudflare-redirector -->
+    <!-- Page 5: cloudflare-redirector -->
     <section class="page">
       <div class="content">
         <div class="skill-header">
