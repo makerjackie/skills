@@ -51,10 +51,10 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* Hide scrollbar */
     .container::-webkit-scrollbar {
       display: none;
     }
+
     .container {
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -293,7 +293,7 @@
       font-size: clamp(13px, 2.5vw, 15px);
       color: #333;
       line-height: 1.7;
-      margin-bottom: 20px;
+      margin-bottom: 0;
     }
 
     .skill-section {
@@ -335,26 +335,37 @@
       }
     }
 
-    .feature-list {
-      list-style: none;
-      padding: 0;
+    .feature-copy {
+      font-size: clamp(12px, 2.4vw, 14px);
+      color: #333;
+      line-height: 1.7;
     }
 
-    .feature-list li {
-      padding: 10px 0;
-      border-bottom: 1px solid #e0e0e0;
-      font-size: clamp(12px, 2.5vw, 14px);
+    .requirement-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .requirement-list li {
+      padding: 12px 14px;
+      border: var(--border);
+      background: var(--gray);
+      font-size: clamp(12px, 2.4vw, 14px);
       line-height: 1.6;
     }
 
-    .feature-list li:last-child {
-      border-bottom: none;
+    .requirement-list strong {
+      display: inline-block;
+      margin-right: 6px;
     }
 
-    .feature-list li::before {
-      content: "▸";
-      margin-right: 10px;
-      font-weight: 700;
+    .helper-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #555;
+      line-height: 1.7;
     }
 
     .nav-hint {
@@ -489,7 +500,6 @@
   </div>
 
   <div class="container">
-    <!-- Page 1: Introduction -->
     <section class="page">
       <div class="content">
         <div class="logo">MakerJackie</div>
@@ -509,6 +519,10 @@
           <div class="install-box">
             <code class="install-code">npx skills add makerjackie/skills</code>
             <button class="copy-btn" data-copy="npx skills add makerjackie/skills">复制</button>
+          </div>
+          <div class="install-hint">
+            <div class="hint-icon">💡</div>
+            <div class="hint-text">有些 Skill 需要 API Key、域名或第三方账号，但你不用先自己研究。真正使用时，Skill 会一步一步提示你完成配置。</div>
           </div>
         </div>
 
@@ -532,29 +546,17 @@
         </div>
 
         <div class="nav-hint">向下滑动查看技能详情</div>
-        </div>
+      </div>
     </section>
 
-    <!-- Page 2: makerjackie-writer -->
     <section class="page">
       <div class="content">
         <div class="skill-header">
           <div class="skill-kind">makerjackie-writer</div>
           <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/makerjackie-writer', '_blank')">MakerJackie 的自媒体写作 Skill</h2>
           <p class="skill-desc">
-            丢给 AI 一个想法、一段素材或一个 PDF，它就能帮你写出一篇有"活人感"的公众号长文。拒绝 AI 味，保持真诚，适合深度内容创作。
+            一个帮你把想法、素材、PDF、录音整理成“有活人感”长文的写作 Skill。核心价值就是保留真诚表达、减少 AI 味，并把素材理解、结构组织和语言润色一次做完。
           </p>
-        </div>
-
-        <div class="skill-section">
-          <h3 class="section-title">核心特性</h3>
-          <ul class="feature-list">
-            <li>真诚第一，拒绝制造焦虑</li>
-            <li>MVP 思维，强调动手创造</li>
-            <li>四层质检体系，确保"活人感"</li>
-            <li>理解素材，从 PDF、语音、想法到完整文章</li>
-            <li>保持个人风格，温暖鼓励的表达</li>
-          </ul>
         </div>
 
         <div class="skill-section">
@@ -564,28 +566,26 @@
           <div class="code-example">/makerjackie-writer 用我的风格
 把这个 PDF 素材写成长文</div>
         </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用前提</h3>
+          <ul class="requirement-list">
+            <li><strong>素材准备：</strong>你最好已经有一个想法、提纲、录音、聊天记录或 PDF 素材中的任意一种。</li>
+            <li><strong>风格输入：</strong>如果你希望更像你的语气，给它几段你过去写过的内容会更好。</li>
+          </ul>
+          <p class="helper-note">不用担心具体怎么喂给 AI，真正使用时 Skill 会引导你一步步补齐素材和风格信息。</p>
+        </div>
       </div>
     </section>
 
-    <!-- Page 3: 01mvp-design -->
     <section class="page">
       <div class="content">
         <div class="skill-header">
           <div class="skill-kind">01mvp-design</div>
           <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/01mvp-design', '_blank')">一键生成极简硬核黑白风格设计</h2>
           <p class="skill-desc">
-            生成类似01mvp.com或此页面类似的风格。告诉 AI 你要做海报、名片、UI 还是网站，它就能按 01MVP 的黑白硬核风格帮你设计出来。统一视觉，专业冲击力。
+            一个把 01MVP 黑白硬核视觉体系直接交给 AI 的设计 Skill。核心特性是统一高对比视觉、极简排版和现成品牌资源，让海报、名片、页面和 UI 很快落到同一套风格里。
           </p>
-        </div>
-
-        <div class="skill-section">
-          <h3 class="section-title">核心特性</h3>
-          <ul class="feature-list">
-            <li>内置 01MVP 官方 Logo SVG 资源</li>
-            <li>黑白高对比、硬核极简、零圆角设计规范</li>
-            <li>工程感排版系统，统一视觉冲击力</li>
-            <li>适用于海报、名片、UI、网站等多种场景</li>
-          </ul>
         </div>
 
         <div class="skill-section">
@@ -598,30 +598,26 @@
 主标题"LESS IS MORE"
 副标题"重构工作流"</div>
         </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用前提</h3>
+          <ul class="requirement-list">
+            <li><strong>场景明确：</strong>先告诉它你要做海报、名片、官网页面还是产品 UI。</li>
+            <li><strong>内容输入：</strong>最好准备标题、文案、模块清单或品牌关键词，生成结果会更贴近你的目标。</li>
+          </ul>
+          <p class="helper-note">如果你还没想清楚页面结构，Skill 也会先帮你拆版式，再继续生成视觉方案。</p>
+        </div>
       </div>
     </section>
 
-    <!-- Page 4: cloudflare-one -->
     <section class="page">
       <div class="content">
         <div class="skill-header">
           <div class="skill-kind">cloudflare-one</div>
           <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one', '_blank')">用 CloudFlare 零成本部署你的网站和应用</h2>
           <p class="skill-desc">
-            让 AI 帮你用 Cloudflare 免费额度搭建全栈应用。前端、后端、数据库、存储一条龙，不用自己配服务器。
+            一个让 AI 帮你把前端、后端、数据库和存储都部署到 Cloudflare 生态里的 Skill。核心特性是利用免费额度快速起项目，减少服务器配置负担，并尽量按 Cloudflare 最佳实践落地。
           </p>
-        </div>
-
-        <div class="skill-section">
-          <h3 class="section-title">核心特性</h3>
-          <ul class="feature-list">
-            <li>整合 Cloudflare 核心生态服务</li>
-            <li>Workers 无服务器计算平台</li>
-            <li>Pages 静态站点托管</li>
-            <li>D1 数据库、R2 对象存储、KV 键值存储</li>
-            <li>Queues 消息队列、Workers AI 模型推理</li>
-            <li>符合 Cloudflare 最佳实践</li>
-          </ul>
         </div>
 
         <div class="skill-section">
@@ -633,29 +629,26 @@
 Workers 处理请求
 数据存储在 KV 中</div>
         </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用前提</h3>
+          <ul class="requirement-list">
+            <li><strong>Cloudflare 账号：</strong>你需要有自己的 Cloudflare 账号。</li>
+            <li><strong>API 权限：</strong>需要配置对应的 API Token / API Key，Skill 会提示你具体怎么配。</li>
+          </ul>
+          <p class="helper-note">不用提前把所有服务研究明白，真正执行时 Skill 会根据你要部署的类型引导你补配置。</p>
+        </div>
       </div>
     </section>
 
-    <!-- Page 5: cloudflare-redirector -->
     <section class="page">
       <div class="content">
         <div class="skill-header">
           <div class="skill-kind">cloudflare-redirector</div>
           <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector', '_blank')">批量创建短链接和域名跳转</h2>
           <p class="skill-desc">
-            把一堆长链接变成干净的短域名，自动配置跳转和 DNS。适合活动推广、文档分享、让链接看起来更专业。
+            一个帮你批量管理短链接和跳转规则的 Skill。核心特性是把域名、重定向和 DNS 规则串起来，让活动页、文档入口和分享链接更统一、更专业，也更容易维护。
           </p>
-        </div>
-
-        <div class="skill-section">
-          <h3 class="section-title">核心特性</h3>
-          <ul class="feature-list">
-            <li>基于 Cloudflare Workers 的极简路由重定向</li>
-            <li>支持批量配置重定向规则</li>
-            <li>自动同步 DNS 记录</li>
-            <li>适用于短链接、活动推广、文档分享</li>
-            <li>让链接变得干净、专业且易于追踪</li>
-          </ul>
         </div>
 
         <div class="skill-section">
@@ -667,12 +660,20 @@ join.example.com → 微信群二维码</div>
 go.example.com/meeting
 → 腾讯会议链接</div>
         </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用前提</h3>
+          <ul class="requirement-list">
+            <li><strong>自己的域名：</strong>你需要有一个自己的域名，才能配置短链接和跳转入口。</li>
+            <li><strong>Cloudflare 托管：</strong>建议域名已经接入 Cloudflare，方便自动同步 DNS 和 Workers 配置。</li>
+          </ul>
+          <p class="helper-note">这些前提不用你一次性手动配完，Skill 在真正执行时会告诉你下一步该准备什么。</p>
+        </div>
       </div>
     </section>
   </div>
 
   <script>
-    // Copy button functionality
     document.querySelectorAll('[data-copy]').forEach((button) => {
       const originalText = button.textContent;
       button.addEventListener('click', async (e) => {
@@ -693,7 +694,6 @@ go.example.com/meeting
       });
     });
 
-    // Navigation
     const container = document.querySelector('.container');
     const dots = document.querySelectorAll('.nav-dot');
     const pages = document.querySelectorAll('.page');
@@ -702,7 +702,6 @@ go.example.com/meeting
       pages[index].scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Update active dot based on scroll position
     function updateActiveDot() {
       const scrollPosition = container.scrollTop;
       const pageHeight = container.clientHeight;
@@ -713,7 +712,6 @@ go.example.com/meeting
       });
     }
 
-    // Click dot to navigate
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
         const pageIndex = parseInt(dot.getAttribute('data-page'));
@@ -721,7 +719,6 @@ go.example.com/meeting
       });
     });
 
-    // Listen to scroll events
     container.addEventListener('scroll', updateActiveDot);
     window.addEventListener('resize', updateActiveDot);
   </script>
