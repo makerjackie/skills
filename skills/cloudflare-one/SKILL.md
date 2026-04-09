@@ -1,11 +1,13 @@
 ---
 name: cloudflare-one
-description: 使用 Cloudflare 基础设施时使用，包括为 AI 配置 Cloudflare API Token、选择和组合 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI、Tunnel、Turnstile 等服务，或解答 Cloudflare 产品能力、免费额度、价格与落地方案。
+description: 使用 Cloudflare / cf 基础设施时使用，包括为 AI 配置 Cloudflare API Token、选择和组合 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI、Tunnel、Turnstile 等服务，或解答 Cloudflare 产品能力、免费额度、价格与落地方案。
 ---
 
 # Cloudflare One
 
 这个 skill 用来把 Cloudflare 当成一整套“可被 AI 调用的基础设施”，而不是只当 DNS 或 CDN。
+
+注意 cf / CF 是 cloudflare 的简写
 
 ## Core Workflow
 
