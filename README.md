@@ -22,3 +22,4 @@ npx skills add makerjackie/skills
 | [cloudflare-one](./skills/cloudflare-one/README.md) | 用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。 |
 | [cloudflare-redirector](./skills/cloudflare-redirector/README.md) | 用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。 |
 | [makerjackie-writer](./skills/makerjackie-writer/README.md) | 我的公众号文章写作 skill。 |
+| [mj-format](./skills/mj-format/README.md) | MakerJackie 排版工具：将 Markdown 文章转换为微信公众号 HTML 格式，并生成小红书风格的图片。 |

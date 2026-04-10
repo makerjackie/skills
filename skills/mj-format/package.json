@@ -1,0 +1,15 @@
+{
+  "name": "mj-format",
+  "version": "1.0.0",
+  "description": "MakerJackie 排版工具：将 HTML 转换为小红书风格的图片",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate-images.js"
+  },
+  "dependencies": {
+    "puppeteer": "^23.0.0",
+    "cheerio": "^1.0.0"
+  },
+  "author": "Maker Jackie",
+  "license": "MIT"
+}
