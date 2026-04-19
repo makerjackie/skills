@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01MVP - 短的教程 #001 (最终版)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #000000;
+            --accent: #f5f5f5;
+            --border: 3px solid #000;
+            --pad: 2.5rem;
+            --font-main: 'Noto Sans SC', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+
+        body {
+            background: #e5e5e5;
+            font-family: var(--font-main);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .label {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            margin-bottom: -40px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .slide {
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 3/4; 
+            background: var(--bg);
+            border: var(--border);
+            padding: var(--pad);
+            padding-top: 5rem;
+            position: relative;
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Branding Lower Right */
+        .brand-mark {
+            position: absolute;
+            bottom: var(--pad);
+            right: var(--pad);
+            font-family: var(--font-mono);
+            font-weight: 900;
+            font-size: 2rem;
+            letter-spacing: -0.08em;
+            color: #000;
+            opacity: 1;
+            line-height: 1;
+        }
+
+        /* Date Mark Lower Left */
+        .date-mark {
+            position: absolute;
+            bottom: var(--pad);
+            left: var(--pad);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: #aaa;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Header Style */
+        .header-path {
+            position: absolute;
+            top: var(--pad);
+            left: var(--pad);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #000;
+            border-bottom: 3px solid #000; 
+            padding-bottom: 8px;
+            z-index: 10;
+        }
+        
+        .path-highlight {
+            background: #000;
+            color: #fff;
+            padding: 2px 8px;
+        }
+
+        .header-path .slash {
+            color: #ccc;
+        }
+        
+        /* Highlight Text (Title) */
+        .highlight-text {
+            background: #000;
+            color: #fff;
+            padding: 0 10px;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+            display: inline;
+            margin: 0;
+            border: none;
+        }
+        
+        /* Clean Brand Mark (No underline) */
+        .brand-mark.cover-style {
+            border-bottom: none;
+            padding-bottom: 0px;
+            line-height: 1;
+        }
+
+        /* Page Indicator */
+        .page-num {
+            position: absolute;
+            top: var(--pad);
+            right: var(--pad);
+            font-family: var(--font-mono);
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #ccc;
+        }
+
+        /* Typography */
+        .h1-question { 
+            font-size: 3.6rem; 
+            font-weight: 900; 
+            line-height: 1.3; 
+            letter-spacing: -0.02em; 
+            color: #000;
+            margin-top: 3rem; 
+        }
+
+        .h3-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .code-box {
+            background: var(--accent);
+            border: 2px solid #000;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin: 2rem 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .step-tag {
+            background: #000;
+            color: #fff;
+            padding: 4px 12px;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            color: #222;
+        }
+
+        /* 
+           OUTRO STYLES (Based on Reference Image)
+        */
+        .slide.black-outro {
+            background: #000;
+            color: #fff;
+            padding-top: 5rem;
+        }
+        
+        .slide.black-outro .header-path {
+             border-bottom: 3px solid #fff; 
+             color: #fff;
+        }
+        
+        .slide.black-outro .header-path span { color: #fff; }
+        .slide.black-outro .path-highlight { background: #fff; color: #000 !important; }
+        .slide.black-outro .slash { color: #666; }
+
+        .slide.black-outro .page-num { display: none; } /* NO PAGE NUM */
+        .slide.black-outro .date-mark { display: none; }
+
+        /* Modified Layout for Outro Text */
+        .outro-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .outro-sub {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #666; /* Gray per request */
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .outro-main {
+            font-size: 4rem; /* Prominent white text */
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        /* Profile Section (From Reference) */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto; 
+            margin-bottom: 3rem;
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            width: 100%;
+        }
+
+        .avatar-group {
+            display: flex;
+            align-items: center;
+            gap: 16px; 
+        }
+        
+        .avatar-img-large {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            object-fit: cover;
+            background: #333;
+        }
+
+        .cta-group {
+            text-align: right;
+            max-width: 55%;
+        }
+        
+        .cta-label {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 6px;
+        }
+        
+        .cta-action {
+            font-size: 1.3rem; 
+            font-weight: 900;
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 2px;
+            line-height: 1.4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="label">PAGE 1: 封面 (COVER)</div>
+    <!-- P1 -->
+    <div class="slide">
+        <!-- Header: 01MVP / [Black]Short Tutorial[/Black] / #001 -->
+        <div class="header-path">
+            <span>01MVP</span>
+            <span class="slash">/</span>
+            <span class="path-highlight">短的教程</span>
+            <span class="slash">/</span>
+            <span>#001</span>
+        </div>
+        
+        <div class="page-num">01 / 03</div>
+        
+        <h1 class="h1-question">
+            开发者怎么用<br>
+            <span class="highlight-text">Remotion</span><br>
+            <span class="highlight-text">Skill</span> 生成<br>
+            精美宣传动画？
+        </h1>
+
+        <div class="date-mark">v2026.02</div>
+        <div class="brand-mark cover-style">01MVP</div>
+    </div>
+
+
+    <div class="label">PAGE 2: 第一步 (STEP 1)</div>
+    <!-- P2 -->
+    <div class="slide">
+        <div class="header-path">
+            <span>01MVP</span>
+            <span class="slash">/</span>
+            <span class="path-highlight">短的教程</span>
+            <span class="slash">/</span>
+            <span>#001</span>
+        </div>
+        <div class="page-num">02 / 03</div>
+
+        <!-- Content -->
+        <div style="margin-top: 3rem; position: relative; z-index: 1;">
+            <span class="step-tag">第一步</span>
+            <div class="h3-title">安装 Skill</div>
+            <p>打开终端，输入：</p>
+            
+            <div class="code-box">npx skills add remotion-dev/skills</div>
+
+            <p style="margin-top: 2.5rem;">
+                <b>同时准备素材：</b><br>
+                1. 应用截图 (3-5张)<br>
+                2. Logo + 主色
+            </p>
+        </div>
+        
+        <div class="date-mark">v2026.02</div>
+        <div class="brand-mark">01MVP</div>
+    </div>
+
+
+    <div class="label">PAGE 3: 第二步 (STEP 2)</div>
+    <!-- P3 -->
+    <div class="slide">
+        <div class="header-path">
+            <span>01MVP</span>
+            <span class="slash">/</span>
+            <span class="path-highlight">短的教程</span>
+            <span class="slash">/</span>
+            <span>#001</span>
+        </div>
+        <div class="page-num">03 / 03</div>
+
+        <!-- Content -->
+        <div style="margin-top: 3rem; position: relative; z-index: 1;">
+            <span class="step-tag">第二步</span>
+            <div class="h3-title">核心 Prompt</div>
+            <p>复制给 Claude Code / Cursor ：</p>
+            
+            <div class="code-box" style="font-size: 1.1rem; border-left: 6px solid #000;">用 skill Remotion Best Practices 生成精美的宣传动画：
+
+1. 时长 > 10秒
+2. 使用我的【截图、Logo、主色】
+3. 风格现代、节奏快
+            </div>
+        </div>
+
+        <div class="date-mark">v2026.02</div>
+        <div class="brand-mark">01MVP</div>
+    </div>
+
+
+    <div class="label">PAGE 4: 封底 (OUTRO)</div>
+    <!-- P4: Based on 'First Version' but modified text weights -->
+    <div class="slide black-outro">
+        
+        <!-- Header is VISIBLE in Outro per reference image, but white -->
+        <div class="header-path">
+            <span>01MVP</span>
+            <span class="slash">/</span>
+            <span class="path-highlight">短的教程</span>
+            <span class="slash">/</span>
+            <span>理念</span>
+        </div>
+        
+        <!-- Content Area -->
+        <div class="outro-container">
+            <!-- Secondary: Gray -->
+            <div class="outro-sub">
+                AI 迭代太快
+            </div>
+            <!-- Main: White, Huge -->
+            <div class="outro-main">
+                别光收藏，去动手
+            </div>
+
+            <!-- Philosophy Section (Added Back) -->
+            <div class="attitude-list" style="margin-top: 3rem;">
+                <div style="color: #fff; margin-bottom: 12px; font-weight: 900; font-size: 1.2rem;">
+                    我们的理念： 
+                </div>
+                <div style="color: #ccc; margin-bottom: 8px; font-weight: 600; font-size: 1.1rem;">
+                     <span style="color:#fff; margin-right: 6px;">√</span> 简单直接，不讲原理
+                </div>
+                <div style="color: #ccc; margin-bottom: 8px; font-weight: 600; font-size: 1.1rem;">
+                     <span style="color:#fff; margin-right: 6px;">√</span> 只给答案，拿走即用
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer: from Reference (Profile + CTA) -->
+        <div class="profile-section">
+            <div class="avatar-group">
+                <img src="../jackie-avatar.jpg" class="avatar-img-large" alt="Jackie">
+                <div>
+                     <p style="margin:0; font-weight:900; font-size:1.6rem; color:#fff;">Jackie</p>
+                     <p style="margin:0; font-size:1.1rem; color:#888;">01MVP 创造者</p>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <p class="cta-label">完整知识库</p>
+                <div class="cta-action">搜索 01MVP<br>获取更多硬核短教程</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

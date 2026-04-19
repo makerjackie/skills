@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{PAGE_TITLE}}</title>
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --text: #101010;
+      --muted: #555;
+      --accent: #111;
+      --canvas-w: 1080px;
+      --canvas-h: 1440px;
+      --pad: 62px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body { margin: 0; background: var(--bg); font-family: "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif; color: var(--text); }
+
+    #canvas {
+      width: var(--canvas-w);
+      height: var(--canvas-h);
+      background: var(--bg);
+      padding: var(--pad);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 28px;
+    }
+
+    .kicker {
+      font-size: 30px;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .title {
+      font-size: 76px;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .content {
+      margin-top: 8px;
+      font-size: 40px;
+      line-height: 1.35;
+      display: grid;
+      gap: 14px;
+    }
+
+    .footer {
+      font-size: 30px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main id="canvas">
+    <div class="kicker">{{KICKER}}</div>
+    <div class="title">{{TITLE}}</div>
+    <div class="content">
+      <div>{{POINT_1}}</div>
+      <div>{{POINT_2}}</div>
+      <div>{{POINT_3}}</div>
+    </div>
+    <div class="footer">{{FOOTER}}</div>
+  </main>
+</body>
+</html>
