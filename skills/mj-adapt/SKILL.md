@@ -1,27 +1,40 @@
 ---
-name: mj-format
-description: MakerJackie 排版工具：将 Markdown 文章转换为微信公众号 HTML 格式，并生成小红书风格的图片。适用于公众号文章排版、长文转图片等场景。
+name: mj-adapt
+description: MakerJackie 多平台内容适配工具：将已完成的文章适配到不同发布平台，使用极简硬核风格排版，比如微信公众号，小红书，推特等平台优化排版。核心场景是「一篇文章，多平台发布」的内容分发工作流。
 ---
 
-# MakerJackie Format (mj-format)
+# MakerJackie Adapt (mj-adapt)
 
-将 Markdown 文章自动排版为微信公众号 HTML 格式，并生成小红书风格的图片。
+将已完成的文章适配到多个发布平台，自动生成各平台所需的格式和素材（默认生成全部平台）。
+
+## 核心使用场景
+
+**触发时机**：用户已经写好一篇文章，需要将其发布到多个平台（微信公众号、小红书、知乎、推特等）。
+
+**核心任务**：根据不同平台的要求，生成对应的格式和素材：
+- **微信公众号**：生成特殊格式的 HTML（内联样式，符合公众号编辑器要求） + 微信公众号首图 + 文章标题和描述
+- **小红书**：生成图文素材（1080x1350px 图片）
+- **推特**：生成简短版本的介绍（140 字以内）
 
 ## Quick Workflow
 
-### Step 1: 接收输入
+### Step 1: 接收已完成的文章
 - 接收 Markdown 格式的文章内容
 - 或接收文章文件路径
+- **前提**：文章内容已经完成，只需要适配格式
 
-### Step 2: 生成微信公众号 HTML
+### Step 2: 识别目标平台
+- 默认生成：全部平台素材，除非用户说“只生成微信公众号素材”，则只生成微信公众号相关素材
+
+### Step 3: 生成微信公众号 HTML
 - 解析 Markdown 结构
-- 应用 MakerJackie 排版样式
-- 生成符合微信公众号要求的 HTML
+- 应用 MakerJackie 排版样式（黑白配色、粗边框）
+- 生成符合微信公众号要求的 HTML（内联样式） + 微信公众号首图（风格类似前面的 HTML，但是放上标题） + 文章标题和描述
 - 输出到 `output/` 目录
 
-### Step 3: 生成小红书图片
+### Step 4: 生成小红书图片
 - 将 HTML 内容分段
-- 每段生成一张 PNG 图片
+- 每段生成一张 PNG 图片（1080x1350px）
 - 保持相同的视觉风格
 - 输出为 1.png, 2.png, 3.png...
 
@@ -151,26 +164,35 @@ description: MakerJackie 排版工具：将 Markdown 文章转换为微信公众
 
 ## 使用示例
 
-### 示例 1：从 Markdown 生成
+### 示例 1：多平台发布
 ```
-用户：帮我把这篇文章排版成公众号格式
+用户：我写好了一篇文章，需要发到公众号和小红书
 [提供 Markdown 内容]
 
 输出：
-- output/2026-04-09-article-title-wechat.html
-- output/2026-04-09-article-title-1.png
-- output/2026-04-09-article-title-2.png
+- output/2026-04-20-article-title-wechat.html （复制到公众号编辑器）
+- output/2026-04-20-article-title-1.png （小红书封面图）
+- output/2026-04-20-article-title-2.png （小红书内容图）
 - ...
 ```
 
-### 示例 2：从文件生成
+### 示例 2：只生成公众号格式
 ```
-用户：把 article.md 转成公众号格式和小红书图片
+用户：把这篇文章转成公众号格式
+[提供文章文件路径或内容]
 
 输出：
-- output/2026-04-09-article-wechat.html
-- output/2026-04-09-article-1.png
-- output/2026-04-09-article-2.png
+- output/2026-04-20-article-wechat.html
+```
+
+### 示例 3：从文件批量适配
+```
+用户：把 article.md 适配到各个平台
+
+输出：
+- output/2026-04-20-article-wechat.html （公众号）
+- output/2026-04-20-article-1.png （小红书图1）
+- output/2026-04-20-article-2.png （小红书图2）
 - ...
 ```
 
