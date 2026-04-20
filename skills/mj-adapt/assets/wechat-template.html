@@ -2,16 +2,37 @@
 <section style="margin:0;padding:24px 0;background-color:#ffffff;">
   <section style="margin:0 auto;padding:0 16px;max-width:677px;box-sizing:border-box;">
 
-    <!-- 正文段落 -->
+    <!-- 文章头部 -->
+    <section style="margin:0 0 24px;padding:18px;border:3px solid #000000;background-color:#ffffff;box-sizing:border-box;">
+      <p style="margin:0 0 12px;font-size:12px;line-height:1.6;letter-spacing:1px;color:#000000;font-weight:700;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;">
+        {{CATEGORY}} / {{DATE}}
+      </p>
+      <p style="margin:0;font-size:30px;line-height:1.35;color:#000000;font-weight:900;">
+        {{TITLE}}
+      </p>
+    </section>
+
+    <!-- 正文段落：包含加粗和行内代码 -->
     <p style="margin:0 0 18px;font-size:17px;line-height:1.9;color:#111111;">
-      {{PARAGRAPH}}
+      {{PARAGRAPH}} <strong>这里是加粗文本</strong>，以及一个 <code style="padding:2px 4px;background-color:#f3f4f6;border-radius:4px;font-family:Menlo,Monaco,monospace;">行内代码</code> 示例。
     </p>
 
-    <!-- 灰色引用 (用于次要信息或补充说明) -->
-    <section style="margin:0 0 24px;padding:4px 16px;border-left:4px solid #f0f0f0;box-sizing:border-box;">
-      <p style="margin:0;font-size:15px;line-height:1.8;color:#888888;font-style:italic;">
-        {{SECONDARY_TEXT}}
-      </p>
+    <!-- 列表：无序列表 -->
+    <section style="margin:0 0 24px;padding:0;box-sizing:border-box;">
+      <ul style="margin:0;padding:0 0 0 20px;list-style-type:square;color:#111111;font-size:16px;line-height:1.9;">
+        <li style="margin-bottom:8px;">第一项：关键点描述</li>
+        <li style="margin-bottom:8px;">第二项：操作步骤说明</li>
+        <li style="margin-bottom:8px;">第三项：补充信息或备注</li>
+      </ul>
+    </section>
+
+    <!-- 列表：有序列表 -->
+    <section style="margin:0 0 24px;padding:0;box-sizing:border-box;">
+      <ol style="margin:0;padding:0 0 0 20px;list-style-type:decimal;color:#111111;font-size:16px;line-height:1.9;">
+        <li style="margin-bottom:8px;">步骤一：准备环境</li>
+        <li style="margin-bottom:8px;">步骤二：执行核心逻辑</li>
+        <li style="margin-bottom:8px;">步骤三：验证最终结果</li>
+      </ol>
     </section>
 
     <!-- 章节标题 -->
@@ -27,20 +48,34 @@
       <!-- 章节内容 -->
     </section>
 
-    <!-- 卡片组件 -->
+    <!-- 卡片组件：适合放提示或小技巧 -->
     <section style="margin:0 0 14px;padding:16px;border:2px solid #000000;background-color:#ffffff;box-sizing:border-box;">
       <p style="margin:0 0 8px;font-size:12px;line-height:1.6;letter-spacing:1px;color:#000000;font-weight:700;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;">
-        {{CARD_LABEL}}
+        💡 {{CARD_LABEL}}
       </p>
       <p style="margin:0;font-size:16px;line-height:1.9;color:#111111;">
         {{CARD_CONTENT}}
       </p>
     </section>
 
-    <!-- 强调引用 (改为白底黑框以保持视觉统一) -->
-    <section style="margin:0 0 18px;padding:16px 18px;background-color:#ffffff;border:3px solid #000000;box-sizing:border-box;">
-      <p style="margin:0;font-size:18px;line-height:1.9;color:#000000;font-weight:900;">
-        {{QUOTE}}
+    <!-- 引用样式 1：全黑背景（强强调） -->
+    <section style="margin:0 0 18px;padding:16px 18px;background-color:#000000;box-sizing:border-box;">
+      <p style="margin:0;font-size:18px;line-height:1.9;color:#ffffff;font-weight:700;">
+        {{QUOTE_DARK}}
+      </p>
+    </section>
+
+    <!-- 引用样式 2：左侧粗边框（经典型） -->
+    <section style="margin:0 0 18px;padding:8px 16px;border-left:5px solid #000000;background-color:#f9f9f9;box-sizing:border-box;">
+      <p style="margin:0;font-size:16px;line-height:1.8;color:#555555;font-style:italic;">
+        {{QUOTE_BORDER}}
+      </p>
+    </section>
+
+    <!-- 引用样式 3：极简居中（适合金句） -->
+    <section style="margin:24px 0;padding:0;text-align:center;box-sizing:border-box;">
+      <p style="margin:0;font-size:20px;line-height:1.6;color:#000000;font-weight:900;font-family:serif;">
+        “ {{QUOTE_MINIMAL}} ”
       </p>
     </section>
 
@@ -54,29 +89,25 @@
       </p>
     </section>
 
-    <!-- 页脚 (MakerJackie 个人风格) -->
-    <section style="margin:64px 0 0;padding:32px 18px;background-color:#fcfcfc;border:2px solid #000000;box-sizing:border-box;">
-      <section style="display:flex;align-items:center;gap:18px;margin-bottom:20px;">
-        <img src="https://01mvp.com/avatar.jpg" style="width:56px;height:56px;border:2px solid #000000;border-radius:50%;" alt="Jackie">
-        <div style="flex:1;">
-          <p style="margin:0;font-size:18px;font-weight:900;color:#000000;">Maker Jackie</p>
-          <p style="margin:0;font-size:14px;color:#666666;">AI 实战派 | 01MVP.com 创始人</p>
-        </div>
-      </section>
-      
-      <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#333333;">
-        感谢阅读。我一直在探索如何用 AI 提升交付效率，并在 <strong>01mvp.com</strong> 分享拿走即用的硬核实战教程。如果你有任何想法或建议，欢迎随时交流。
+    <!-- 页脚：关于我（优化版） -->
+    <section style="margin:32px 0 0;padding:24px;border:3px solid #000000;background-color:#ffffff;box-sizing:border-box;">
+      <p style="margin:0 0 4px;font-size:20px;line-height:1.4;color:#000000;font-weight:900;">
+        Maker Jackie
       </p>
-
-      <section style="border-top:1px dashed #000000;padding-top:16px;display:flex;flex-wrap:wrap;gap:24px;">
-        <div>
-          <p style="margin:0 0 4px;font-size:12px;color:#999999;font-family:Menlo,Monaco,Consolas,monospace;font-weight:700;letter-spacing:1px;">LEARN MORE</p>
-          <a href="https://01mvp.com" style="font-size:14px;color:#000000;text-decoration:none;font-weight:700;border-bottom:2px solid #000000;">访问 01mvp.com</a>
-        </div>
-        <div>
-          <p style="margin:0 0 4px;font-size:12px;color:#999999;font-family:Menlo,Monaco,Consolas,monospace;font-weight:700;letter-spacing:1px;">GET IN TOUCH</p>
-          <span style="font-size:14px;color:#000000;font-weight:700;">jackie@01mvp.com</span>
-        </div>
+      <p style="margin:0 0 16px;font-size:13px;line-height:1.6;color:#666666;letter-spacing:1px;font-weight:700;font-family:Menlo,Monaco,monospace;">
+        独立开发者 / 01MVP 创始人
+      </p>
+      <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#333333;">
+        专注 AI 工具实战与极简开发。致力于让更多人通过 AI 实现从 0 到 1 的交付，拒绝平庸，持续进化。
+      </p>
+      <section style="padding:16px;background-color:#f3f4f6;border:1px solid #000000;box-sizing:border-box;">
+        <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#111111;">
+          <strong>🚀 AI 教程：</strong>
+          <a href="https://01mvp.com/" style="color:#000000;text-decoration:underline;font-weight:700;">01mvp.com</a>
+        </p>
+        <p style="margin:0;font-size:14px;line-height:1.6;color:#111111;">
+          <strong>📢 关注我：</strong> 探索 AI 时代的个体创业与极简交付。
+        </p>
       </section>
     </section>
 
