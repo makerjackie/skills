@@ -12,16 +12,6 @@
       </p>
     </section>
 
-    <!-- TL;DR 区块 (可选) -->
-    <section style="margin:0 0 24px;padding:18px 18px 16px;background-color:#000000;box-sizing:border-box;">
-      <p style="margin:0 0 10px;font-size:12px;line-height:1.6;letter-spacing:1px;color:#ffffff;font-weight:700;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;">
-        {{TLDR_LABEL}}
-      </p>
-      <p style="margin:0;font-size:18px;line-height:1.8;color:#ffffff;font-weight:700;">
-        {{TLDR_CONTENT}}
-      </p>
-    </section>
-
     <!-- 正文段落 -->
     <p style="margin:0 0 18px;font-size:17px;line-height:1.9;color:#111111;">
       {{PARAGRAPH}}
@@ -67,21 +57,27 @@
       </p>
     </section>
 
-    <!-- 页脚 -->
-    <section style="margin:0;padding:18px;background-color:#000000;box-sizing:border-box;">
-      <p style="margin:0 0 12px;font-size:12px;line-height:1.6;letter-spacing:1px;color:#ffffff;font-weight:700;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;">
-        {{BRAND_NAME}}
-      </p>
-      <p style="margin:0 0 10px;font-size:16px;line-height:1.9;color:#ffffff;">
-        作者：{{AUTHOR_NAME}}
-      </p>
-      <p style="margin:0 0 10px;font-size:16px;line-height:1.9;color:#ffffff;">
-        合作联系：{{CONTACT_EMAIL}}
-      </p>
-      <p style="margin:0;font-size:16px;line-height:1.9;color:#ffffff;">
-        网站：
-        <a href="{{BRAND_URL}}" style="color:#ffffff;text-decoration:underline;">{{BRAND_DOMAIN}}</a>
-      </p>
+    <!-- 页脚 (轻量化设计) -->
+    <section style="margin:48px 0 0;padding:24px 0 0;border-top:1px solid #eeeeee;box-sizing:border-box;">
+      <section style="display:flex;align-items:flex-start;gap:16px;">
+        <div style="flex-shrink:0;">
+          <img src="https://01mvp.com/avatar.jpg" style="width:48px;height:48px;border:2px solid #000000;display:block;" alt="Avatar">
+        </div>
+        <div style="flex:1;">
+          <p style="margin:0 0 4px;font-size:16px;line-height:1.4;color:#000000;font-weight:900;">
+            {{AUTHOR_NAME}}
+          </p>
+          <p style="margin:0 0 12px;font-size:13px;line-height:1.5;color:#666666;">
+            {{BRAND_SLOGAN}}
+          </p>
+          <p style="margin:0 0 6px;font-size:13px;color:#999999;font-family:Menlo,Monaco,Consolas,monospace;">
+            CONTACT / {{CONTACT_EMAIL}}
+          </p>
+          <p style="margin:0;font-size:13px;color:#999999;font-family:Menlo,Monaco,Consolas,monospace;">
+            WEBSITE / <a href="{{BRAND_URL}}" style="color:#000000;text-decoration:underline;font-weight:700;">{{BRAND_DOMAIN}}</a>
+          </p>
+        </div>
+      </section>
     </section>
 
   </section>

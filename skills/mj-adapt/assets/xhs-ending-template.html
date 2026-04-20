@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XH-Ending-Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --fg: #ffffff;
+            --accent: #ffffff;
+            --border: 3px solid #fff;
+            --pad: 2.5rem;
+            --font-main: 'Noto Sans SC', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+
+        body {
+            background: #e5e5e5;
+            font-family: var(--font-main);
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .slide {
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 3/4; 
+            background: var(--bg);
+            color: var(--fg);
+            border: var(--border);
+            padding: var(--pad);
+            padding-top: 5rem;
+            position: relative;
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header Style */
+        .header-path {
+            position: absolute;
+            top: var(--pad);
+            left: var(--pad);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            border-bottom: 3px solid #fff; 
+            padding-bottom: 8px;
+            z-index: 10;
+        }
+        
+        .path-highlight {
+            background: #fff;
+            color: #000;
+            padding: 2px 8px;
+        }
+
+        .header-path .slash {
+            color: #666;
+        }
+
+        /* Content Area */
+        .outro-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .outro-sub {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #888;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .outro-main {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .philosophy-section {
+            margin-top: 3rem;
+        }
+
+        .philosophy-title {
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .philosophy-item {
+            color: #ccc;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .philosophy-item span {
+            color: #fff;
+        }
+
+        /* Footer: Profile + CTA */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto; 
+            margin-bottom: 2rem;
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            width: 100%;
+        }
+
+        .avatar-group {
+            display: flex;
+            align-items: center;
+            gap: 16px; 
+        }
+        
+        .avatar-img-large {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            object-fit: cover;
+            background: #333;
+        }
+
+        .profile-info p:first-child {
+            margin: 0;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .profile-info p:last-child {
+            margin: 0;
+            font-size: 1rem;
+            color: #888;
+        }
+
+        .cta-group {
+            text-align: right;
+            max-width: 60%;
+        }
+        
+        .cta-label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 4px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+        }
+        
+        .cta-action {
+            font-size: 1.2rem; 
+            font-weight: 900;
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 2px;
+            line-height: 1.4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slide">
+        <!-- Header -->
+        <div class="header-path">
+            <span>{{BRAND_IDENTIFIER}}</span>
+            <span class="slash">/</span>
+            <span class="path-highlight">AI 实战教程</span>
+            <span class="slash">/</span>
+            <span>END</span>
+        </div>
+        
+        <!-- Content Area -->
+        <div class="outro-container">
+            <div class="outro-sub">
+                AI 时代，
+            </div>
+            <div class="outro-main">
+                实操是最高级的<br>
+                学习方式。
+            </div>
+
+            <div class="philosophy-section">
+                <div class="philosophy-title">01MVP 实战派：</div>
+                <div class="philosophy-item"><span>√</span> 从灵感到上线，教你快速做一个 MVP</div>
+                <div class="philosophy-item"><span>√</span> AI 工具系列教程 + 场景化落地案例</div>
+                <div class="philosophy-item"><span>√</span> 拒绝理论，只讲拿走即用的硬核实战</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="profile-section">
+            <div class="avatar-group">
+                <img src="assets/jackie-avatar.jpg" class="avatar-img-large" alt="Author">
+                <div class="profile-info">
+                     <p>{{AUTHOR_NAME}}</p>
+                     <p>{{BRAND_SLOGAN}}</p>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <p class="cta-label">MORE ON</p>
+                <div class="cta-action">访问 01mvp.com<br>获取更多硬核 AI 教程</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
