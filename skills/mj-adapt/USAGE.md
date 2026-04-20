@@ -12,40 +12,14 @@
 "用 mj-format 处理 article.md"
 ```
 
-### 输出文件
-
-生成的文件会保存在 `output/` 目录：
-
-- `{date}-{slug}-wechat.html` - 微信公众号 HTML
-- `{date}-{slug}-1.png` - 封面图（标题 + TL;DR）
-- `{date}-{slug}-2.png` - 第1章
-- `{date}-{slug}-3.png` - 第2章
-- ...
-
-## 测试结果
-
-✅ 已成功测试示例文章：
-
-```
-output/
-├── 2026-04-09-why-i-make-ai-tutorials-wechat.html (22KB)
-├── 2026-04-09-why-i-make-ai-tutorials-1.png (封面)
-├── 2026-04-09-why-i-make-ai-tutorials-2.png (第1章)
-├── 2026-04-09-why-i-make-ai-tutorials-3.png (第2章)
-├── 2026-04-09-why-i-make-ai-tutorials-4.png (第3章)
-├── 2026-04-09-why-i-make-ai-tutorials-5.png (第4章)
-├── 2026-04-09-why-i-make-ai-tutorials-6.png (第5章)
-└── 2026-04-09-why-i-make-ai-tutorials-7.png (第6章 + 页脚)
-```
-
 ## 样式规范
 
 ### 颜色系统
-- 背景：`#ffffff` (白色)
+- 背景：`#ffffff` (纯白) - **全篇统一背景，黑色背景一般只在尾图中做 CTA 时候才使用。**
 - 主文字：`#000000` (黑色)
 - 正文：`#111111` (深灰)
 - 边框：`3px solid #000000`
-- 强调背景：`#000000` (黑底白字)
+- 灰色引用：`#888888` (用于次要说明)
 
 ### 字体系统
 - 标签：`Menlo, Monaco, Consolas, 'Courier New', monospace` (12px, 700)
@@ -56,12 +30,11 @@ output/
 - 卡片：16px, 400 weight
 
 ### 布局组件
-1. 文章头部：3px 黑色边框 + 日期标签 + 大标题
-2. TL;DR 区块：黑色背景 + 白色文字
-3. 章节标题：顶部 3px 黑色边框 + 章节编号
-4. 卡片组件：2px 黑色边框 + 白色背景
-5. 强调引用：黑色背景 + 白色文字
-6. 页脚：黑色背景 + 作者信息
+1. 灰色引用：4px 浅灰色左边框 + 灰色字体 (用于次要信息)
+2. 章节标题：顶部 3px 黑色边框 + 章节编号
+3. 卡片组件：2px 黑色边框 + 白色背景
+4. 强调引用：黑色背景 + 白色文字 (仅用于极少数核心观点，严禁全文使用)
+5. 页脚：Jackie 个人版全卡片布局 (包含头像、01mvp.com 链接)
 
 ## 进阶功能
 
@@ -138,15 +111,6 @@ for file in articles/*.md; do
   # 调用 mj-format
 done
 ```
-
-## 下一步计划
-
-- [ ] 实现真实的 PNG 图片生成（使用 Playwright）
-- [ ] 支持自定义配色方案
-- [ ] 添加更多组件模板
-- [ ] 支持从 Markdown 直接生成
-- [ ] 添加图片压缩和优化
-- [ ] 支持批量处理
 
 ## 反馈和贡献
 
