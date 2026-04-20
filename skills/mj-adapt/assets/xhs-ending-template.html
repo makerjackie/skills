@@ -7,10 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #000000;
-            --fg: #ffffff;
-            --accent: #ffffff;
-            --border: 3px solid #fff;
+            --bg: #ffffff;
+            --fg: #000000;
+            --accent: #000000;
+            --border: 3px solid #000;
             --pad: 2.5rem;
             --font-main: 'Noto Sans SC', 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
@@ -38,7 +38,7 @@
             padding: var(--pad);
             padding-top: 5rem;
             position: relative;
-            box-shadow: 12px 12px 0px rgba(0,0,0,0.15);
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -55,20 +55,20 @@
             font-family: var(--font-mono);
             font-weight: 700;
             font-size: 1.1rem;
-            color: #fff;
-            border-bottom: 3px solid #fff; 
+            color: #000;
+            border-bottom: 3px solid #000; 
             padding-bottom: 8px;
             z-index: 10;
         }
         
         .path-highlight {
-            background: #fff;
-            color: #000;
+            background: #000;
+            color: #fff;
             padding: 2px 8px;
         }
 
         .header-path .slash {
-            color: #666;
+            color: #999;
         }
 
         /* Content Area */
@@ -84,7 +84,7 @@
         .outro-sub {
             font-size: 2.5rem;
             font-weight: 900;
-            color: #888;
+            color: #666;
             margin-bottom: 0.5rem;
             line-height: 1.2;
             letter-spacing: -0.02em;
@@ -93,7 +93,7 @@
         .outro-main {
             font-size: 4rem;
             font-weight: 900;
-            color: #fff;
+            color: #000;
             line-height: 1.1;
             letter-spacing: -0.03em;
         }
@@ -103,14 +103,14 @@
         }
 
         .philosophy-title {
-            color: #fff;
+            color: #000;
             margin-bottom: 12px;
             font-weight: 900;
             font-size: 1.2rem;
         }
 
         .philosophy-item {
-            color: #ccc;
+            color: #333;
             margin-bottom: 8px;
             font-weight: 600;
             font-size: 1.1rem;
@@ -120,7 +120,7 @@
         }
 
         .philosophy-item span {
-            color: #fff;
+            color: #000;
         }
 
         /* Footer: Profile + CTA */
@@ -130,7 +130,7 @@
             justify-content: space-between;
             margin-top: auto; 
             margin-bottom: 2rem;
-            border-top: 1px solid #444;
+            border-top: 1px solid #eee;
             padding-top: 2rem;
             width: 100%;
         }
@@ -145,22 +145,22 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            border: 3px solid #fff;
+            border: 3px solid #000;
             object-fit: cover;
-            background: #333;
+            background: #eee;
         }
 
         .profile-info p:first-child {
             margin: 0;
             font-weight: 900;
             font-size: 1.5rem;
-            color: #fff;
+            color: #000;
         }
 
         .profile-info p:last-child {
             margin: 0;
             font-size: 1rem;
-            color: #888;
+            color: #666;
         }
 
         .cta-group {
@@ -170,7 +170,7 @@
         
         .cta-label {
             font-size: 0.9rem;
-            color: #888;
+            color: #999;
             margin-bottom: 4px;
             font-family: var(--font-mono);
             font-weight: 700;
@@ -179,8 +179,8 @@
         .cta-action {
             font-size: 1.2rem; 
             font-weight: 900;
-            color: #fff;
-            border-bottom: 2px solid #fff;
+            color: #000;
+            border-bottom: 2px solid #000;
             padding-bottom: 2px;
             line-height: 1.4;
         }

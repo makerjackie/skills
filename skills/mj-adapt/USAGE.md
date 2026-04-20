@@ -153,8 +153,3 @@ done
 如果你有任何问题或建议，欢迎：
 - 提交 Issue
 - 发送邮件：makerjackie@qq.com
-- 访问网站：makerjackie.com
-
----
-
-**Maker Jackie** | 让排版更简单
