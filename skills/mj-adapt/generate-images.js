@@ -22,38 +22,40 @@ function extractSections(htmlPath) {
 
   const baseName = basename(htmlPath).replace('-wechat.html', '');
   const outputDir = dirname(htmlPath);
+  const container = $('body > section > section').first();
+  const topLevelSections = container.children('section');
 
   const sections = [];
 
   // 1. 封面：标题 + TL;DR
-  const header = $('section').first();
-  const tldr = $('section').eq(1);
+  const header = topLevelSections.eq(0);
+  const tldr = topLevelSections.eq(1);
   sections.push({
     name: `${baseName}-1.png`,
     description: '封面：标题 + TL;DR',
     html: `<section style="margin:0;padding:24px 0;background-color:#ffffff;">
       <section style="margin:0 auto;padding:0 16px;max-width:677px;box-sizing:border-box;">
-        ${header.html()}
-        ${tldr.html()}
+        ${$.html(header)}
+        ${$.html(tldr)}
       </section>
     </section>`
   });
 
-  // 2. 提取所有章节（带顶部黑色边框的 section）
+  // 2. 提取文章主体章节（直接包含章节标题块的顶层 section）
   let chapterIndex = 2;
-  $('section').each((i, elem) => {
+  topLevelSections.each((i, elem) => {
     const $section = $(elem);
-    const hasTopBorder = $section.find('section[style*="border-top"]').length > 0;
+    const hasDirectHeading = $section.children('section[style*="border-top"]').length > 0;
 
-    if (hasTopBorder) {
-      const chapterTitle = $section.find('p[style*="font-size:25px"]').text().trim();
+    if (hasDirectHeading) {
+      const chapterTitle = $section.children('section').find('p[style*="font-size:25px"]').first().text().trim();
 
       sections.push({
         name: `${baseName}-${chapterIndex}.png`,
         description: `第${chapterIndex - 1}章：${chapterTitle}`,
         html: `<section style="margin:0;padding:24px 0;background-color:#ffffff;">
           <section style="margin:0 auto;padding:0 16px;max-width:677px;box-sizing:border-box;">
-            ${$section.html()}
+            ${$.html($section)}
           </section>
         </section>`
       });
@@ -63,18 +65,18 @@ function extractSections(htmlPath) {
   });
 
   // 3. 最后一张：CTA + 作者信息
-  const cta = $('section').filter((i, elem) => {
-    return $(elem).find('p:contains("CTA")').length > 0;
-  });
-  const footer = $('section').last();
+  const cta = topLevelSections.filter((i, elem) => {
+    return $(elem).find('p:contains("CTA /")').length > 0;
+  }).first();
+  const footer = topLevelSections.last();
 
   sections.push({
     name: `${baseName}-${chapterIndex}.png`,
     description: '结尾：CTA + 作者信息',
     html: `<section style="margin:0;padding:24px 0;background-color:#ffffff;">
       <section style="margin:0 auto;padding:0 16px;max-width:677px;box-sizing:border-box;">
-        ${cta.html()}
-        ${footer.html()}
+        ${$.html(cta)}
+        ${$.html(footer)}
       </section>
     </section>`
   });
