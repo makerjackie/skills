@@ -6,20 +6,26 @@
 
 ## 怎么安装
 
-先装仓库，再按提示挑你要的 Skill：
+每个 Skill 都按下面这个格式单独安装：
 
 ```bash
-npx skills add makerjackie/skills
+npx skills add makerjackie/skills --skill [skillname]
+```
+
+例如：
+
+```bash
+npx skills add makerjackie/skills --skill mj-design
 ```
 
 ## Skills 列表
 
-新增 Skill 后，记得同步更新下面这张表。
+下面先只介绍目前常用的非 `01MVP` 系列 skill。
 
-| Skill 名称 | 说明 |
-| --- | --- |
-| [01mvp-design](./skills/01mvp-design/README.md) | 把 01MVP 的 logo、黑白高对比排版、组件规则和模板打包成统一视觉规范，用于海报、名片、UI、网站与各种对外物料。 |
-| [cloudflare-one](./skills/cloudflare-one/README.md) | 用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。 |
-| [cloudflare-redirector](./skills/cloudflare-redirector/README.md) | 用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。 |
-| [makerjackie-writer](./skills/makerjackie-writer/README.md) | 我的公众号文章写作 skill。 |
-| [mj-format](./skills/mj-format/README.md) | MakerJackie 排版工具：将 Markdown 文章转换为微信公众号 HTML 格式，并生成小红书风格的图片。 |
+| Skill 名称 | 安装命令 | 说明 |
+| --- | --- | --- |
+| [mj-writer](./skills/mj-writer/README.md) | `npx skills add makerjackie/skills --skill mj-writer` | MakerJackie 的内容写作 skill，用于公众号文章、教程、长推和基于素材的内容整理。 |
+| [mj-adapt](./skills/mj-adapt/README.md) | `npx skills add makerjackie/skills --skill mj-adapt` | 原 `mj-format`，把一篇已完成的文章适配到公众号、小红书等不同发布平台。 |
+| [mj-design](./skills/mj-design/README.md) | `npx skills add makerjackie/skills --skill mj-design` | 基于 `james-design` 改造的高保真 HTML 设计 skill，用于 UI、原型、Slides、动画和视觉探索。 |
+| [cloudflare-one](./skills/cloudflare-one/README.md) | `npx skills add makerjackie/skills --skill cloudflare-one` | 用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。 |
+| [cloudflare-redirector](./skills/cloudflare-redirector/README.md) | `npx skills add makerjackie/skills --skill cloudflare-redirector` | 用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。 |

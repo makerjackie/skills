@@ -497,6 +497,7 @@
     <div class="nav-dot" data-page="2"></div>
     <div class="nav-dot" data-page="3"></div>
     <div class="nav-dot" data-page="4"></div>
+    <div class="nav-dot" data-page="5"></div>
   </div>
 
   <div class="container">
@@ -511,31 +512,39 @@
 
         <p class="intro-text">
           在 <span class="highlight">Claude Code / Codex / Trae</span> 等 AI Agent 对话中<br />
-          复制下面的命令，即可使用我的所有技能
+          按下面这个格式安装你要用的 Skill
         </p>
 
         <div class="install-section">
-          <div class="install-label">复制这条命令给 AI</div>
+          <div class="install-label">安装命令格式</div>
           <div class="install-box">
-            <code class="install-code">npx skills add makerjackie/skills</code>
-            <button class="copy-btn" data-copy="npx skills add makerjackie/skills">复制</button>
+            <code class="install-code">npx skills add makerjackie/skills --skill [skillname]</code>
+            <button class="copy-btn" data-copy="npx skills add makerjackie/skills --skill [skillname]">复制</button>
+          </div>
+          <div class="install-hint">
+            <div class="hint-icon">→</div>
+            <div class="hint-text">把 <code>[skillname]</code> 替换成 <code>mj-writer</code>、<code>mj-adapt</code>、<code>mj-design</code>、<code>cloudflare-one</code> 或 <code>cloudflare-redirector</code>。</div>
           </div>
         </div>
 
         <div class="skill-list">
           <div class="skill-preview" onclick="scrollToPage(1)">
-            <div class="skill-preview-name">MakerJackie 的自媒体写作 Skill</div>
-            <div class="skill-preview-desc">makerjackie-writer · 拒绝 AI 味 · 保持真诚</div>
+            <div class="skill-preview-name">把素材写成有活人感的长文</div>
+            <div class="skill-preview-desc">mj-writer · 公众号文章 / 教程 / 深度内容</div>
           </div>
           <div class="skill-preview" onclick="scrollToPage(2)">
-            <div class="skill-preview-name">一键生成极简硬核黑白风格设计</div>
-            <div class="skill-preview-desc">01mvp-design · 海报/名片/UI · 黑白硬核</div>
+            <div class="skill-preview-name">一篇文章，适配到多个发布平台</div>
+            <div class="skill-preview-desc">mj-adapt · 原 mj-format · 公众号 / 小红书</div>
           </div>
           <div class="skill-preview" onclick="scrollToPage(3)">
+            <div class="skill-preview-name">高保真 HTML 设计 / 原型 / Slides</div>
+            <div class="skill-preview-desc">mj-design · UI / mockup / deck / visual exploration</div>
+          </div>
+          <div class="skill-preview" onclick="scrollToPage(4)">
             <div class="skill-preview-name">用 CloudFlare 零成本部署你的网站和应用</div>
             <div class="skill-preview-desc">cloudflare-one · 全栈 · 数据库 · 免费额度</div>
           </div>
-          <div class="skill-preview" onclick="scrollToPage(4)">
+          <div class="skill-preview" onclick="scrollToPage(5)">
             <div class="skill-preview-name">批量创建短链接和域名跳转</div>
             <div class="skill-preview-desc">cloudflare-redirector · 一键部署 · 自动同步</div>
           </div>
@@ -548,28 +557,33 @@
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">makerjackie-writer</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/makerjackie-writer', '_blank')">MakerJackie 的自媒体写作 Skill</h2>
+          <div class="skill-kind">mj-writer</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/mj-writer', '_blank')">把素材写成有活人感的长文</h2>
           <p class="skill-desc">
-            一个帮你把想法、素材、PDF、录音整理成“有活人感”长文的写作 Skill。核心价值就是保留真诚表达、减少 AI 味，并把素材理解、结构组织和语言润色一次做完。
+            一个帮你把想法、素材、PDF、录音整理成长文的写作 Skill。核心价值是保留真诚表达、减少 AI 味，并把素材理解、结构组织和语言润色一次做完。
           </p>
         </div>
 
         <div class="skill-section">
+          <h3 class="section-title">安装命令</h3>
+          <div class="code-example">npx skills add makerjackie/skills --skill mj-writer</div>
+        </div>
+
+        <div class="skill-section">
           <h3 class="section-title">使用案例</h3>
-          <div class="code-example">/makerjackie-writer 帮我写篇公众号文章
+          <div class="code-example">/mj-writer 帮我把这个 PDF 素材写成公众号长文
 主题：AI 时代的创作者如何保持真实</div>
-          <div class="code-example">/makerjackie-writer 用我的风格
-把这个 PDF 素材写成长文</div>
+          <div class="code-example">/mj-writer 按我的风格
+把这段录音整理成一篇教程</div>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">使用前提</h3>
           <ul class="requirement-list">
-            <li><strong>素材准备：</strong>你最好已经有一个想法、提纲、录音、聊天记录或 PDF 素材中的任意一种。</li>
+            <li><strong>素材准备：</strong>最好已经有一个想法、提纲、录音、聊天记录或 PDF 素材中的任意一种。</li>
             <li><strong>风格输入：</strong>如果你希望更像你的语气，给它几段你过去写过的内容会更好。</li>
           </ul>
-          <p class="helper-note">不用担心具体怎么喂给 AI，真正使用时 Skill 会引导你一步步补齐素材和风格信息。</p>
+          <p class="helper-note">它更适合长文、教程、深度内容整理，不是专门做短内容分发的 Skill。</p>
         </div>
       </div>
     </section>
@@ -577,31 +591,65 @@
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">01mvp-design</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/01mvp-design', '_blank')">一键生成极简硬核黑白风格设计</h2>
+          <div class="skill-kind">mj-adapt · 原 mj-format</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/mj-adapt', '_blank')">一篇文章，适配到多个发布平台</h2>
           <p class="skill-desc">
-            一个把 01MVP 黑白硬核视觉体系直接交给 AI 的设计 Skill。核心特性是统一高对比视觉、极简排版和现成品牌资源，让海报、名片、页面和 UI 很快落到同一套风格里。
+            一个把已完成文章适配到不同平台的内容分发 Skill。核心场景是“一篇文章，多平台发布”，重点处理公众号 HTML、小红书图文素材等输出。
           </p>
         </div>
 
         <div class="skill-section">
+          <h3 class="section-title">安装命令</h3>
+          <div class="code-example">npx skills add makerjackie/skills --skill mj-adapt</div>
+        </div>
+
+        <div class="skill-section">
           <h3 class="section-title">使用案例</h3>
-          <div class="code-example">/01mvp-design 帮我设计一套 01MVP 官网首页
-- 包含 Hero 区域
-- 包含 3 个功能卡片
-- 底部包含一个 CTA 区域</div>
-          <div class="code-example">/01mvp-design 生成一张产品发布海报
-主标题"LESS IS MORE"
-副标题"重构工作流"</div>
+          <div class="code-example">/mj-adapt 把这篇文章适配到公众号和小红书</div>
+          <div class="code-example">/mj-adapt 只生成公众号 HTML、首图和描述</div>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">使用前提</h3>
           <ul class="requirement-list">
-            <li><strong>场景明确：</strong>先告诉它你要做海报、名片、官网页面还是产品 UI。</li>
-            <li><strong>内容输入：</strong>最好准备标题、文案、模块清单或品牌关键词，生成结果会更贴近你的目标。</li>
+            <li><strong>文章已完成：</strong>它更适合“内容已经写好”的阶段，核心任务是适配排版和分发，不是从零写稿。</li>
+            <li><strong>目标平台：</strong>最好直接说清楚要发公众号、小红书，还是全部平台一起生成。</li>
           </ul>
-          <p class="helper-note">如果你还没想清楚页面结构，Skill 也会先帮你拆版式，再继续生成视觉方案。</p>
+          <p class="helper-note">如果你还在用旧名字 `mj-format`，现在请改成 `mj-adapt`。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="content">
+        <div class="skill-header">
+          <div class="skill-kind">mj-design</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/mj-design', '_blank')">高保真 HTML 设计 / 原型 / Slides</h2>
+          <p class="skill-desc">
+            一个基于 `james-design` 改造的设计 Skill，用 HTML 直接做高保真页面、交互原型、Slides、动画和视觉探索，适合需要快速出方向和出效果的场景。
+          </p>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">安装命令</h3>
+          <div class="code-example">npx skills add makerjackie/skills --skill mj-design</div>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用案例</h3>
+          <div class="code-example">/mj-design 帮我做一个 AI 产品首页 hero
+风格克制一点，但不要普通 SaaS 风</div>
+          <div class="code-example">/mj-design 用 HTML 做一个 8 页的分享 deck
+主题：AI 工作流</div>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">使用前提</h3>
+          <ul class="requirement-list">
+            <li><strong>输出明确：</strong>先告诉它你要做页面、原型、Slides、动画，还是多方向视觉探索。</li>
+            <li><strong>上下文输入：</strong>最好提供截图、品牌资产、现有页面、文案或参考风格，它才能更像设计师而不是模板机。</li>
+          </ul>
+          <p class="helper-note">它最擅长的是高保真 HTML 交付，不是普通文档排版，也不是低保真线框图。</p>
         </div>
       </div>
     </section>
@@ -614,6 +662,11 @@
           <p class="skill-desc">
             一个让 AI 帮你把前端、后端、数据库和存储都部署到 Cloudflare 生态里的 Skill。核心特性是利用免费额度快速起项目，减少服务器配置负担，并尽量按 Cloudflare 最佳实践落地。
           </p>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">安装命令</h3>
+          <div class="code-example">npx skills add makerjackie/skills --skill cloudflare-one</div>
         </div>
 
         <div class="skill-section">
@@ -645,6 +698,11 @@ Workers 处理请求
           <p class="skill-desc">
             一个帮你批量管理短链接和跳转规则的 Skill。核心特性是把域名、重定向和 DNS 规则串起来，让活动页、文档入口和分享链接更统一、更专业，也更容易维护。
           </p>
+        </div>
+
+        <div class="skill-section">
+          <h3 class="section-title">安装命令</h3>
+          <div class="code-example">npx skills add makerjackie/skills --skill cloudflare-redirector</div>
         </div>
 
         <div class="skill-section">
