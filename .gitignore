@@ -1,8 +1,10 @@
 temp/
 tmp/
 .vscode/
+node_modules/
 cache/
 output/
+outputs/
 .DS_Store
 
 # Node.js
