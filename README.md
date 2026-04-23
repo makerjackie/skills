@@ -18,6 +18,13 @@ npx skills add makerjackie/skills --skill [skillname]
 npx skills add makerjackie/skills --skill mj-design
 ```
 
+如果你是个超级大懒人，想一键全局安装我的全部skill，你可以用这个命令：
+
+```bash
+npx skills add makerjackie/skills -g --yes --all
+# 它会全局安装我的全部 skill，而且不需要你二次确认。
+```
+
 ## Skills 列表
 
 下面先只介绍目前常用的非 `01MVP` 系列 skill。
