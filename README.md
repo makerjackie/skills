@@ -37,3 +37,4 @@ npx skills add makerjackie/skills -g --yes --all
 | [voice-to-article](./skills/voice-to-article/README.md) | `npx skills add makerjackie/skills --skill voice-to-article` | 将语音识别的文字转为文章，保持说话者风格，支持三种模式：直接转换、建议优化、分类整理。 |
 | [cloudflare-one](./skills/cloudflare-one/README.md) | `npx skills add makerjackie/skills --skill cloudflare-one` | 用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。 |
 | [cloudflare-redirector](./skills/cloudflare-redirector/README.md) | `npx skills add makerjackie/skills --skill cloudflare-redirector` | 用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。 |
+| [quick-deploy](./skills/quick-deploy/README.md) | `npx skills add makerjackie/skills --skill quick-deploy` | 一键部署工作流，说"部署"自动完成 commit → push → 检查 → 修复 → 部署。 |
