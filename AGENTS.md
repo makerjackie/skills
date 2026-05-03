@@ -49,3 +49,11 @@ Each skill's README.md should contain two parts:
 
 ## Commit & Pull Request Guidelines
 Use Conventional Commit prefixes as seen in history (`feat:`, `docs:`).
+
+## 我说帮我更新一下的时候指的是：
+按顺序执行下面的步骤：
+
+- git commit 和 push 
+- npx skills add makerjackie/skills --yes -g --all
+
+这样可以保证我的 skill 同步到全局中
