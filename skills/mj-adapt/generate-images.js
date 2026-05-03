@@ -34,7 +34,7 @@ function extractSections(htmlPath) {
     name: `${baseName}-1.png`,
     description: '封面：标题 + TL;DR',
     html: `<section style="margin:0;padding:24px 0;background-color:#ffffff;">
-      <section style="margin:0 auto;padding:0 16px;max-width:677px;box-sizing:border-box;">
+      <section style="margin:0 auto;padding:0;max-width:677px;box-sizing:border-box;">
         ${$.html(header)}
         ${$.html(tldr)}
       </section>
@@ -54,7 +54,7 @@ function extractSections(htmlPath) {
         name: `${baseName}-${chapterIndex}.png`,
         description: `第${chapterIndex - 1}章：${chapterTitle}`,
         html: `<section style="margin:0;padding:24px 0;background-color:#ffffff;">
-          <section style="margin:0 auto;padding:0 16px;max-width:677px;box-sizing:border-box;">
+          <section style="margin:0 auto;padding:0;max-width:677px;box-sizing:border-box;">
             ${$.html($section)}
           </section>
         </section>`
@@ -74,7 +74,7 @@ function extractSections(htmlPath) {
     name: `${baseName}-${chapterIndex}.png`,
     description: '结尾：CTA + 作者信息',
     html: `<section style="margin:0;padding:24px 0;background-color:#ffffff;">
-      <section style="margin:0 auto;padding:0 16px;max-width:677px;box-sizing:border-box;">
+      <section style="margin:0 auto;padding:0;max-width:677px;box-sizing:border-box;">
         ${$.html(cta)}
         ${$.html(footer)}
       </section>
