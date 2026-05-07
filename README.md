@@ -38,3 +38,4 @@ npx skills add makerjackie/skills -g --yes --all
 | [cloudflare-one](./skills/cloudflare-one/README.md) | `npx skills add makerjackie/skills --skill cloudflare-one` | 用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。 |
 | [cloudflare-redirector](./skills/cloudflare-redirector/README.md) | `npx skills add makerjackie/skills --skill cloudflare-redirector` | 用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。 |
 | [quick-deploy](./skills/quick-deploy/README.md) | `npx skills add makerjackie/skills --skill quick-deploy` | 一键部署工作流，说"部署"自动完成 commit → push → 检查 → 修复 → 部署。 |
+| [startup-pressure-test](./skills/startup-pressure-test/README.md) | `npx skills add makerjackie/skills --skill startup-pressure-test` | 高压测试创业想法，输出核心假设、致命风险、竞品地图、前 10 个客户动作和 2 周 MVP 方案。 |
