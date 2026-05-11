@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "generate": "node generate-images.js",
-    "generate:xhs": "node generate-xhs-slides.js"
+    "generate:xhs": "node generate-xhs-slides.js",
+    "generate:cover": "node generate-cover.js"
   },
   "dependencies": {
     "puppeteer": "^23.0.0",
