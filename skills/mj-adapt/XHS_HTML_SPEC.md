@@ -1,89 +1,145 @@
 # Xiaohongshu HTML Workflow
 
-`generate-xhs-slides.js` 现在只负责一件事：把 AI 生成的 `xhs-slides.html` 截图成 PNG。
+`generate-xhs-slides.js` 只负责一件事：把 AI 生成的 `xhs-slides.html` 截图成 PNG。
 
-正确职责拆分：
-- AI 负责读 Markdown，决定该做几页、每页如何布局、哪里需要分页（保留原文，不压缩文案）。
-- 渲染器只负责找到 `.slide`，检查是否溢出，然后逐页截图。
+## 职责拆分
+
+- **AI 负责**：读 Markdown，生成 `xhs-slides.html`（长文截图模式，100% 保留原文）。
+- **渲染器负责**：找到 `.slide`，检查是否溢出，逐页截图。
 
 ## Final Workflow
 
 1. 读原始 Markdown 文章
 2. AI 直接生成 `xhs-slides.html`
 3. HTML 内包含多页：
-
-```html
-<section class="slide">...</section>
-<section class="slide">...</section>
-<section class="slide">...</section>
-```
-
+   ```html
+   <section class="slide">...</section>
+   <section class="slide">...</section>
+   <section class="slide">...</section>
+   ```
 4. 运行：
-
-```bash
-node generate-xhs-slides.js path/to/xhs-slides.html path/to/output-dir
-```
+   ```bash
+   node generate-xhs-slides.js path/to/xhs-slides.html path/to/output-dir
+   ```
 
 ## Rendering Contract
 
 - 每一页必须是一个 `.slide`
-- `.slide` 必须是固定画布，推荐 `1080x1350`
+- `.slide` **必须是固定尺寸 `1080x1350`**（4:5 竖版），不能使用 `min-height`
 - 最终导出为 `2160x2700` PNG（2x）
 - 如果任意 `.slide` 出现 overflow，脚本会直接报错
 
-## 长文截图模式（默认）
+---
 
-默认小红书使用**长文截图模式**：保留原文完整内容和微信排版风格，按 H2 章节分页截图。
+## 长文截图模式（唯一模式，默认强制）
 
-关键规则：
-- 保留原文 100% 内容，不压缩文案、不重组内容。
-- 使用内联样式（与微信公众号 HTML 相同方式），**不使用** `xhs-base.css`（那是杂志风幻灯片样式，默认禁用）。
-- 排版风格与微信公众号保持一致（16px 正文、1.65 行高、H2 20px/H3 17px/H4 15px）。
-- 不做杂志式重排版（无封面页、总览、卡片网格、大号独立标题页）。
+**小红书统一使用长文截图模式。** 不存在"杂志风模式"选项。
 
-## Recommended HTML Skeleton
+### 核心规则（必须遵守）
+
+1. **100% 保留原文**：必须逐字复制原文的全部内容，包括所有段落、列表、引用、代码块、表格。
+   - ❌ 禁止：改写、润色、压缩、重组、提炼原文的任何部分。
+   - ❌ 禁止：添加原文没有的过渡句、总结句、评论。
+   - ❌ 禁止：将列表改成卡片网格，或将文本重新组织成杂志式版面。
+
+2. **只使用内联样式**：每个元素使用 `style` 属性（与微信公众号 HTML 相同方式）。
+   - ❌ 不允许使用 `<style>` 块定义全局样式。
+   - ❌ 不允许引用 `xhs-base.css`（那是旧杂志风样式，已废弃）。
+
+3. **字号适配小红书阅读（关键）**：小红书图片在手机上是全屏宽显示（1080px 缩放至 ~430px），字号必须比微信公众号大得多。
+   - ⚠️ 不要使用微信公众号的 16px 字号，在小红书上根本看不清。
+   - 正文：`font-size: 38px; line-height: 1.55;`（手机上等效 ~15px）
+   - H2（章节标题）：`font-size: 52px; font-weight: 700; line-height: 1.35;`
+   - H3：`font-size: 44px; font-weight: 700; line-height: 1.4;`
+   - H4：`font-size: 38px; font-weight: 700; line-height: 1.45;`
+   - 大标题/页眉标题：`font-size: 40px; font-weight: 900; line-height: 1.3;`
+   - 标签/元信息（Monospace）：`font-size: 20px;`
+   - 字体族：`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`
+   - 颜色：黑色 `#111111` 正文，白色 `#ffffff` 背景。
+   - 禁用：封面页、总览页、大号独立标题页、卡片网格、数据看板等杂志式组件。
+
+4. **分页方式**：
+   - 第一页：从文章标题 + 正文开头开始，不使用独立封面页。
+   - 中间页：按 H2 章节分页，一个 H2 及其内容为一页。
+   - 最后一页：结尾内容 + CTA + 作者/品牌信息。
+   - 内容过长时可以在段落间拆分，但**不得跳过任何内容**。
+
+---
+
+## HTML 骨架（必须使用此结构）
 
 ```html
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XHS Slides</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { background: #f5f5f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-      .slide { width: 1080px; min-height: 1350px; background: #fff; margin: 20px auto; overflow: hidden; padding: 40px; }
-    </style>
-  </head>
-  <body>
-    <section class="slide">
-      <!-- 文章内容：使用内联样式，与微信排版风格一致 -->
-    </section>
-    <section class="slide">
-      <!-- 下一页 -->
-    </section>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XHS Slides</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f5f5f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+    .slide { width: 1080px; height: 1350px; background: #fff; margin: 20px auto; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <section class="slide" style="padding: 50px 44px 40px; display: flex; flex-direction: column;">
+    <!-- 文章内容：所有样式使用内联，字号适配小红书阅读（正文38px，H2 52px） -->
+    <h2 style="font-size: 52px; font-weight: 700; line-height: 1.35; margin: 28px 0 18px; color: #000;">章节标题</h2>
+    <p style="font-size: 38px; line-height: 1.55; margin: 0 0 24px; color: #111;">正文内容...</p>
+  </section>
+  <section class="slide" style="padding: 50px 44px 40px;">
+    <!-- 下一页 -->
+  </section>
+</body>
 </html>
 ```
 
-注意：每个 `.slide` 内部使用内联样式（inline styles），与微信公众号 HTML 规范保持一致。
+注意：`.slide` 的 `width: 1080px; height: 1350px; overflow: hidden;` 由全局样式控制，确保每页都是精确的 4:5 竖版尺寸。**内容样式全部使用内联**。
+
+---
+
+## ❌ 禁止的做法（常见错误）
+
+| 禁止项 | 原因 |
+|--------|------|
+| 使用 `xhs-base.css` | 那是旧杂志风样式，会触发封面/卡片/总览等重排版 |
+| 在 `<head>` 中写 `.slide` 内部元素的样式 | 必须用内联样式 |
+| 添加封面页、总览页、大号标题页等独立页面 | 第一页必须直接从文章内容开始 |
+| 压缩/改写/提炼原文内容 | 必须 100% 保留原文 |
+| 将列表（`<ul><li>`）改为卡片网格 | 保持原文结构不变 |
+| 添加原文没有的过渡句或总结 | 不做内容编辑 |
+| 使用 `min-height` 代替 `height` | 必须固定 `height: 1350px`，否则输出图片不是标准的 4:5 竖版尺寸 |
+
+---
+
+## ✅ 正确的做法
+
+- 像"截图网页长图"一样思考：每个 `.slide` 就是文章某个章节的截图。
+- 原文是什么，HTML 里就写什么，一个字不改。
+- 列表还是列表（`<ul><li>`），段落还是段落（`<p>`），引用还是引用（`<blockquote>`）。
+- 内联样式只控制视觉呈现（字号、行高、边距），不改变内容结构。
+
+---
 
 ## 分页原则
 
-- 第一页：从文章标题 + 正文开头开始，不使用独立封面页。
-- 中间页：按 H2 章节分页，一个 H2 及其内容为一页。
-- 最后一页：结尾内容 + CTA + 作者/品牌信息。
-- 内容过长时拆分：如果一个 H2 章节内容超过一页，可以在段落间拆分。
+- 第一页：文章标题 + 正文开头段落（直接从内容开始，不要封面页）。
+- 按 H2 章节分页，一个 H2 及其完整内容为一页。
+- 最后一页：结尾 + CTA + 作者/品牌信息。
+- 内容溢出时可以拆分，但拆分后下一页必须继续原文，不得跳过。
+
+---
 
 ## Quality Gates
 
-渲染前 AI 需要自己检查：
-- 单页内容是否过多（超出 1080x1350 会 overflow，脚本会报错）
-- 是否需要拆页
-- 原文是否被修改或压缩
+渲染前 AI 需要自查：
+- [ ] 原文是否被修改或压缩？→ 是则重写，保证逐字一致。
+- [ ] 是否使用了内联样式而非全局 `<style>`？→ 是则重写。
+- [ ] 是否有杂志式组件（封面、总览、卡片网格）？→ 是则删除。
+- [ ] 单页内容是否会 overflow？→ 是则拆分。
+- [ ] `.slide` 是否使用 `height: 1350px`（而不是 `min-height`）？→ 确保每页是精确的 4:5 竖版尺寸。
+- [ ] 内容不够满时是否有空白留底？→ 允许，空白保留即可，不要拉伸内容。
 
-渲染时脚本会再检查：
-- 是否存在 `.slide`
-- 是否有 overflow
-
+渲染时脚本会检查：
+- [ ] 是否存在 `.slide`
+- [ ] 是否有 overflow
