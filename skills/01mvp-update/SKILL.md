@@ -31,6 +31,13 @@ If the user gives a date range, commit range, or notes, use them. Otherwise:
 4. Read the touched docs/pages when needed to understand the reader benefit.
 5. Treat user-provided notes as higher priority than git evidence.
 
+`pnpm changelog:draft` uses the newest date heading in
+`apps/01mvp-web/content/docs/about/changelog.mdx` as the default checkpoint. If
+the last public entry is Monday and the skill runs again on Friday, summarize
+the changes between Monday and Friday. If the user runs multiple updates on the
+same day, ask for or infer a commit range to avoid repeating the same-day
+changes.
+
 ## What To Update Directly
 
 When the user asks to run the update workflow, do these edits directly unless
@@ -152,12 +159,21 @@ The official-account article should usually be 800-1500 Chinese characters.
 
 Use this structure:
 
-1. Start with the reader pain or concrete use case.
-2. Explain the update in plain language.
-3. List 3-5 useful changes.
-4. Link the changes to reader outcomes.
-5. End with a simple CTA: read the guide, try the feature, follow updates, or
-   join the community.
+1. Make the title clearly say this is a 01MVP handbook, knowledge-base, or
+   product update. Examples: `01MVP 手册更新：...`,
+   `01MVP 知识库最近更新：...`.
+2. Start with the reader pain or concrete use case.
+3. Explain the update in plain language.
+4. List 3-5 useful changes.
+5. Link the changes to reader outcomes.
+6. End with a concrete CTA that makes 01MVP feel worth reading or buying:
+   read the guide, try the feature, join the community, or become a member to
+   keep receiving deeper cases, templates, and future updates.
+
+Never put internal editorial notes, AI instructions, or implementation
+commentary into the HTML. Reader-facing copy can mention that the update is
+practical and focused on useful changes, but do not write phrases like
+`不写内部工程流水账`.
 
 Example article skeleton:
 
