@@ -162,12 +162,14 @@ meta-explanations about the update process.
 
 Use this structure:
 
-1. Make the title clearly say this is a 01MVP.com, 01MVP handbook,
-   knowledge-base, or product update. Examples: `01MVP.com 更新：...`,
-   `01MVP 手册更新：...`, `01MVP 知识库最近更新：...`.
+1. Make the title clearly say this is a 01MVP.com update by default.
+   Examples: `01MVP.com 更新：...`, `01MVP.com 最近更新：...`. Only use
+   `01MVP 手册更新` when the update is exclusively about handbook content.
 2. Start with the reader pain or concrete use case.
 3. Explain the update in plain language.
-4. List 3-5 useful changes.
+4. List useful changes by reader-facing category when there are multiple kinds
+   of updates. Use only categories that have real content, such as `功能更新`,
+   `文档更新`, `体验更新`, `工作流更新`, or `模板更新`.
 5. Link the changes to reader outcomes.
 6. End with a concrete CTA that makes 01MVP feel worth reading or buying:
    read the guide, try the feature, join the community, or become a member to

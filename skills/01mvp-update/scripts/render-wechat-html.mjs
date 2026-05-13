@@ -202,7 +202,7 @@ function renderHtml({ title, body, date }) {
 
     <section style="margin:0 0 24px;padding:18px;border:3px solid #000000;background-color:#ffffff;box-sizing:border-box;">
       <p style="margin:0 0 12px;font-size:12px;line-height:1.6;letter-spacing:1px;color:#000000;font-weight:700;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;">
-        01MVP 手册更新 / ${escapeHtml(date)}
+        01MVP.com 更新 / ${escapeHtml(date)}
       </p>
       <p style="margin:0;font-size:30px;line-height:1.35;color:#000000;font-weight:900;">
         ${escapeHtml(title)}
@@ -220,7 +220,7 @@ ${renderBody(body)}
           独立开发者 / AI 实践者
         </p>
         <p style="margin:0 0 10px;font-size:16px;line-height:1.65;color:#111111;">
-          01MVP 记录一个人如何用 AI 把想法做成产品：验证、上线、收费、增长和持续运营。
+          01MVP 是一套系统性的 AI 提效与产品实战手册，记录如何用 AI 把想法做成能上线、能验证、能收费的小产品。
         </p>
         <p style="margin:0 0 22px;font-size:15px;line-height:1.65;color:#555555;">
           如果你也想做自己的小产品，可以从这里开始看。
