@@ -211,16 +211,7 @@ function renderHtml({ title, body, date }) {
 
 ${renderBody(body)}
 
-    <section style="margin:28px 0 28px;padding:18px;border:2px solid #000000;background-color:#ffffff;box-sizing:border-box;">
-      <p style="margin:0 0 10px;font-size:12px;line-height:1.6;letter-spacing:1px;color:#000000;font-weight:700;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;">
-        CTA / 继续做出自己的产品
-      </p>
-      <p style="margin:0;font-size:16px;line-height:1.65;color:#111111;">
-        如果你也想用 AI 从想法做出能上线、能验证、能收费的小产品，可以从 01MVP 实战手册开始。会员内容会持续更新更多案例、模板和实操路径：<a href="https://01mvp.com/docs/guide" style="color:#000000;text-decoration:underline;text-underline-offset:3px;">01mvp.com/docs/guide</a>
-      </p>
-    </section>
-
-    <section style="margin:64px 0 0;padding:0;border:3px solid #000000;background-color:#ffffff;box-sizing:border-box;">
+    <section style="margin:44px 0 0;padding:0;border:3px solid #000000;background-color:#ffffff;box-sizing:border-box;">
       <section style="padding:24px 24px 20px;">
         <p style="margin:0 0 6px;font-size:26px;line-height:1.1;color:#000000;font-weight:900;letter-spacing:-1px;">
           Maker Jackie
@@ -228,11 +219,14 @@ ${renderBody(body)}
         <p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#000000;font-weight:700;letter-spacing:1px;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;">
           独立开发者 / AI 实践者
         </p>
-        <p style="margin:0 0 24px;font-size:16px;line-height:1.65;color:#111111;">
-          正在整理 01MVP：一套从想法、验证、开发、上线到收费和运营的 AI 产品实战手册。
+        <p style="margin:0 0 10px;font-size:16px;line-height:1.65;color:#111111;">
+          01MVP 记录一个人如何用 AI 把想法做成产品：验证、上线、收费、增长和持续运营。
+        </p>
+        <p style="margin:0 0 22px;font-size:15px;line-height:1.65;color:#555555;">
+          如果你也想做自己的小产品，可以从这里开始看。
         </p>
         <a href="https://01mvp.com/" style="display:inline-block;padding:10px 18px;background-color:#000000;color:#ffffff;text-decoration:none;font-size:16px;font-weight:700;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;letter-spacing:1px;">
-          查看更多 AI 实战教程 -> 01mvp.com
+          01mvp.com
         </a>
       </section>
       <section style="margin:0;padding:14px 24px;background-color:#f5f5f5;border-top:2px solid #000000;">
