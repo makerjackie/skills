@@ -180,6 +180,12 @@ commentary into the HTML. Reader-facing copy can mention that the update is
 practical and focused on useful changes, but do not write phrases like
 `不写内部工程流水账`.
 
+When a workflow or skill update is itself useful to readers, mention it
+plainly and briefly. Focus on the outcome, such as one-click generation of the
+changelog, WeChat article, group message, X/Twitter copy, Xiaohongshu text, and
+English update. Avoid exposing raw implementation details that readers cannot
+use.
+
 Keep the ending compact. Do not stack a separate CTA block and an author card
 with repeated text. Use one concise author/CTA card, and expose only
 `01mvp.com` in visible copy unless the user explicitly asks for a deep link.
