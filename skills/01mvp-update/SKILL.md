@@ -156,12 +156,15 @@ node /Users/jackiexiao/code/makerjackie/skills/skills/01mvp-update/scripts/rende
 ## WeChat Article Format
 
 The official-account article should usually be 800-1500 Chinese characters.
+For small feature updates, 600-1000 Chinese characters is better. Keep it easy
+to scan on mobile: short paragraphs, concrete examples, and no long
+meta-explanations about the update process.
 
 Use this structure:
 
-1. Make the title clearly say this is a 01MVP handbook, knowledge-base, or
-   product update. Examples: `01MVP 手册更新：...`,
-   `01MVP 知识库最近更新：...`.
+1. Make the title clearly say this is a 01MVP.com, 01MVP handbook,
+   knowledge-base, or product update. Examples: `01MVP.com 更新：...`,
+   `01MVP 手册更新：...`, `01MVP 知识库最近更新：...`.
 2. Start with the reader pain or concrete use case.
 3. Explain the update in plain language.
 4. List 3-5 useful changes.
@@ -203,6 +206,16 @@ Example article skeleton:
 
 ...
 ```
+
+For feature updates, prefer titles like:
+
+```txt
+01MVP.com 更新：一键拖拽，把 HTML 变成网址
+01MVP Drop 更新：把 HTML 页面直接分享给朋友
+```
+
+Avoid stiff titles like `部署 HTML 为网址`; use `把 HTML 变成网址` or
+`生成一个可分享的网址`.
 
 ## WeChat HTML Rendering
 
