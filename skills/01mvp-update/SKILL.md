@@ -170,7 +170,8 @@ Use this structure:
 4. List useful changes by reader-facing category when there are multiple kinds
    of updates. Use only categories that have real content, such as `功能更新`,
    `文档更新`, `体验更新`, `工作流更新`, or `模板更新`.
-5. Link the changes to reader outcomes.
+5. Link the changes to reader outcomes. When a new article, feature, page, or
+   template is mentioned, include a clickable link if the public URL is known.
 6. End with a concrete CTA that makes 01MVP feel worth reading or buying:
    read the guide, try the feature, join the community, or become a member to
    keep receiving deeper cases, templates, and future updates.

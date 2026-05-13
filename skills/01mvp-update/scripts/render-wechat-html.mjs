@@ -71,14 +71,27 @@ function escapeHtml(value) {
 
 function inlineMarkdown(value) {
   let html = escapeHtml(value);
+  const links = [];
+  html = html.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
+    (_match, label, href) => {
+      const token = `__LINK_${links.length}__`;
+      links.push(
+        `<a href="${href}" style="color:#000000;text-decoration:underline;text-underline-offset:3px;">${label}</a>`,
+      );
+      return token;
+    },
+  );
   html = html.replace(/`([^`]+)`/g, (_match, code) => {
     return `<code style="padding:2px 4px;background-color:#f3f4f6;border-radius:4px;font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:14px;">${code}</code>`;
   });
   html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   html = html.replace(
-    /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
-    '<a href="$2" style="color:#000000;text-decoration:underline;text-underline-offset:3px;">$1</a>',
+    /(^|[\s(（])((?:https?:\/\/)[^\s<）)]+)/g,
+    (_match, prefix, href) =>
+      `${prefix}<a href="${href}" style="color:#000000;text-decoration:underline;text-underline-offset:3px;">${href}</a>`,
   );
+  html = html.replace(/__LINK_(\d+)__/g, (_match, index) => links[Number(index)]);
   return html;
 }
 
