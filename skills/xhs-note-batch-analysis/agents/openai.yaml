@@ -1,0 +1,4 @@
+interface:
+  display_name: "小红书笔记批量分析"
+  short_description: "采集小红书笔记原文并整理知识库"
+  default_prompt: "Use $xhs-note-batch-analysis to collect this Xiaohongshu profile into Get笔记 and summarize from web_content."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "MJ Skill Creator"
+  short_description: "创建发布并全局安装 MakerJackie 技能"
+  default_prompt: "Use $mj-skill-creator to create a new MakerJackie skill from this workflow."
