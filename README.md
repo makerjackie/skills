@@ -31,9 +31,14 @@ npx skills add makerjackie/skills -g --yes --all
 
 | Skill 名称 | 安装命令 | 说明 |
 | --- | --- | --- |
+| [mj-research](./skills/mj-research/README.md) | `npx skills add makerjackie/skills --skill mj-research` | 结构化网络调研与信息搜索，多渠道交叉验证，调研成果增量保存。 |
+| [mj-topic-gen](./skills/mj-topic-gen/README.md) | `npx skills add makerjackie/skills --skill mj-topic-gen` | 快速生成3-4个选题方向，含标题、大纲和优劣分析。 |
 | [mj-writer](./skills/mj-writer/README.md) | `npx skills add makerjackie/skills --skill mj-writer` | MakerJackie 的内容写作 skill，用于公众号文章、教程、长推和基于素材的内容整理。 |
-| [mj-adapt](./skills/mj-adapt/README.md) | `npx skills add makerjackie/skills --skill mj-adapt` | 原 `mj-format`，把一篇已完成的文章适配到公众号、小红书等不同发布平台。 |
+| [mj-proofreading](./skills/mj-proofreading/README.md) | `npx skills add makerjackie/skills --skill mj-proofreading` | 三遍审校降低AI检测率，24种AI模式识别与改写，含质量评分体系。 |
+| [mj-adapt](./skills/mj-adapt/README.md) | `npx skills add makerjackie/skills --skill mj-adapt` | 原 `mj-format`，把已完成的文章适配到公众号、小红书等不同发布平台。含社交媒体短内容生成和配图设计提案。 |
 | [01mvp-update](./skills/01mvp-update/README.md) | `npx skills add makerjackie/skills --skill 01mvp-update` | 把 01MVP 最近更新整理成读者版 changelog、公众号 HTML、微信群、X、小红书文案和英文 update。 |
+| [mj-script-polish](./skills/mj-script-polish/README.md) | `npx skills add makerjackie/skills --skill mj-script-polish` | 视频脚本口语化审校，去书面腔让脚本适合说出来。 |
+| [mj-speech-coach](./skills/mj-speech-coach/README.md) | `npx skills add makerjackie/skills --skill mj-speech-coach` | 基于Patrick Winston How to Speak方法论的演讲教练，覆盖开场、结构、互动、结尾。 |
 | [mj-design](./skills/mj-design/README.md) | `npx skills add makerjackie/skills --skill mj-design` | 基于 `james-design` 改造的高保真 HTML 设计 skill，用于 UI、原型、Slides、动画和视觉探索。 |
 | [voice-to-article](./skills/voice-to-article/README.md) | `npx skills add makerjackie/skills --skill voice-to-article` | 将语音识别的文字转为文章，保持说话者风格，支持三种模式：直接转换、建议优化、分类整理。 |
 | [cloudflare-one](./skills/cloudflare-one/README.md) | `npx skills add makerjackie/skills --skill cloudflare-one` | 用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。 |
