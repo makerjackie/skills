@@ -1,12 +1,12 @@
 # MakerJackie Skills
 
-这里放的是 MakerJackie 常用、可复用的 Skills。
+这里放的是 MakerJackie 常用、可复用的 skills。当前默认全局安装的自有 skill 都以 `mj-` 开头，方便和系统、插件、第三方 skill 区分。
 
 详细介绍可见 [MakerJackie Skills](https://skills.makerjackie.com)。
 
-## 怎么安装
+## 安装
 
-每个 Skill 都按下面这个格式单独安装：
+单独安装某个 skill：
 
 ```bash
 npx skills add makerjackie/skills --skill [skillname]
@@ -15,36 +15,34 @@ npx skills add makerjackie/skills --skill [skillname]
 例如：
 
 ```bash
-npx skills add makerjackie/skills --skill mj-design
+npx skills add makerjackie/skills --skill mj-writer
 ```
 
-如果你是个超级大懒人，想一键全局安装我的全部skill，你可以用这个命令：
+一键安装当前 active skill：
 
 ```bash
 npx skills add makerjackie/skills -g --yes --all
-# 它会全局安装我的全部 skill，而且不需要你二次确认。
 ```
 
-## Skills 列表
+`--all` 只应该安装 `skills/` 目录里的 active skill。已停用或合并的旧 skill 放在 `backup_skills/`，不会作为默认全局 skill 维护。
 
-下面先只介绍目前常用的非 `01MVP` 系列 skill。
+## Active Skills
 
 | Skill 名称 | 安装命令 | 说明 |
 | --- | --- | --- |
-| [mj-research](./skills/mj-research/README.md) | `npx skills add makerjackie/skills --skill mj-research` | 结构化网络调研与信息搜索，多渠道交叉验证，调研成果增量保存。 |
-| [mj-topic-gen](./skills/mj-topic-gen/README.md) | `npx skills add makerjackie/skills --skill mj-topic-gen` | 快速生成3-4个选题方向，含标题、大纲和优劣分析。 |
-| [mj-writer](./skills/mj-writer/README.md) | `npx skills add makerjackie/skills --skill mj-writer` | MakerJackie 的内容写作 skill，用于公众号文章、教程、长推和基于素材的内容整理。 |
-| [mj-proofreading](./skills/mj-proofreading/README.md) | `npx skills add makerjackie/skills --skill mj-proofreading` | 三遍审校降低AI检测率，24种AI模式识别与改写，含质量评分体系。 |
-| [mj-adapt](./skills/mj-adapt/README.md) | `npx skills add makerjackie/skills --skill mj-adapt` | 原 `mj-format`，把已完成的文章适配到公众号、小红书等不同发布平台。含社交媒体短内容生成和配图设计提案。 |
-| [01mvp-update](./skills/01mvp-update/README.md) | `npx skills add makerjackie/skills --skill 01mvp-update` | 把 01MVP 最近更新整理成读者版 changelog、公众号 HTML、微信群、X、小红书文案和英文 update。 |
-| [mj-script-polish](./skills/mj-script-polish/README.md) | `npx skills add makerjackie/skills --skill mj-script-polish` | 视频脚本口语化审校，去书面腔让脚本适合说出来。 |
-| [mj-speech-coach](./skills/mj-speech-coach/README.md) | `npx skills add makerjackie/skills --skill mj-speech-coach` | 基于Patrick Winston How to Speak方法论的演讲教练，覆盖开场、结构、互动、结尾。 |
-| [mj-design](./skills/mj-design/README.md) | `npx skills add makerjackie/skills --skill mj-design` | 基于 `james-design` 改造的高保真 HTML 设计 skill，用于 UI、原型、Slides、动画和视觉探索。 |
-| [voice-to-article](./skills/voice-to-article/README.md) | `npx skills add makerjackie/skills --skill voice-to-article` | 将语音识别的文字转为文章，保持说话者风格，支持三种模式：直接转换、建议优化、分类整理。 |
-| [cloudflare-one](./skills/cloudflare-one/README.md) | `npx skills add makerjackie/skills --skill cloudflare-one` | 用一个适合 AI 调用的 Cloudflare Token，把 Workers、Pages、R2、D1、KV、Queues、Browser Rendering、Workers AI 等基础设施串起来。 |
-| [cloudflare-redirector](./skills/cloudflare-redirector/README.md) | `npx skills add makerjackie/skills --skill cloudflare-redirector` | 用 Cloudflare Workers 做批量域名重定向，支持规则编译和 DNS 同步。 |
-| [quick-deploy](./skills/quick-deploy/README.md) | `npx skills add makerjackie/skills --skill quick-deploy` | 一键部署工作流，说"部署"自动完成 commit → push → 检查 → 修复 → 部署。 |
-| [startup-pressure-test](./skills/startup-pressure-test/README.md) | `npx skills add makerjackie/skills --skill startup-pressure-test` | 高压测试创业想法，输出核心假设、致命风险、竞品地图、前 10 个客户动作和 2 周 MVP 方案。 |
-| [notes-workflow](./skills/notes-workflow/README.md) | `npx skills add makerjackie/skills --skill notes-workflow` | 自动处理 Get笔记 语音笔记 — 增量拉取、跨笔记分析、生成执行计划、按主题并行执行。 |
-| [xhs-note-batch-analysis](./skills/xhs-note-batch-analysis/README.md) | `npx skills add makerjackie/skills --skill xhs-note-batch-analysis` | 批量采集小红书主页笔记链接，导入 Get笔记，并基于 `web_content` 整理知识库。 |
+| [mj-writer](./skills/mj-writer/README.md) | `npx skills add makerjackie/skills --skill mj-writer` | MakerJackie 内容创作总入口，合并选题、写作调研、语音转文章、文章审校、视频脚本和演讲稿优化。 |
+| [mj-adapt](./skills/mj-adapt/README.md) | `npx skills add makerjackie/skills --skill mj-adapt` | 把已完成文章适配到公众号、小红书、X 等平台，生成排版和发布素材。 |
 | [mj-skill-creator](./skills/mj-skill-creator/README.md) | `npx skills add makerjackie/skills --skill mj-skill-creator` | 把重复工作流固化成 MakerJackie skill，并完成 README、commit、push 和全局安装。 |
+| [mj-cf-dns](./skills/mj-cf-dns/README.md) | `npx skills add makerjackie/skills --skill mj-cf-dns` | 管理 Cloudflare DNS、Pages 自定义域名和 Workers 自定义域名绑定。 |
+| [mj-deploy](./skills/mj-deploy/README.md) | `npx skills add makerjackie/skills --skill mj-deploy` | 一键部署工作流，说“部署”后自动完成 commit、push、检查、修复和部署。 |
+| [mj-notes-workflow](./skills/mj-notes-workflow/README.md) | `npx skills add makerjackie/skills --skill mj-notes-workflow` | 自动处理 Get笔记语音笔记，增量拉取、跨笔记分析、生成执行计划并按主题执行。 |
+| [mj-xhs-note-batch-analysis](./skills/mj-xhs-note-batch-analysis/README.md) | `npx skills add makerjackie/skills --skill mj-xhs-note-batch-analysis` | 批量采集小红书主页笔记链接，导入 Get笔记，并基于 `web_content` 整理知识库。 |
+| [mj-startup-pressure-test](./skills/mj-startup-pressure-test/README.md) | `npx skills add makerjackie/skills --skill mj-startup-pressure-test` | 高压测试创业想法，输出核心假设、致命风险、竞品地图、前 10 个客户动作和 2 周 MVP 方案。 |
+| [mj-markdown-formatter](./skills/mj-markdown-formatter/README.md) | `npx skills add makerjackie/skills --skill mj-markdown-formatter` | 优化 Markdown 文章排版、修复格式与基础错误，并尽量保持原文语气。 |
+
+## Local Or Archived Skills
+
+- `01mvp-design` 和 `01mvp-update` 已迁移到 `/Users/jackiexiao/code/makerjackie/01mvp-start/.agents/skills/`，作为 01MVP 项目本地 skill 使用。
+- `mj-design` 已停用，归档到 `backup_skills/mj-design/`。
+- 原 `mj-research`、`mj-topic-gen`、`mj-proofreading`、`mj-script-polish`、`mj-speech-coach`、`voice-to-article` 已合并到 `mj-writer`。
+- `cloudflare-redirector` 已从默认 active skill 中移除，归档到 `backup_skills/cloudflare-redirector/`。

@@ -523,7 +523,7 @@
           </div>
           <div class="install-hint">
             <div class="hint-icon">→</div>
-            <div class="hint-text">把 <code>[skillname]</code> 替换成 <code>mj-writer</code>、<code>mj-adapt</code>、<code>mj-design</code>、<code>cloudflare-one</code> 或 <code>cloudflare-redirector</code>。</div>
+            <div class="hint-text">把 <code>[skillname]</code> 替换成 <code>mj-writer</code>、<code>mj-adapt</code>、<code>mj-deploy</code>、<code>mj-cf-dns</code> 或 <code>mj-notes-workflow</code>。</div>
           </div>
         </div>
 
@@ -537,16 +537,16 @@
             <div class="skill-preview-desc">mj-adapt · 原 mj-format · 公众号 / 小红书</div>
           </div>
           <div class="skill-preview" onclick="scrollToPage(3)">
-            <div class="skill-preview-name">高保真 HTML 设计 / 原型 / Slides</div>
-            <div class="skill-preview-desc">mj-design · UI / mockup / deck / visual exploration</div>
+            <div class="skill-preview-name">一句部署，完成提交、检查和发布</div>
+            <div class="skill-preview-desc">mj-deploy · commit / push / build / deploy</div>
           </div>
           <div class="skill-preview" onclick="scrollToPage(4)">
-            <div class="skill-preview-name">用 CloudFlare 零成本部署你的网站和应用</div>
-            <div class="skill-preview-desc">cloudflare-one · 全栈 · 数据库 · 免费额度</div>
+            <div class="skill-preview-name">安全维护 Cloudflare DNS 和域名绑定</div>
+            <div class="skill-preview-desc">mj-cf-dns · DNS / Pages / Workers domains</div>
           </div>
           <div class="skill-preview" onclick="scrollToPage(5)">
-            <div class="skill-preview-name">批量创建短链接和域名跳转</div>
-            <div class="skill-preview-desc">cloudflare-redirector · 一键部署 · 自动同步</div>
+            <div class="skill-preview-name">自动处理 Get笔记里的语音笔记</div>
+            <div class="skill-preview-desc">mj-notes-workflow · voice notes / tasks / knowledge</div>
           </div>
         </div>
 
@@ -623,33 +623,31 @@
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">mj-design</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/mj-design', '_blank')">高保真 HTML 设计 / 原型 / Slides</h2>
+          <div class="skill-kind">mj-deploy</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/mj-deploy', '_blank')">一句部署，完成提交、检查和发布</h2>
           <p class="skill-desc">
-            一个基于 `james-design` 改造的设计 Skill，用 HTML 直接做高保真页面、交互原型、Slides、动画和视觉探索，适合需要快速出方向和出效果的场景。
+            一个把 commit、push、lint/build 检查、自动修复和部署串起来的工作流 Skill。适合你已经完成改动，只想把当前仓库可靠发布出去的场景。
           </p>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">安装命令</h3>
-          <div class="code-example">npx skills add makerjackie/skills --skill mj-design</div>
+          <div class="code-example">npx skills add makerjackie/skills --skill mj-deploy</div>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">使用案例</h3>
-          <div class="code-example">/mj-design 帮我做一个 AI 产品首页 hero
-风格克制一点，但不要普通 SaaS 风</div>
-          <div class="code-example">/mj-design 用 HTML 做一个 8 页的分享 deck
-主题：AI 工作流</div>
+          <div class="code-example">/mj-deploy 帮我把当前改动提交并部署</div>
+          <div class="code-example">/mj-deploy 检查构建，修复问题，然后发布到 Cloudflare Workers</div>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">使用前提</h3>
           <ul class="requirement-list">
-            <li><strong>输出明确：</strong>先告诉它你要做页面、原型、Slides、动画，还是多方向视觉探索。</li>
-            <li><strong>上下文输入：</strong>最好提供截图、品牌资产、现有页面、文案或参考风格，它才能更像设计师而不是模板机。</li>
+            <li><strong>仓库准备：</strong>当前目录应该是要发布的 git 仓库。</li>
+            <li><strong>部署凭证：</strong>如果涉及 Cloudflare、Vercel 或其他平台，需要本机已经配置好对应 token。</li>
           </ul>
-          <p class="helper-note">它最擅长的是高保真 HTML 交付，不是普通文档排版，也不是低保真线框图。</p>
+          <p class="helper-note">它会尽量只提交本次相关改动，不会主动回滚用户已有的无关变更。</p>
         </div>
       </div>
     </section>
@@ -657,35 +655,31 @@
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">cloudflare-one</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-one', '_blank')">用 CloudFlare 零成本部署你的网站和应用</h2>
+          <div class="skill-kind">mj-cf-dns</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/mj-cf-dns', '_blank')">安全维护 Cloudflare DNS 和域名绑定</h2>
           <p class="skill-desc">
-            一个让 AI 帮你把前端、后端、数据库和存储都部署到 Cloudflare 生态里的 Skill。核心特性是利用免费额度快速起项目，减少服务器配置负担，并尽量按 Cloudflare 最佳实践落地。
+            一个专门处理 Cloudflare DNS、Pages 自定义域名和 Workers custom domain 的 Skill。核心是先检查现有记录，再做最小变更，最后验证结果。
           </p>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">安装命令</h3>
-          <div class="code-example">npx skills add makerjackie/skills --skill cloudflare-one</div>
+          <div class="code-example">npx skills add makerjackie/skills --skill mj-cf-dns</div>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">使用案例</h3>
-          <div class="code-example">/cloudflare-one 部署一个用户预约活动站
-前端 HTML+Tailwind
-报名信息存入 D1 数据库</div>
-          <div class="code-example">/cloudflare-one 创建 API 端点
-Workers 处理请求
-数据存储在 KV 中</div>
+          <div class="code-example">/mj-cf-dns 把 app.example.com 绑定到 Cloudflare Pages 项目</div>
+          <div class="code-example">/mj-cf-dns 添加这个 TXT 验证记录，先检查冲突再执行</div>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">使用前提</h3>
           <ul class="requirement-list">
             <li><strong>Cloudflare 账号：</strong>你需要有自己的 Cloudflare 账号。</li>
-            <li><strong>API 权限：</strong>需要配置对应的 API Token / API Key，Skill 会提示你具体怎么配。</li>
+            <li><strong>API 权限：</strong>需要配置 `CLOUDFLARE_API_TOKEN` 和 `CLOUDFLARE_ACCOUNT_ID`。</li>
           </ul>
-          <p class="helper-note">不用提前把所有服务研究明白，真正执行时 Skill 会根据你要部署的类型引导你补配置。</p>
+          <p class="helper-note">生产域名会先做 dry-run 计划，确认后再写入。</p>
         </div>
       </div>
     </section>
@@ -693,35 +687,31 @@ Workers 处理请求
     <section class="page">
       <div class="content">
         <div class="skill-header">
-          <div class="skill-kind">cloudflare-redirector</div>
-          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/cloudflare-redirector', '_blank')">批量创建短链接和域名跳转</h2>
+          <div class="skill-kind">mj-notes-workflow</div>
+          <h2 class="skill-name" onclick="window.open('https://github.com/makerjackie/skills/tree/main/skills/mj-notes-workflow', '_blank')">自动处理 Get笔记里的语音笔记</h2>
           <p class="skill-desc">
-            一个帮你批量管理短链接和跳转规则的 Skill。核心特性是把域名、重定向和 DNS 规则串起来，让活动页、文档入口和分享链接更统一、更专业，也更容易维护。
+            一个把 Get笔记里的语音笔记增量拉取、跨笔记分析、生成执行计划并按主题执行的 Skill。适合定期整理灵感、待办、日记和内容素材。
           </p>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">安装命令</h3>
-          <div class="code-example">npx skills add makerjackie/skills --skill cloudflare-redirector</div>
+          <div class="code-example">npx skills add makerjackie/skills --skill mj-notes-workflow</div>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">使用案例</h3>
-          <div class="code-example">/cloudflare-redirector 配置规则
-docs.example.com → 飞书文档
-join.example.com → 微信群二维码</div>
-          <div class="code-example">/cloudflare-redirector 创建短链接
-go.example.com/meeting
-→ 腾讯会议链接</div>
+          <div class="code-example">/mj-notes-workflow 处理最近的 Get笔记语音笔记</div>
+          <div class="code-example">/mj-notes-workflow 把待办、日记和文章素材分开整理，先给我执行计划</div>
         </div>
 
         <div class="skill-section">
           <h3 class="section-title">使用前提</h3>
           <ul class="requirement-list">
-            <li><strong>自己的域名：</strong>你需要有一个自己的域名，才能配置短链接和跳转入口。</li>
-            <li><strong>Cloudflare 托管：</strong>建议域名已经接入 Cloudflare，方便自动同步 DNS 和 Workers 配置。</li>
+            <li><strong>Get笔记 CLI：</strong>本机需要安装并登录 `getnote`。</li>
+            <li><strong>确认执行：</strong>Skill 会先给执行计划，确认后才处理具体任务。</li>
           </ul>
-          <p class="helper-note">这些前提不用你一次性手动配完，Skill 在真正执行时会告诉你下一步该准备什么。</p>
+          <p class="helper-note">适合批量整理语音笔记，不适合处理普通网页搜索任务。</p>
         </div>
       </div>
     </section>

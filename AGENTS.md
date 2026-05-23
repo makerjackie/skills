@@ -8,6 +8,7 @@ This repository hosts makerjackie's reusable skills, with each skill self-contai
 
 use `skills-creator` skill to create the new skill.
 after add a new skill, update the root README table.
+all active MakerJackie-owned skills under `skills/` must use the `mj-` prefix. Put deprecated or merged skills under `backup_skills/` instead of leaving them installable.
 
 ## Creating Beginner-Friendly Skills
 

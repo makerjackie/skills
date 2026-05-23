@@ -32,7 +32,7 @@ Create or update:
 - optional `references/`, `scripts/`, or `assets/` only when they remove real repetition
 - root `README.md` skill table
 
-Skill names use lowercase letters, digits, and hyphens only.
+Skill names use lowercase letters, digits, and hyphens only. Active MakerJackie-owned skills must start with `mj-`; if an old workflow should not be globally installed, move it under `backup_skills/` and disable its `SKILL.md`/`skill.md` entrypoint.
 
 ## Creation Workflow
 

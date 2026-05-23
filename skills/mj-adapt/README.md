@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-claude code skill install /Users/jackiexiao/code/makerjackie/skills/skills/mj-adapt
+npx skills add makerjackie/skills --skill mj-adapt
 ```
 
 ## Quick Start

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cloudflare DNS"
+  short_description: "Manage Cloudflare DNS, Pages, and Worker domains"
+  default_prompt: "Use $mj-cf-dns to bind a Cloudflare Pages or Workers custom domain and verify the DNS records."
