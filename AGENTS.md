@@ -4,11 +4,72 @@
 This repository hosts makerjackie's reusable skills, with each skill self-contained under `skills/<skill-name>/`.
 
 - Root: [`README.md`](README.md) lists install commands and the skill catalog.
-- skills/ : skill directory, each skill is a subdirectory.
+- skills/ : active skill directory, each skill is a subdirectory.
+- backup_skills/ : deprecated, merged, or local-only skill archive. Skill entrypoints here should be disabled by renaming `SKILL.md` or `skill.md` to `.bak`.
 
-use `skills-creator` skill to create the new skill.
-after add a new skill, update the root README table.
-all active MakerJackie-owned skills under `skills/` must use the `mj-` prefix. Put deprecated or merged skills under `backup_skills/` instead of leaving them installable.
+Do not rely on a standalone MakerJackie skill-creator skill in this repo. Use the rules in this `AGENTS.md` file when creating, updating, packaging, documenting, committing, pushing, or globally installing MakerJackie skills.
+
+Before editing:
+
+```bash
+cd /Users/jackiexiao/code/makerjackie/skills
+git status --short --branch
+```
+
+Preserve existing dirty files. Do not revert unrelated work.
+
+All active MakerJackie-owned skills under `skills/` must use the `mj-` prefix. Put deprecated or merged skills under `backup_skills/` instead of leaving them installable.
+
+Active skills should be broadly useful enough for global install. Project-specific skills belong in the target repo's `.agents/skills/` folder, not in this global repo.
+
+When creating a new skill, create or update:
+
+- `skills/<skill-name>/SKILL.md`
+- `skills/<skill-name>/README.md`
+- `skills/<skill-name>/agents/openai.yaml` when interface metadata is needed
+- optional `references/`, `scripts/`, or `assets/` only when they remove real repetition
+- root `README.md` skill table
+
+Skill names use lowercase letters, digits, and hyphens only.
+
+Use the official skill format rules:
+
+- frontmatter has only `name` and `description`
+- description explains when to use the skill
+- `SKILL.md` stays concise and operational
+- no unnecessary extra files inside the skill
+
+If the official init script is available, initialize with:
+
+```bash
+python /Users/jackiexiao/.codex/skills/.system/skill-creator/scripts/init_skill.py <skill-name> \
+  --path /Users/jackiexiao/code/makerjackie/skills/skills \
+  --resources references \
+  --interface display_name='<display name>' \
+  --interface short_description='<25-64 char description>' \
+  --interface default_prompt='Use $<skill-name> to ...'
+```
+
+If metadata generation fails, finish `SKILL.md` and `agents/openai.yaml` manually.
+
+Write each skill with only reusable procedural knowledge:
+
+- triggers and prerequisites
+- concrete workflow
+- exact commands that are safe to reuse
+- validation steps
+- common pitfalls
+
+Move long command snippets or examples to `references/` and link them from `SKILL.md`.
+
+Validate changed active skills with:
+
+```bash
+python /Users/jackiexiao/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/<skill-name>
+git diff --check
+```
+
+If the skill has scripts, run at least one representative script command.
 
 ## Creating Beginner-Friendly Skills
 

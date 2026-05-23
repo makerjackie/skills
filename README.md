@@ -32,7 +32,6 @@ npx skills add makerjackie/skills -g --yes --all
 | --- | --- | --- |
 | [mj-writer](./skills/mj-writer/README.md) | `npx skills add makerjackie/skills --skill mj-writer` | MakerJackie 内容创作总入口，合并选题、写作调研、语音转文章、文章审校、视频脚本和演讲稿优化。 |
 | [mj-adapt](./skills/mj-adapt/README.md) | `npx skills add makerjackie/skills --skill mj-adapt` | 把已完成文章适配到公众号、小红书、X 等平台，生成排版和发布素材。 |
-| [mj-skill-creator](./skills/mj-skill-creator/README.md) | `npx skills add makerjackie/skills --skill mj-skill-creator` | 把重复工作流固化成 MakerJackie skill，并完成 README、commit、push 和全局安装。 |
 | [mj-cf-dns](./skills/mj-cf-dns/README.md) | `npx skills add makerjackie/skills --skill mj-cf-dns` | 管理 Cloudflare DNS、Pages 自定义域名和 Workers 自定义域名绑定。 |
 | [mj-deploy](./skills/mj-deploy/README.md) | `npx skills add makerjackie/skills --skill mj-deploy` | 一键部署工作流，说“部署”后自动完成 commit、push、检查、修复和部署。 |
 | [mj-notes-workflow](./skills/mj-notes-workflow/README.md) | `npx skills add makerjackie/skills --skill mj-notes-workflow` | 自动处理 Get笔记语音笔记，增量拉取、跨笔记分析、生成执行计划并按主题执行。 |
@@ -44,5 +43,6 @@ npx skills add makerjackie/skills -g --yes --all
 
 - `01mvp-design` 和 `01mvp-update` 已迁移到 `/Users/jackiexiao/code/makerjackie/01mvp-start/.agents/skills/`，作为 01MVP 项目本地 skill 使用。
 - `mj-design` 已停用，归档到 `backup_skills/mj-design/`。
+- `mj-skill-creator` 已从 active skill 中移除，相关规则合并到仓库根目录 `AGENTS.md`。
 - 原 `mj-research`、`mj-topic-gen`、`mj-proofreading`、`mj-script-polish`、`mj-speech-coach`、`voice-to-article` 已合并到 `mj-writer`。
 - `cloudflare-redirector` 已从默认 active skill 中移除，归档到 `backup_skills/cloudflare-redirector/`。
