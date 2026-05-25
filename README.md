@@ -36,7 +36,7 @@ npx skills add makerjackie/skills -g --yes --all
 | [mj-deploy](./skills/mj-deploy/README.md) | `npx skills add makerjackie/skills --skill mj-deploy` | 一键部署工作流，说“部署”后自动完成 commit、push、检查、修复和部署。 |
 | [mj-notes-workflow](./skills/mj-notes-workflow/README.md) | `npx skills add makerjackie/skills --skill mj-notes-workflow` | 自动处理 Get笔记语音笔记，增量拉取、跨笔记分析、生成执行计划并按主题执行。 |
 | [mj-xhs-note-batch-analysis](./skills/mj-xhs-note-batch-analysis/README.md) | `npx skills add makerjackie/skills --skill mj-xhs-note-batch-analysis` | 批量采集小红书主页笔记链接，导入 Get笔记，并基于 `web_content` 整理知识库。 |
-| [mj-startup-pressure-test](./skills/mj-startup-pressure-test/README.md) | `npx skills add makerjackie/skills --skill mj-startup-pressure-test` | 高压测试创业想法，输出核心假设、致命风险、竞品地图、前 10 个客户动作和 2 周 MVP 方案。 |
+| [mj-startup-test](./skills/mj-startup-test/README.md) | `npx skills add makerjackie/skills --skill mj-startup-test` | 高压测试创业想法，输出核心假设、致命风险、竞品地图、前 10 个客户动作和 2 周 MVP 方案。 |
 | [mj-markdown-formatter](./skills/mj-markdown-formatter/README.md) | `npx skills add makerjackie/skills --skill mj-markdown-formatter` | 优化 Markdown 文章排版、修复格式与基础错误，并尽量保持原文语气。 |
 
 ## Local Or Archived Skills

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Startup Test"
+  short_description: "Test startup ideas brutally"
+  default_prompt: "Use $mj-startup-test to test my startup idea."

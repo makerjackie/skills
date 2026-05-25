@@ -1,4 +1,4 @@
-# mj-startup-pressure-test
+# mj-startup-test
 
 一个用来给创业想法做高压测试的 skill。
 
@@ -7,7 +7,7 @@
 ## 安装
 
 ```bash
-npx skills add makerjackie/skills --skill mj-startup-pressure-test
+npx skills add makerjackie/skills --skill mj-startup-test
 ```
 
 ## 快速使用
@@ -15,7 +15,7 @@ npx skills add makerjackie/skills --skill mj-startup-pressure-test
 安装后，对 Codex 说：
 
 ```text
-Use $mj-startup-pressure-test to pressure-test this startup idea:
+Use $mj-startup-test to pressure-test this startup idea:
 
 我想做一个工具，帮独立开发者把本地产品演示视频自动剪成短视频，并自动生成字幕。
 ```
@@ -23,7 +23,7 @@ Use $mj-startup-pressure-test to pressure-test this startup idea:
 如果你的工具支持 slash skill，也可以这样调用：
 
 ```text
-/mj-startup-pressure-test to pressure-test this startup idea:
+/mj-startup-test to pressure-test this startup idea:
 
 我想做一个工具，帮独立开发者把本地产品演示视频自动剪成短视频，并自动生成字幕。
 ```
@@ -31,7 +31,7 @@ Use $mj-startup-pressure-test to pressure-test this startup idea:
 你也可以直接指定模式：
 
 ```text
-Use $mj-startup-pressure-test to validate whether this startup idea solves a real problem:
+Use $mj-startup-test to validate whether this startup idea solves a real problem:
 
 ...
 ```
@@ -71,7 +71,7 @@ Use $mj-startup-pressure-test to validate whether this startup idea solves a rea
 本仓库做了这些调整：
 
 - 转换为 `makerjackie/skills` 仓库可安装格式
-- 安装方式改为 `npx skills add makerjackie/skills --skill mj-startup-pressure-test`
+- 安装方式改为 `npx skills add makerjackie/skills --skill mj-startup-test`
 - 去掉上游 npm installer，只保留 skill 本体、playbook 和许可证
 - README 改为中英文双语，默认中文在前
 
@@ -80,13 +80,13 @@ Use $mj-startup-pressure-test to validate whether this startup idea solves a rea
 已审查上游仓库内容。结论如下：
 
 - `SKILL.md` 和 `references/playbooks.md` 是纯 Markdown 指令，不会自动执行命令
-- 原仓库的 `scripts/install.js` 会写入本机 `~/.codex/skills` / `~/.claude/skills`，并会覆盖同名 `mj-startup-pressure-test` 目录；这是安装器的正常行为，但本次转换没有引入这个脚本
+- 原仓库的 `scripts/install.js` 会写入本机 `~/.codex/skills` / `~/.claude/skills`，并会覆盖同名 `mj-startup-test` 目录；这是安装器的正常行为，但本次转换没有引入这个脚本
 - 未发现读取环境变量中的 API Key、上传文件、联网请求、执行 shell、删除任意目录等高风险逻辑
 - 使用时仍需注意，它会给出商业判断建议，但不会替你验证真实市场数据；涉及最新竞品、价格、市场规模时应该联网核实
 
 ---
 
-# mj-startup-pressure-test
+# mj-startup-test
 
 A skill for pressure-testing startup ideas before spending too much time building the wrong thing.
 
@@ -95,7 +95,7 @@ It evaluates an idea through an early-stage startup lens: core assumption, fatal
 ## Installation
 
 ```bash
-npx skills add makerjackie/skills --skill mj-startup-pressure-test
+npx skills add makerjackie/skills --skill mj-startup-test
 ```
 
 ## Quick Start
@@ -103,7 +103,7 @@ npx skills add makerjackie/skills --skill mj-startup-pressure-test
 After installation, ask Codex:
 
 ```text
-Use $mj-startup-pressure-test to pressure-test this startup idea:
+Use $mj-startup-test to pressure-test this startup idea:
 
 A tool that turns local product demo videos into short clips with local captions for indie hackers.
 ```
@@ -111,7 +111,7 @@ A tool that turns local product demo videos into short clips with local captions
 If your tool supports slash skills, you can also invoke it like this:
 
 ```text
-/mj-startup-pressure-test to pressure-test this startup idea:
+/mj-startup-test to pressure-test this startup idea:
 
 A tool that turns local product demo videos into short clips with local captions for indie hackers.
 ```
@@ -119,7 +119,7 @@ A tool that turns local product demo videos into short clips with local captions
 You can also request a specific mode:
 
 ```text
-Use $mj-startup-pressure-test to build a 2-week MVP plan for this startup idea:
+Use $mj-startup-test to build a 2-week MVP plan for this startup idea:
 
 ...
 ```
@@ -159,7 +159,7 @@ Upstream version:
 Changes in this repository:
 
 - Converted to the `makerjackie/skills` install format
-- Installation command changed to `npx skills add makerjackie/skills --skill mj-startup-pressure-test`
+- Installation command changed to `npx skills add makerjackie/skills --skill mj-startup-test`
 - Removed the upstream npm installer from this package
 - Rewrote the README as bilingual documentation, with Chinese first
 
@@ -168,6 +168,6 @@ Changes in this repository:
 The upstream repository has been reviewed:
 
 - `SKILL.md` and `references/playbooks.md` are Markdown-only instructions and do not execute commands
-- The original `scripts/install.js` writes to `~/.codex/skills` / `~/.claude/skills` and overwrites the same `mj-startup-pressure-test` target directory; that is expected installer behavior, but this converted skill does not include that script
+- The original `scripts/install.js` writes to `~/.codex/skills` / `~/.claude/skills` and overwrites the same `mj-startup-test` target directory; that is expected installer behavior, but this converted skill does not include that script
 - No high-risk logic was found for reading API keys, uploading files, making network requests, executing shell commands, or deleting arbitrary directories
 - The skill can give business judgment, but it does not verify live market facts by itself; current competitors, pricing, and market-size claims should still be checked with up-to-date sources

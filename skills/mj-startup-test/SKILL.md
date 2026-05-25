@@ -1,5 +1,5 @@
 ---
-name: mj-startup-pressure-test
+name: mj-startup-test
 description: Brutally evaluate and refine startup ideas with practical early-stage startup frameworks. Use when asked to pressure-test a startup idea, validate whether the problem is real, map competitors and current customer behavior, find the first 10 customers, define an MVP, create a 2-week launch plan, assess founder-market fit, or give a direct strong/weak/pivot verdict.
 ---
 
