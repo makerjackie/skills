@@ -33,14 +33,14 @@ node generate-xhs-slides.js fixtures/2026-04-20-ai-subscription-bill-1785-monthl
 ## Output
 
 - `output/{date}-{slug}-wechat.html` - 公众号 HTML（复制到编辑器）
-- `output/{date}-{slug}-1.png` - 小红书封面图
-- `output/{date}-{slug}-2.png` - 小红书内容图
+- `output/{date}-{slug}-1.png` - 小红书第 1 页
+- `output/{date}-{slug}-2.png` - 小红书第 2 页
 - ...
 - `output/{date}-{slug}/xhs-slides.html` - AI 生成的小红书多页 HTML
 
 ## Documentation
 
-详细文档请查看 [skill.md](skill.md)
+详细文档请查看 [SKILL.md](SKILL.md)
 
 ---
 
@@ -86,7 +86,8 @@ node generate-xhs-slides.js fixtures/2026-04-20-ai-subscription-bill-1785-monthl
 ### 2. 小红书图片
 - AI 先把内容直接生成成多页 HTML slides，再由脚本稳定截图
 - 默认统一白底，不做整页黑白背景交替
-- 超过单页容量时自动分页，不裁卡片
+- 按自然段、列表项、引用块、代码块边界分页，不裁切内容
+- 非末页会检查内容密度，避免一页只有几段文字、底部大面积空白
 - 1080x1350 视口导出 2x PNG，最终为 2160x2700
 - 直接上传，无需手动做图
 
@@ -141,8 +142,8 @@ node generate-xhs-slides.js fixtures/2026-04-20-ai-subscription-bill-1785-monthl
 **Step 4：查看输出**
 在 `output/` 目录下会生成：
 - `{date}-{slug}-wechat.html` - 复制到公众号编辑器
-- `{date}-{slug}-1.png` - 小红书封面图
-- `{date}-{slug}-2.png` - 小红书内容图
+- `{date}-{slug}-1.png` - 小红书第 1 页
+- `{date}-{slug}-2.png` - 小红书第 2 页
 - ...
 
 ### 常见问题
@@ -157,7 +158,7 @@ A: 默认按 1080x1350 视口导出，并使用 2x 高清截图，最终 PNG 为
 A: 因为“怎么排版”是内容理解问题，应该由 AI 来决定；脚本只负责把 AI 产出的 `xhs-slides.html` 稳定截图成同一套规格。
 
 **Q: 可以自定义样式吗？**
-A: 可以。修改 `skill.md` 中的样式规范。
+A: 可以。修改 `SKILL.md` 中的样式规范。
 
 **Q: 支持哪些 Markdown 语法？**
 A: 支持标准 Markdown：标题、段落、列表、引用、粗体、斜体、代码块。

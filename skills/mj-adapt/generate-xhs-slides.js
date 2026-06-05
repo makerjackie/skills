@@ -8,9 +8,11 @@ import puppeteer from 'puppeteer';
 const VIEWPORT_WIDTH = 1400;
 const VIEWPORT_HEIGHT = 1600;
 const DEVICE_SCALE_FACTOR = 2;
+const MIN_NON_FINAL_FILL_RATIO = 0.72;
+const MAX_NON_FINAL_BLANK_BELOW = 320;
 
 function usage() {
-  console.error('Usage: node generate-xhs-slides.js <xhs-slides.html> [output-dir]');
+  console.error('Usage: node generate-xhs-slides.js <xhs-slides.html> [output-dir] [--allow-underfilled]');
 }
 
 function slugFromPath(filePath) {
@@ -34,12 +36,50 @@ function ensureHtmlInput(inputPath) {
   }
 }
 
-async function collectSlides(page) {
+function parseArgs(args) {
+  const options = {
+    allowUnderfilled: false,
+    positional: [],
+  };
+
+  for (const arg of args) {
+    if (arg === '--allow-underfilled') {
+      options.allowUnderfilled = true;
+    } else {
+      options.positional.push(arg);
+    }
+  }
+
+  return options;
+}
+
+async function collectSlides(page, options = {}) {
   await page.waitForSelector('.slide');
 
-  const overflow = await page.evaluate(() => {
+  const slideMetrics = await page.evaluate(() => {
     return Array.from(document.querySelectorAll('.slide')).map((slide, index) => {
       const rect = slide.getBoundingClientRect();
+      const contentRoot = slide.querySelector('[data-role="content"]') ?? slide;
+      const contentElements = Array.from(contentRoot.querySelectorAll('*')).filter((element) => {
+        if (element.closest('[data-role="footer"], [data-role="page-number"]')) {
+          return false;
+        }
+
+        const style = window.getComputedStyle(element);
+        if (style.display === 'none' || style.visibility === 'hidden') {
+          return false;
+        }
+
+        const elementRect = element.getBoundingClientRect();
+        return elementRect.width > 0 && elementRect.height > 0;
+      });
+
+      const contentBottom = contentElements.reduce((bottom, element) => {
+        const elementRect = element.getBoundingClientRect();
+        return Math.max(bottom, elementRect.bottom - rect.top);
+      }, 0);
+      const blankBelow = Math.max(0, slide.clientHeight - contentBottom);
+
       return {
         index,
         width: Math.round(rect.width),
@@ -48,11 +88,14 @@ async function collectSlides(page) {
         scrollHeight: slide.scrollHeight,
         clientWidth: slide.clientWidth,
         clientHeight: slide.clientHeight,
+        contentBottom: Math.round(contentBottom),
+        fillRatio: slide.clientHeight > 0 ? contentBottom / slide.clientHeight : 0,
+        blankBelow: Math.round(blankBelow),
       };
     });
   });
 
-  const overflowed = overflow.filter(
+  const overflowed = slideMetrics.filter(
     (slide) => slide.scrollWidth > slide.clientWidth || slide.scrollHeight > slide.clientHeight,
   );
 
@@ -67,6 +110,28 @@ async function collectSlides(page) {
     throw new Error(`Slide overflow detected: ${detail}`);
   }
 
+  if (!options.allowUnderfilled) {
+    const underfilled = slideMetrics.filter(
+      (slide) =>
+        slide.index < slideMetrics.length - 1 &&
+        (slide.fillRatio < MIN_NON_FINAL_FILL_RATIO || slide.blankBelow > MAX_NON_FINAL_BLANK_BELOW),
+    );
+
+    if (underfilled.length > 0) {
+      const detail = underfilled
+        .map(
+          (slide) =>
+            `slide ${slide.index + 1}: fill=${Math.round(slide.fillRatio * 100)}%, ` +
+            `blankBelow=${slide.blankBelow}px, contentBottom=${slide.contentBottom}px`,
+        )
+        .join('; ');
+      throw new Error(
+        `Underfilled non-final slide detected: ${detail}. ` +
+          `Merge content from the next slide or repaginate; pass --allow-underfilled only for debugging.`,
+      );
+    }
+  }
+
   const slides = await page.$$('.slide');
   if (slides.length === 0) {
     throw new Error('No `.slide` elements found in the HTML.');
@@ -75,7 +140,7 @@ async function collectSlides(page) {
   return slides;
 }
 
-async function renderSlides(inputPath, outputDir) {
+async function renderSlides(inputPath, outputDir, options = {}) {
   mkdirSync(outputDir, { recursive: true });
 
   const browser = await puppeteer.launch({
@@ -95,7 +160,7 @@ async function renderSlides(inputPath, outputDir) {
       waitUntil: 'networkidle0',
     });
 
-    const slides = await collectSlides(page);
+    const slides = await collectSlides(page, options);
     const baseName = outputBaseName(inputPath);
 
     for (const [index, slideHandle] of slides.entries()) {
@@ -123,7 +188,8 @@ async function renderSlides(inputPath, outputDir) {
 }
 
 async function main() {
-  const [inputPathArg, outputDirArg] = process.argv.slice(2);
+  const { positional, allowUnderfilled } = parseArgs(process.argv.slice(2));
+  const [inputPathArg, outputDirArg] = positional;
   if (!inputPathArg) {
     usage();
     process.exit(1);
@@ -133,7 +199,7 @@ async function main() {
   ensureHtmlInput(inputPath);
 
   const outputDir = resolve(outputDirArg ?? join(process.cwd(), 'output', outputBaseName(inputPath)));
-  await renderSlides(inputPath, outputDir);
+  await renderSlides(inputPath, outputDir, { allowUnderfilled });
 }
 
 main().catch((error) => {
