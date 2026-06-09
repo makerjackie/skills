@@ -1,10 +1,15 @@
+# Project-local directories (not part of skill distribution)
+backup_skills/
+draft_skills/
+my-article/
+output/
+outputs/
+site/
 temp/
 tmp/
 .vscode/
 node_modules/
 cache/
-output/
-outputs/
 .DS_Store
 
 # Node.js

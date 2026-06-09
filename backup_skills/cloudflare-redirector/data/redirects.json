@@ -1,7 +1,0 @@
-[
-  {
-    "source": "docs.example.com",
-    "destination": "https://example.com/docs",
-    "status": 301
-  }
-]

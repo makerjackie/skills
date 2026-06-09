@@ -1,6 +1,6 @@
 # MakerJackie Adapt (mj-adapt)
 
-将已完成的文章适配到多个发布平台，自动生成各平台所需的格式和素材。
+将已完成的文章适配到多个发布平台，自动生成各平台所需的格式和素材。默认会为公众号额外生成 5 个标题候选、3 个封面方向和 3 张封面图，方便发布前挑选。
 
 ## Installation
 
@@ -27,12 +27,18 @@ node generate-xhs-slides.js fixtures/2026-04-20-ai-subscription-bill-1785-monthl
 ## 支持的平台
 
 - ✅ **微信公众号**：生成特殊格式的 HTML（内联样式）
+- ✅ **标题/封面候选**：默认生成 5 个 AI 标题候选、3 个公众号首图方向、3 张封面图
 - ✅ **小红书**：生成图文素材（1080x1350px）
 - 🚧 **知乎/推客**：优化 Markdown 排版（未来支持）
 
 ## Output
 
-- `output/{date}-{slug}-wechat.html` - 公众号 HTML（复制到编辑器）
+- `output/{date}-{slug}/{date}-{slug}-title-cover-options.md` - 标题与封面候选说明
+- `output/{date}-{slug}/{date}-{slug}-cover-a.png` - 公众号封面候选 A
+- `output/{date}-{slug}/{date}-{slug}-cover-b.png` - 公众号封面候选 B
+- `output/{date}-{slug}/{date}-{slug}-cover-c.png` - 公众号封面候选 C
+- `output/{date}-{slug}/{date}-{slug}-cover.png` - 当前 primary 公众号封面
+- `output/{date}-{slug}/{date}-{slug}-wechat.html` - 公众号 HTML（复制到编辑器）
 - `output/{date}-{slug}-1.png` - 小红书第 1 页
 - `output/{date}-{slug}-2.png` - 小红书第 2 页
 - ...
@@ -141,6 +147,9 @@ node generate-xhs-slides.js fixtures/2026-04-20-ai-subscription-bill-1785-monthl
 
 **Step 4：查看输出**
 在 `output/` 目录下会生成：
+- `{date}-{slug}-title-cover-options.md` - 标题与封面候选
+- `{date}-{slug}-cover-a.png` / `cover-b.png` / `cover-c.png` - 公众号封面候选
+- `{date}-{slug}-cover.png` - 当前 primary 公众号封面
 - `{date}-{slug}-wechat.html` - 复制到公众号编辑器
 - `{date}-{slug}-1.png` - 小红书第 1 页
 - `{date}-{slug}-2.png` - 小红书第 2 页

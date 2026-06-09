@@ -1,0 +1,4 @@
+interface:
+  display_name: "Claude Code Review Loop"
+  short_description: "Use Claude Code for multi-round code reviews"
+  default_prompt: "Use $mj-claude-code-review-loop to run a 3-round Claude Code review, validate findings, apply fixes, and commit the accepted improvements."

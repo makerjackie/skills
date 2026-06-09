@@ -13,6 +13,7 @@ description: MakerJackie 多平台内容适配工具：将已完成的文章适�
 
 **核心任务**：根据不同平台的要求，生成对应的格式和素材：
 - **微信公众号**：生成特殊格式的 HTML（内联样式，符合公众号编辑器要求） + 微信公众号首图 + 文章标题和描述。
+- **标题与封面候选**：默认生成 5 个 AI 标题候选、3 个公众号首图方向和 3 张封面图；用户未选择时才选一个作为 primary，但候选文件必须保留。
 - **小红书**：生成图文素材（1080x1350px 竖版图片，4:5 比例）
 - **推特**：生成简短版本的介绍（140 字以内）
 
@@ -56,23 +57,44 @@ description: MakerJackie 多平台内容适配工具：将已完成的文章适�
 
 **核心调整**：
 - 正文开头**严禁**重复展示文章标题框（用户已通过标题点击进入，无需冗余）。
-- **公众号首图**：在 HTML 顶部放置封面图 `<img src="{date}-{slug}-cover.png">`，尺寸 900x383，3px 黑色边框。此图片由 Step 4 渲染生成。
+- **公众号首图**：在 HTML 顶部放置 primary 封面图 `<img src="{date}-{slug}-cover.png">`，尺寸 900x383，3px 黑色边框。此图片由 Step 4 渲染生成，另外保留候选封面图供发布前挑选。
 
 **组件使用建议**：
 - 卡片组件（方块边框）：应**谨慎且克制**地使用。仅用于强调核心观点、Tips 或独立的小样。
 - 灰色引用样式：用于呈现次要信息、补充说明或背景知识，使用灰色字体和浅色左边框。
 
-### Step 4: 生成封面图 (Covers)
+### Step 4: 生成标题与封面候选 (Titles & Covers)
 风格统一为「MakerJackie 极简硬核风」：白色背景、黑色粗边框、高对比度、Monospace 字体。
 
+#### 默认产出
+除非用户明确说“只要一个标题/一张封面”，否则必须先生成候选，再确定 primary：
+
+1. `output/{date}-{slug}/{date}-{slug}-title-cover-options.md`
+   - 5 个 AI 标题候选，覆盖不同角度：价值直给、冲突观点、项目发布、教程承诺、个人叙事。
+   - 3 个公众号首图方向，分别说明主文案、副文案、视觉重心和适用场景。
+2. `output/{date}-{slug}/{date}-{slug}-cover-a.html`
+3. `output/{date}-{slug}/{date}-{slug}-cover-b.html`
+4. `output/{date}-{slug}/{date}-{slug}-cover-c.html`
+5. 对应渲染出：
+   - `output/{date}-{slug}/{date}-{slug}-cover-a.png`
+   - `output/{date}-{slug}/{date}-{slug}-cover-b.png`
+   - `output/{date}-{slug}/{date}-{slug}-cover-c.png`
+6. 如果用户没有选择，AI 选择最贴近文章调性的一个复制为 primary：
+   - `output/{date}-{slug}/{date}-{slug}-cover.html`
+   - `output/{date}-{slug}/{date}-{slug}-cover.png`
+
+候选标题和封面只用于发布素材选择，不得反向改写文章正文。
+
 #### 渲染流程
-1. AI 根据下方设计规范生成独立 HTML：`output/{date}-{slug}-cover.html`，包含一个 `.cover` 元素（900x383px，白底 + 黑边框 + 标题/日期/品牌）。
+1. AI 根据下方设计规范生成 3 个独立 HTML 候选：`output/{date}-{slug}/{date}-{slug}-cover-a.html`、`cover-b.html`、`cover-c.html`，每个包含一个 `.cover` 元素（900x383px，白底 + 黑边框 + 标题/日期/品牌）。
 2. 运行 `generate-cover.js` 将 `.cover` 截图成 PNG：
    ```bash
-   node generate-cover.js output/{date}-{slug}-cover.html output/
+   node generate-cover.js output/{date}-{slug}/{date}-{slug}-cover-a.html output/{date}-{slug}/
+   node generate-cover.js output/{date}-{slug}/{date}-{slug}-cover-b.html output/{date}-{slug}/
+   node generate-cover.js output/{date}-{slug}/{date}-{slug}-cover-c.html output/{date}-{slug}/
    ```
-3. 输出：`output/{date}-{slug}-cover.png`（1800x766px，2x 高清）。
-4. 微信公众号 HTML 中通过 `<img src="{date}-{slug}-cover.png">` 引用此图片。
+3. 输出候选 PNG（1800x766px，2x 高清）。
+4. 将最终选中的候选复制为 `output/{date}-{slug}/{date}-{slug}-cover.png`，微信公众号 HTML 中通过 `<img src="{date}-{slug}-cover.png">` 引用此 primary 图片。
 
 #### 1. 微信公众号首图 (900x383px)
 - **视觉结构**：标准 2.35:1 比例。白色背景 + 3px 黑色内边框。
@@ -268,7 +290,13 @@ description: MakerJackie 多平台内容适配工具：将已完成的文章适�
 - **卡片文字**：16px, 400 weight, 1.65 line-height
 
 ### 输出位置
-默认是仓库根目录的 `output/[date}-{slug]/` 目录，slug 是文章标题的 URL 友好版本。
+默认是仓库根目录的 `output/{date}-{slug}/` 目录，slug 是文章标题的 URL 友好版本。
+
+默认应包含：
+- `{date}-{slug}-title-cover-options.md`：5 个标题候选 + 3 个封面方向。
+- `{date}-{slug}-cover-a.png`、`{date}-{slug}-cover-b.png`、`{date}-{slug}-cover-c.png`：公众号首图候选。
+- `{date}-{slug}-cover.png`：当前 primary 公众号首图。
+- `{date}-{slug}-wechat.html`：公众号正文 HTML。
 
 ###### 布局组件
 
@@ -365,6 +393,14 @@ description: MakerJackie 多平台内容适配工具：将已完成的文章适�
 - `2026-04-09-why-i-make-ai-tutorials-1.png`
 - `2026-04-09-why-i-make-ai-tutorials-2.png`
 
+### 标题与封面候选文件
+示例：
+- `2026-04-09-why-i-make-ai-tutorials-title-cover-options.md`
+- `2026-04-09-why-i-make-ai-tutorials-cover-a.png`
+- `2026-04-09-why-i-make-ai-tutorials-cover-b.png`
+- `2026-04-09-why-i-make-ai-tutorials-cover-c.png`
+- `2026-04-09-why-i-make-ai-tutorials-cover.png`
+
 ## 使用示例
 
 ### 示例 1：多平台发布
@@ -410,6 +446,8 @@ description: MakerJackie 多平台内容适配工具：将已完成的文章适�
 - [ ] 响应式布局（max-width: 677px）
 - [ ] 图片尺寸符合小红书要求
 - [ ] 文件命名规范
+- [ ] 默认生成 5 个标题候选、3 个封面方向和 3 张公众号首图候选；除非用户明确只要一个
+- [ ] 已选定或复制出 primary 封面 `{date}-{slug}-cover.png`
 - [ ] **小红书 xhs-slides.html：原文与生成内容逐段对比，确认 100% 一致（无改写、无压缩、无遗漏）**
 - [ ] **小红书 xhs-slides.html：未使用杂志式组件（封面页、总览页、卡片网格、数据看板）**
 - [ ] **小红书 xhs-slides.html：正文内容未使用 `<style>` 块或 `xhs-base.css`，全部内联样式**
