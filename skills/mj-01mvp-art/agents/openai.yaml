@@ -1,0 +1,4 @@
+interface:
+  display_name: "01MVP Art"
+  short_description: "Generate blunt 01MVP article illustrations"
+  default_prompt: "Use $mj-01mvp-art to design concise black-and-white illustrations for my 01MVP article."
