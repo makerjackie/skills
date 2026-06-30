@@ -33,6 +33,8 @@ npx skills add makerjackie/skills -g --yes --all
 | [mj-writer](./skills/mj-writer/README.md) | `npx skills add makerjackie/skills --skill mj-writer` | MakerJackie 内容创作总入口，合并选题、写作调研、语音转文章、文章审校、视频脚本和演讲稿优化。 |
 | [mj-adapt](./skills/mj-adapt/README.md) | `npx skills add makerjackie/skills --skill mj-adapt` | 把已完成文章适配到公众号、小红书、X 等平台，生成排版和发布素材。 |
 | [mj-video2md-html](./skills/mj-video2md-html/README.md) | `npx skills add makerjackie/skills --skill mj-video2md-html` | 把本地视频和 SRT 转成博客 MDX、视频截图、R2 图片链接和微信公众号 HTML。 |
+| [mj-video-publish-pack](./skills/mj-video-publish-pack/README.md) | `npx skills add makerjackie/skills --skill mj-video-publish-pack` | 把本地视频和 SRT 做成 B 站标题封面、章节、公众号 HTML、博客 MDX 和 R2 图片发布包。 |
+| [mj-01mvp-art](./skills/mj-01mvp-art/README.md) | `npx skills add makerjackie/skills --skill mj-01mvp-art` | 生成 01MVP 黑白硬核正文配图、概念隐喻和粗线条 01MVP operator 风格样张。 |
 | [mj-cf-dns](./skills/mj-cf-dns/README.md) | `npx skills add makerjackie/skills --skill mj-cf-dns` | 管理 Cloudflare DNS、Pages 自定义域名和 Workers 自定义域名绑定。 |
 | [mj-deploy](./skills/mj-deploy/README.md) | `npx skills add makerjackie/skills --skill mj-deploy` | 一键部署工作流，说“部署”后自动完成 commit、push、检查、修复和部署。 |
 | [mj-claude-code-review-loop](./skills/mj-claude-code-review-loop/README.md) | `npx skills add makerjackie/skills --skill mj-claude-code-review-loop` | 调用 Claude Code CLI 做三轮系统性代码审查，由 Codex 判断、修复、验证并提交。 |
@@ -40,11 +42,3 @@ npx skills add makerjackie/skills -g --yes --all
 | [mj-xhs-note-batch-analysis](./skills/mj-xhs-note-batch-analysis/README.md) | `npx skills add makerjackie/skills --skill mj-xhs-note-batch-analysis` | 批量采集小红书主页笔记链接，导入 Get笔记，并基于 `web_content` 整理知识库。 |
 | [mj-startup-test](./skills/mj-startup-test/README.md) | `npx skills add makerjackie/skills --skill mj-startup-test` | 高压测试创业想法，输出核心假设、致命风险、竞品地图、前 10 个客户动作和 2 周 MVP 方案。 |
 | [mj-markdown-formatter](./skills/mj-markdown-formatter/README.md) | `npx skills add makerjackie/skills --skill mj-markdown-formatter` | 优化 Markdown 文章排版、修复格式与基础错误，并尽量保持原文语气。 |
-
-## Local Or Archived Skills
-
-- `01mvp-design` 和 `01mvp-update` 已迁移到 `/Users/jackiexiao/code/makerjackie/01mvp-start/.agents/skills/`，作为 01MVP 项目本地 skill 使用。
-- `mj-design` 已停用，归档到 `backup_skills/mj-design/`。
-- `mj-skill-creator` 已从 active skill 中移除，相关规则合并到仓库根目录 `AGENTS.md`。
-- 原 `mj-research`、`mj-topic-gen`、`mj-proofreading`、`mj-script-polish`、`mj-speech-coach`、`voice-to-article` 已合并到 `mj-writer`。
-- `cloudflare-redirector` 已从默认 active skill 中移除，归档到 `backup_skills/cloudflare-redirector/`。

@@ -196,6 +196,8 @@ A: 目前支持微信公众号和小红书。知乎、推客等平台的支持�
 
 ---
 
-**作者**：Maker Jackie  
-**联系**：makerjackie@qq.com  
-**AI教程**：[01mvp.com](https://01mvp.com)
+**作者**：Maker Jackie
+
+**联系**：makerjackie@qq.com
+
+**01MVP**：Maker Jackie 做的 AI 产品实战教程，[01mvp.com](https://01mvp.com)

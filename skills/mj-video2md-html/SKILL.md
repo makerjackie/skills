@@ -59,6 +59,14 @@ description: 将本地视频、SRT 字幕和时间戳转成 MakerJackie 博客 M
    - 中段：按视频里的关键动作、观点或案例推进。
    - 结尾：给读者一个明确行动或下一步。
 
+### Step 2.5: 选择品牌 CTA
+
+视频转文章默认遵守这条关系：Maker Jackie 是作者和内容源头，01MVP 是产品/课程入口；标准关系句是 `01MVP 是 Maker Jackie 做的 AI 产品实战教程。`
+
+- AI 教程、产品实战、独立开发复盘、工具教程：主推 01MVP，轻带 Maker Jackie。结尾指向 `01mvp.com`。
+- 个人成长、创作者思考、生活记录：主推 Maker Jackie，轻带 01MVP。结尾指向关注、星标、评论、个人主页或继续阅读。
+- 不要在同一篇文章结尾平均推广 `makerjackie.com` 和 `01mvp.com`。只保留一个主要动作。
+
 ### Step 3: 从视频截图
 
 默认截图要比“平均分布”更偏向信息密集段：
@@ -148,6 +156,7 @@ curl -I "https://assets.01mvp.com/images/makerjackie/{date}-{slug}/shot-001.jpg"
 4. HTML 顶部放 primary 封面图，不在正文开头重复标题框。
 5. 正文保留原文，不为了适配公众号删段落。
 6. 图片优先使用 R2 URL，避免本地 file 路径进入可发布 HTML。
+7. CTA 和页脚遵循 Step 2.5 的品牌选择规则。
 
 ### Step 7: 本地预览和验收
 
@@ -163,6 +172,7 @@ git diff --check
 
 ```bash
 rg -n "src=|!\\[" "content/blog/{date}-{slug}.mdx" "output/{date}-{slug}/{date}-{slug}-wechat.html"
+rg -n "\\{\\{[A-Z_]+\\}\\}" "output/{date}-{slug}/{date}-{slug}-wechat.html"
 curl -I "https://assets.01mvp.com/images/makerjackie/{date}-{slug}/shot-001.jpg"
 ```
 

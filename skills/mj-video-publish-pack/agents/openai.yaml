@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频发布包"
+  short_description: "视频转B站封面、公众号、博客和发布素材"
+  default_prompt: "Use $mj-video-publish-pack to turn this local video and SRT into a B站/公众号/博客发布包."
