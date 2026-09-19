@@ -16,8 +16,13 @@ description: MakerJackie 视频发布包工作流。用于用户提供本地视�
 - 不要泄露内部说明。HTML、MDX、封面、标题、描述里都不能出现 prompt、TODO、工作流说明或“按字幕整理”等内部话。
 - 封面必须使用 `imagegen` 生成。不要用 HTML/CSS/SVG 自己画 B 站封面，除非用户明确要求。
 - 图片上传使用远端 R2，并用 `assets.01mvp.com` CDN 链接；不要把本地 `file://` 路径放进可发布 HTML/MDX。
-- makerjackie.com 博客 MDX 必须写入 `content/blog/{date}-{slug}.mdx`，并确认 `content/blog/meta.json` 已收录。
-- 品牌关系固定为：Maker Jackie 是作者和内容源头，01MVP 是产品/课程入口。视频发布包默认面向 AI 教程、产品实战和独立开发复盘，结尾主 CTA 指向 01MVP，但必须先交代 `01MVP 是 Maker Jackie 做的 AI 产品实战教程`，不要把两个品牌平级并列。
+- MakerJackie 网站内容交给当前目标仓库的 `.agents/skills/makerjackie-publish/SKILL.md`；按其中的内容目录、frontmatter、预览和发布流程执行。不要使用旧博客仓库或假设存在 CMS API。
+- 通用 Skill 不硬编码个人电脑仓库路径。若当前环境没有目标仓库或本地发布 Skill，先交付 `output/{date}-{slug}/{date}-{slug}.mdx` 草稿并说明尚未入库，不猜测发布端点。
+- **MakerJackie** 是个人品牌和内容母站。优先让读者认识 Jackie 的探索、学习、创造与生活，文章、教程、视频和制作记录统一回到个人站。
+- 知识默认免费；完整源码、模板、Skill、工作流等能独立交付的成果按产品单独销售，不捆绑，不承诺一次付费获得未来所有产品。
+- **01MVP** 只作为相关的 AI 产品 / 网站代码模板与工作流 Demo 提及，不默认推荐、不作为固定页脚，不引导所有教程读者购买它。原会员权益不在新内容中重定义。
+- CTA 根据内容选择继续阅读、关注 MakerJackie、参与讨论或查看相关作品；最多一个主要动作，也可以没有 CTA。只有内容直接涉及某个产品且用户要求或上下文确有需要时，才给该产品购买入口。
+- 网站文章遵循目标仓库本地发布 Skill；社交平台适配才交给 `mj-adapt`。未确认线上发布前，不把本地草稿、Git 提交或预览声称为已经发布。
 
 ## Workflow
 
@@ -29,7 +34,7 @@ description: MakerJackie 视频发布包工作流。用于用户提供本地视�
 ls -lh "/path/to/video.mp4" "/path/to/video.srt"
 ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "/path/to/video.mp4"
 identify -format '%f %wx%h %b\n' /path/to/images/*
-git -C /path/to/makerjackie.com status --short
+git status --short  # 在当前目标仓库运行
 ```
 
 如果用户给了图片编号说明，建立映射表：
@@ -164,21 +169,11 @@ curl --http1.1 -sS -o /dev/null -w '%{http_code}' \
 
 ### 6. Write Blog MDX
 
-对 makerjackie.com：
-
-- 写入 `content/blog/{date}-{slug}.mdx`。
-- `date` 必须加引号。
-- 图片使用 JSX `<img>`，并写 `width` / `height`，避免 Fumadocs 构建时抓远程图片尺寸。
-- 更新 `content/blog/meta.json`，把 slug 放到合理位置。
-- 不要在正文开头重复 H1。
-
-MDX 结尾默认加入：
-
-```md
-> / 作者：Maker Jackie，独立开发者，01MVP 作者
-> / 01MVP 是 Maker Jackie 做的 AI 产品实战教程：01mvp.com
-> / 合作请联系邮箱：makerjackie@qq.com
-```
+- MakerJackie 网站内容交给当前目标仓库的 `.agents/skills/makerjackie-publish/SKILL.md`；按其中的内容目录、frontmatter、预览和发布流程执行。不要使用旧博客仓库或假设存在 CMS API。
+- 通用 Skill 不硬编码个人电脑仓库路径。若当前环境没有目标仓库或本地发布 Skill，先交付 `output/{date}-{slug}/{date}-{slug}.mdx` 草稿并说明尚未入库，不猜测发布端点。
+- 先产出发布草稿；入库时由本地 Skill 根据真实 schema 补齐元数据，日期字符串加引号。
+- 保留用户原有发布日期和 slug，不重复 H1。图片使用已验证可访问的 URL；是否用 JSX 与尺寸属性遵循目标仓库 MDX 配置。
+- 网站已有作者组件时不重复署名和推广尾部。
 
 ### 7. Write WeChat HTML
 
@@ -193,11 +188,11 @@ MDX 结尾默认加入：
 - 不要把字幕逐行输出；合并成自然段。
 - 不要把文章改成完全重新创作的观点文。
 
-HTML 结尾默认加入：
+需要作者介绍时，可使用：
 
 ```html
-<p>/ 作者：Maker Jackie，独立开发者，01MVP 作者</p>
-<p>/ 01MVP 是 Maker Jackie 做的 AI 产品实战教程：01mvp.com</p>
+<p>/ 作者：MakerJackie，独立开发者</p>
+<p>/ 更多文章、教程和作品：https://makerjackie.com</p>
 <p>/ 合作请联系邮箱：makerjackie@qq.com</p>
 ```
 
@@ -238,10 +233,10 @@ ffmpeg -i input.mp4 \
 至少检查：
 
 ```bash
-rg -n "src=|!\\[|<img" content/blog/{slug}.mdx output/{slug}/{slug}-wechat.html
+rg -n "src=|!\\[|<img" output/{date}-{slug}/{date}-{slug}.mdx output/{date}-{slug}/{date}-{slug}-wechat.html
 rg -n "line-height:1\\.75|按原视频字幕|TODO|prompt" output/{slug}/{slug}-wechat.html
-corepack pnpm@10.28.2 types:check
-corepack pnpm@10.28.2 build
+
+# 入库检查与发布验证按目标仓库的本地发布 Skill 执行。
 git diff --check
 ```
 
@@ -255,4 +250,4 @@ git diff --check
 - 不要因为“公众号正文黑白”就把封面也强行做黑白。
 - 不要把未上传或重复的图片硬塞进正文。
 - 不要使用裸 CDN 新路径做最终链接；刚上传的新对象最好带 `?v=...`。
-- 不要忘记把 MDX 加进 `meta.json`。
+- 文章索引由目标仓库的内容系统决定，不默认维护 `meta.json`。

@@ -40,14 +40,9 @@ description: 将本地视频、SRT 字幕和时间戳转成 MakerJackie 博客 M
    git status --short
    rg --files content | sed -n '1,120p'
    ```
-3. 对 `makerjackie.com` 默认优先写入：
-   - `content/blog/{date}-{slug}.mdx`
-   - `content/blog/meta.json`
-   - `output/{date}-{slug}/`
-4. Fumadocs frontmatter 的 `date` 必须加引号：
-   ```yaml
-   date: "2026-06-09"
-   ```
+- MakerJackie 网站内容交给当前目标仓库的 `.agents/skills/makerjackie-publish/SKILL.md`；按其中的内容目录、frontmatter、预览和发布流程执行。不要使用旧博客仓库或假设存在 CMS API。
+- 通用 Skill 不硬编码个人电脑仓库路径。若当前环境没有目标仓库或本地发布 Skill，先交付 `output/{date}-{slug}/{date}-{slug}.mdx` 草稿并说明尚未入库，不猜测发布端点。
+- 文章元数据使用目标仓库实际 schema；日期字符串加引号，不沿用旧站的 `date` 字段假设。
 
 ### Step 2: 解析 SRT，形成文章骨架
 
@@ -61,11 +56,11 @@ description: 将本地视频、SRT 字幕和时间戳转成 MakerJackie 博客 M
 
 ### Step 2.5: 选择品牌 CTA
 
-视频转文章默认遵守这条关系：Maker Jackie 是作者和内容源头，01MVP 是产品/课程入口；标准关系句是 `01MVP 是 Maker Jackie 做的 AI 产品实战教程。`
-
-- AI 教程、产品实战、独立开发复盘、工具教程：主推 01MVP，轻带 Maker Jackie。结尾指向 `01mvp.com`。
-- 个人成长、创作者思考、生活记录：主推 Maker Jackie，轻带 01MVP。结尾指向关注、星标、评论、个人主页或继续阅读。
-- 不要在同一篇文章结尾平均推广 `makerjackie.com` 和 `01mvp.com`。只保留一个主要动作。
+- **MakerJackie** 是个人品牌和内容母站。优先让读者认识 Jackie 的探索、学习、创造与生活，文章、教程、视频和制作记录统一回到个人站。
+- 知识默认免费；完整源码、模板、Skill、工作流等能独立交付的成果按产品单独销售，不捆绑，不承诺一次付费获得未来所有产品。
+- **01MVP** 只作为相关的 AI 产品 / 网站代码模板与工作流 Demo 提及，不默认推荐、不作为固定页脚，不引导所有教程读者购买它。原会员权益不在新内容中重定义。
+- CTA 根据内容选择继续阅读、关注 MakerJackie、参与讨论或查看相关作品；最多一个主要动作，也可以没有 CTA。只有内容直接涉及某个产品且用户要求或上下文确有需要时，才给该产品购买入口。
+- 网站文章遵循目标仓库本地发布 Skill；社交平台适配才交给 `mj-adapt`。未确认线上发布前，不把本地草稿、Git 提交或预览声称为已经发布。
 
 ### Step 3: 从视频截图
 
@@ -97,8 +92,8 @@ shot-003-00-00-45.jpg
 ### Step 4: 写博客 MDX
 
 1. 选定日期和 slug，例如 `2026-06-09-ai-permanent-personal-site`。
-2. 写入 `content/blog/{date}-{slug}.mdx`。
-3. 更新 `content/blog/meta.json`，把新文章放在合理位置。
+2. 生成 `output/{date}-{slug}/{date}-{slug}.mdx` 发布草稿。
+3. 入库与线上发布由当前目标仓库的 `makerjackie-publish` Skill 处理，遵循已授权的发布范围。
 4. 图片先可用本地路径占位，R2 上传后再替换：
    ```mdx
    ![搭建个人网站的关键步骤](https://assets.01mvp.com/images/makerjackie/{date}-{slug}/shot-001.jpg)
@@ -163,15 +158,14 @@ curl -I "https://assets.01mvp.com/images/makerjackie/{date}-{slug}/shot-001.jpg"
 必要检查：
 
 ```bash
-pnpm types:check
-pnpm lint
+# 内容检查使用目标仓库本地发布 Skill 中的命令。
 git diff --check
 ```
 
 图片链接检查：
 
 ```bash
-rg -n "src=|!\\[" "content/blog/{date}-{slug}.mdx" "output/{date}-{slug}/{date}-{slug}-wechat.html"
+rg -n "src=|!\\[" "output/{date}-{slug}/{date}-{slug}.mdx" "output/{date}-{slug}/{date}-{slug}-wechat.html"
 rg -n "\\{\\{[A-Z_]+\\}\\}" "output/{date}-{slug}/{date}-{slug}-wechat.html"
 curl -I "https://assets.01mvp.com/images/makerjackie/{date}-{slug}/shot-001.jpg"
 ```
@@ -182,6 +176,7 @@ curl -I "https://assets.01mvp.com/images/makerjackie/{date}-{slug}/shot-001.jpg"
 
 完成后应向用户说明：
 - 博客 MDX 路径。
+- 目标仓库与实际发布状态：草稿、已入库、已提交、已部署分别说明。
 - 微信公众号 HTML 路径。
 - 截图数量和 R2 目录。
 - 是否刷新了 `mj-adapt` 生成的标题/封面候选。

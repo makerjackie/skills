@@ -15,7 +15,7 @@ Use $mj-video-publish-pack to turn this local video and SRT into a B站/公众�
 视频：/path/to/video.mp4
 字幕：/path/to/video.srt
 头像：/path/to/me.jpg
-输出到 makerjackie.com，并上传图片到 assets.01mvp.com。
+输出到 https://makerjackie.com，并上传图片到 assets.01mvp.com。
 ```
 
 ## Output
@@ -23,8 +23,8 @@ Use $mj-video-publish-pack to turn this local video and SRT into a B站/公众�
 - B 站标题候选、B 站描述、X 推广文案
 - imagegen 生成的 B 站横版封面、竖版/公众号头图
 - B 站 / YouTube 章节，最多 10 个，每个标题尽量 10 字以内
-- `content/blog/{date}-{slug}.mdx`
-- `content/blog/meta.json` 收录
+- `output/{date}-{slug}/{date}-{slug}.mdx` 博客发布草稿
+- 通过目标仓库的 `makerjackie-publish` Skill 入库、预览并在授权范围内发布
 - `output/{date}-{slug}/{date}-{slug}-wechat.html`
 - 压缩后上传到 R2 的图片 CDN 链接
 
@@ -42,10 +42,10 @@ Use $mj-video-publish-pack to turn this local video and SRT into a B站/公众�
 - 公众号要排版舒服，但不能变成逐行字幕。
 - B 站封面要有点击欲，必须具体、带情绪、有动作。
 - 图片要压缩上传到 R2，链接还要能稳定打开。
-- 博客 MDX 要进入 makerjackie.com 的内容系统。
+- 博客 MDX 草稿交给当前目标仓库的本地发布 Skill，不写入旧博客仓库。
 - 章节要符合 B 站和 YouTube 的限制。
 
-这个 skill 把这次跑通的经验固定下来：以 SRT 为主线、用 imagegen 做封面、用 R2 做图片托管、用 `mj-adapt` 的黑白公众号排版、最后用 build 验证博客。
+这个 skill 把这次跑通的经验固定下来：以 SRT 为主线、用 imagegen 做封面、用 R2 做图片托管、用 `mj-adapt` 的黑白公众号排版、最后按目标仓库规则验证文章。
 
 ## 适合的任务
 
@@ -60,4 +60,4 @@ Use $mj-video-publish-pack to turn this local video and SRT into a B站/公众�
 
 **作者**：Maker Jackie
 
-**01MVP**：Maker Jackie 做的 AI 产品实战教程，[01mvp.com](https://01mvp.com)
+更多文章、教程和作品：[MakerJackie](https://makerjackie.com)
